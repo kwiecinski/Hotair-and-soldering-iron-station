@@ -101,11 +101,11 @@ X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# My-Lib_3-dig-7-seg-display-common-anode
+# Hotair-soldering-station-rescue_3-dig-7-seg-display-common-anode-My-Lib
 #
-DEF My-Lib_3-dig-7-seg-display-common-anode U 0 40 Y Y 1 F N
+DEF Hotair-soldering-station-rescue_3-dig-7-seg-display-common-anode-My-Lib U 0 40 Y Y 1 F N
 F0 "U" 0 0 50 H V C CNN
-F1 "My-Lib_3-dig-7-seg-display-common-anode" 0 0 50 H V C CNN
+F1 "Hotair-soldering-station-rescue_3-dig-7-seg-display-common-anode-My-Lib" 0 0 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW

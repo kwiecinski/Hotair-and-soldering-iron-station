@@ -18,7 +18,7 @@ L Switch:SW_Push SW1
 U 1 1 5F7B7AE4
 P 12125 5725
 F 0 "SW1" H 11925 5775 50  0000 C CNN
-F 1 "SW_Push" H 12125 5919 50  0001 C CNN
+F 1 "HOTAIR_UP" H 12125 5919 50  0001 C CNN
 F 2 "My-Footprints:push_button_12mm" H 12125 5925 50  0001 C CNN
 F 3 "~" H 12125 5925 50  0001 C CNN
 	1    12125 5725
@@ -29,7 +29,7 @@ L Switch:SW_Push SW2
 U 1 1 5F7B8E75
 P 12125 5925
 F 0 "SW2" H 11925 5975 50  0000 C CNN
-F 1 "SW_Push" H 12125 6119 50  0001 C CNN
+F 1 "HOTAIR_DOWN" H 12125 6119 50  0001 C CNN
 F 2 "My-Footprints:push_button_12mm" H 12125 6125 50  0001 C CNN
 F 3 "~" H 12125 6125 50  0001 C CNN
 	1    12125 5925
@@ -40,7 +40,7 @@ L Switch:SW_Push SW3
 U 1 1 5F7BA8A4
 P 12175 7125
 F 0 "SW3" H 11975 7175 50  0000 C CNN
-F 1 "SW_Push" H 12175 7319 50  0001 C CNN
+F 1 "SIRON_UP" H 12175 7319 50  0001 C CNN
 F 2 "My-Footprints:push_button_12mm" H 12175 7325 50  0001 C CNN
 F 3 "~" H 12175 7325 50  0001 C CNN
 	1    12175 7125
@@ -51,7 +51,7 @@ L Switch:SW_Push SW4
 U 1 1 5F7BA8AA
 P 12175 7325
 F 0 "SW4" H 11975 7375 50  0000 C CNN
-F 1 "SW_Push" H 12175 7519 50  0001 C CNN
+F 1 "SIRON_DOWN" H 12175 7519 50  0001 C CNN
 F 2 "My-Footprints:push_button_12mm" H 12175 7525 50  0001 C CNN
 F 3 "~" H 12175 7525 50  0001 C CNN
 	1    12175 7325
@@ -342,7 +342,7 @@ Wire Notes Line
 Wire Notes Line
 	11425 4725 11425 8125
 $Comp
-L My-Lib:3-dig-7-seg-display-common-anode U4
+L Hotair-soldering-station-rescue:3-dig-7-seg-display-common-anode-My-Lib U4
 U 1 1 5F79E7AA
 P 8200 7975
 F 0 "U4" H 8250 8025 50  0000 C CNN
@@ -641,7 +641,7 @@ Wire Wire Line
 Wire Wire Line
 	8950 5525 9650 5525
 $Comp
-L My-Lib:3-dig-7-seg-display-common-anode U3
+L Hotair-soldering-station-rescue:3-dig-7-seg-display-common-anode-My-Lib U3
 U 1 1 5F79D382
 P 8200 5475
 F 0 "U3" H 8250 5525 50  0000 C CNN
