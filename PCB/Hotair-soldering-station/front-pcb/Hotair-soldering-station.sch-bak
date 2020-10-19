@@ -334,8 +334,6 @@ Connection ~ 12625 7325
 Text GLabel 14675 7075 2    50   Input ~ 0
 SOLDER_ON_SW
 Wire Notes Line
-	11425 8125 15675 8125
-Wire Notes Line
 	15675 8125 15675 4725
 Wire Notes Line
 	15675 4725 11425 4725
@@ -1295,23 +1293,6 @@ Wire Wire Line
 	14475 3675 14275 3675
 Wire Wire Line
 	14275 3775 14475 3775
-$Comp
-L Connector_Generic:Conn_01x03 J1
-U 1 1 5F94CEDF
-P 12825 3775
-F 0 "J1" H 12825 3475 50  0000 C CNN
-F 1 "fan_reg_pot" H 12825 3575 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 12825 3775 50  0001 C CNN
-F 3 "~" H 12825 3775 50  0001 C CNN
-	1    12825 3775
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	13025 3675 13775 3675
-Wire Wire Line
-	13775 3775 13025 3775
-Wire Wire Line
-	13775 3875 13025 3875
 Wire Notes Line
 	12375 2475 12375 4475
 Wire Notes Line
@@ -1367,7 +1348,7 @@ Text GLabel 3825 6675 2    50   Input ~ 0
 SEG_D
 Text GLabel 3825 6775 2    50   Input ~ 0
 SEG_E
-Text GLabel 3825 6875 2    50   Input ~ 0
+Text GLabel 3800 7975 2    50   Input ~ 0
 SEG_F
 Text GLabel 3800 8075 2    50   Input ~ 0
 SEG_G
@@ -1375,9 +1356,9 @@ Text GLabel 3800 7875 2    50   Input ~ 0
 SEG_DP
 Text GLabel 3825 7075 2    50   Input ~ 0
 HOTAIR_DIG1
-Text GLabel 3800 7975 2    50   Input ~ 0
-HOTAIR_DIG2
 Text GLabel 3825 6975 2    50   Input ~ 0
+HOTAIR_DIG2
+Text GLabel 3825 6875 2    50   Input ~ 0
 HOTAIR_DIG3
 Text GLabel 3800 8175 2    50   Input ~ 0
 IRON_DIG1
@@ -1419,4 +1400,129 @@ Text GLabel 10750 6475 2    50   Input ~ 0
 IRON_DIG2
 Text GLabel 10750 7175 2    50   Input ~ 0
 IRON_DIG3
+$Comp
+L Switch:SW_Push SW?
+U 1 1 5F8FF5F0
+P 12200 8550
+F 0 "SW?" H 12000 8600 50  0000 C CNN
+F 1 "SIRON_UP" H 12200 8744 50  0001 C CNN
+F 2 "My-Footprints:push_button_12mm" H 12200 8750 50  0001 C CNN
+F 3 "~" H 12200 8750 50  0001 C CNN
+	1    12200 8550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW?
+U 1 1 5F8FF5F6
+P 12200 8750
+F 0 "SW?" H 12000 8800 50  0000 C CNN
+F 1 "SIRON_DOWN" H 12200 8944 50  0001 C CNN
+F 2 "My-Footprints:push_button_12mm" H 12200 8950 50  0001 C CNN
+F 3 "~" H 12200 8950 50  0001 C CNN
+	1    12200 8750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5F8FF5FC
+P 11900 8950
+F 0 "#PWR?" H 11900 8700 50  0001 C CNN
+F 1 "GND" H 11905 8777 50  0000 C CNN
+F 2 "" H 11900 8950 50  0001 C CNN
+F 3 "" H 11900 8950 50  0001 C CNN
+	1    11900 8950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	12000 8750 11900 8750
+Wire Wire Line
+	11900 8750 11900 8950
+Wire Wire Line
+	12000 8550 11900 8550
+Wire Wire Line
+	11900 8550 11900 8750
+Connection ~ 11900 8750
+$Comp
+L Device:R R?
+U 1 1 5F8FF607
+P 12450 8300
+F 0 "R?" H 12625 8250 50  0000 R CNN
+F 1 "10k" H 12650 8350 50  0000 R CNN
+F 2 "Capacitors:0805" V 12380 8300 50  0001 C CNN
+F 3 "~" H 12450 8300 50  0001 C CNN
+	1    12450 8300
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5F8FF60D
+P 12650 8300
+F 0 "R?" H 12580 8254 50  0000 R CNN
+F 1 "10k" H 12580 8345 50  0000 R CNN
+F 2 "Capacitors:0805" V 12580 8300 50  0001 C CNN
+F 3 "~" H 12650 8300 50  0001 C CNN
+	1    12650 8300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	12400 8550 12450 8550
+Wire Wire Line
+	12450 8550 12450 8450
+Wire Wire Line
+	12400 8750 12650 8750
+Wire Wire Line
+	12650 8750 12650 8450
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5F8FF617
+P 12550 8000
+F 0 "#PWR?" H 12550 7850 50  0001 C CNN
+F 1 "+3.3V" H 12565 8173 50  0000 C CNN
+F 2 "" H 12550 8000 50  0001 C CNN
+F 3 "" H 12550 8000 50  0001 C CNN
+	1    12550 8000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	12450 8150 12450 8000
+Wire Wire Line
+	12450 8000 12550 8000
+Wire Wire Line
+	12550 8000 12650 8000
+Wire Wire Line
+	12650 8000 12650 8150
+Connection ~ 12550 8000
+Text GLabel 12900 8550 2    50   Input ~ 0
+HOTAIR_FAN_UP_SW
+Wire Wire Line
+	12900 8550 12450 8550
+Connection ~ 12450 8550
+Text GLabel 12900 8750 2    50   Input ~ 0
+HOTAIR_FAN_DOWN_SW
+Wire Wire Line
+	12900 8750 12650 8750
+Connection ~ 12650 8750
+Text GLabel 13625 3775 0    50   Input ~ 0
+HOTAIR_FAN_UP_SW
+Text GLabel 13625 3675 0    50   Input ~ 0
+HOTAIR_FAN_DOWN_SW
+Wire Wire Line
+	13775 3675 13625 3675
+Wire Wire Line
+	13775 3775 13625 3775
+$Comp
+L power:GND #PWR?
+U 1 1 5F953902
+P 13650 3975
+F 0 "#PWR?" H 13650 3725 50  0001 C CNN
+F 1 "GND" H 13655 3802 50  0000 C CNN
+F 2 "" H 13650 3975 50  0001 C CNN
+F 3 "" H 13650 3975 50  0001 C CNN
+	1    13650 3975
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	13650 3975 13650 3875
+Wire Wire Line
+	13650 3875 13775 3875
 $EndSCHEMATC
