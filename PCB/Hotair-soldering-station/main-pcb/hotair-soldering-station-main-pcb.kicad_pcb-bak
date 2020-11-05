@@ -656,7 +656,7 @@
   )
 
   (module Housings_DIP:DIP-6_W7.62mm_LongPads (layer F.Cu) (tedit 59C78D6B) (tstamp 5FA55111)
-    (at 248.793 55.372)
+    (at 139.081001 70.807001)
     (descr "6-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils), LongPads")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil LongPads")
     (path /5F7DA3CF)
@@ -1032,7 +1032,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P20.32mm_Horizontal (layer F.Cu) (tedit 5AE5139B) (tstamp 5FA55267)
-    (at 241.886001 47.285001)
+    (at 78.691001 83.607001)
     (descr "Resistor, Axial_DIN0414 series, Axial, Horizontal, pin pitch=20.32mm, 2W, length*diameter=11.9*4.5mm^2, http://www.vishay.com/docs/20128/wkxwrx.pdf")
     (tags "Resistor Axial_DIN0414 series Axial Horizontal pin pitch 20.32mm 2W length 11.9mm diameter 4.5mm")
     (path /5F7FA142)
@@ -1095,7 +1095,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P20.32mm_Horizontal (layer F.Cu) (tedit 5AE5139B) (tstamp 5FA555FA)
-    (at 241.886001 29.135001)
+    (at 78.691001 65.457001)
     (descr "Resistor, Axial_DIN0414 series, Axial, Horizontal, pin pitch=20.32mm, 2W, length*diameter=11.9*4.5mm^2, http://www.vishay.com/docs/20128/wkxwrx.pdf")
     (tags "Resistor Axial_DIN0414 series Axial Horizontal pin pitch 20.32mm 2W length 11.9mm diameter 4.5mm")
     (path /5F7F6211)
@@ -1136,7 +1136,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P20.32mm_Horizontal (layer F.Cu) (tedit 5AE5139B) (tstamp 5FA552A9)
-    (at 246.38 79.121)
+    (at 106.191001 54.057001)
     (descr "Resistor, Axial_DIN0414 series, Axial, Horizontal, pin pitch=20.32mm, 2W, length*diameter=11.9*4.5mm^2, http://www.vishay.com/docs/20128/wkxwrx.pdf")
     (tags "Resistor Axial_DIN0414 series Axial Horizontal pin pitch 20.32mm 2W length 11.9mm diameter 4.5mm")
     (path /5FB72A06)
@@ -1199,7 +1199,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P20.32mm_Horizontal (layer F.Cu) (tedit 5AE5139B) (tstamp 5FA55321)
-    (at 241.886001 35.185001)
+    (at 78.691001 71.507001)
     (descr "Resistor, Axial_DIN0414 series, Axial, Horizontal, pin pitch=20.32mm, 2W, length*diameter=11.9*4.5mm^2, http://www.vishay.com/docs/20128/wkxwrx.pdf")
     (tags "Resistor Axial_DIN0414 series Axial Horizontal pin pitch 20.32mm 2W length 11.9mm diameter 4.5mm")
     (path /5F7B931F)
@@ -1262,7 +1262,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P20.32mm_Horizontal (layer F.Cu) (tedit 5AE5139B) (tstamp 5FA55555)
-    (at 241.886001 41.235001)
+    (at 78.691001 77.557001)
     (descr "Resistor, Axial_DIN0414 series, Axial, Horizontal, pin pitch=20.32mm, 2W, length*diameter=11.9*4.5mm^2, http://www.vishay.com/docs/20128/wkxwrx.pdf")
     (tags "Resistor Axial_DIN0414 series Axial Horizontal pin pitch 20.32mm 2W length 11.9mm diameter 4.5mm")
     (path /5F7D0189)
@@ -1303,7 +1303,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0414_L11.9mm_D4.5mm_P20.32mm_Horizontal (layer F.Cu) (tedit 5AE5139B) (tstamp 5FA556D8)
-    (at 248.92 70.104)
+    (at 133.691001 42.657001)
     (descr "Resistor, Axial_DIN0414 series, Axial, Horizontal, pin pitch=20.32mm, 2W, length*diameter=11.9*4.5mm^2, http://www.vishay.com/docs/20128/wkxwrx.pdf")
     (tags "Resistor Axial_DIN0414 series Axial Horizontal pin pitch 20.32mm 2W length 11.9mm diameter 4.5mm")
     (path /5FB374AD)
@@ -1388,7 +1388,7 @@
   )
 
   (module Capacitors:0805 (layer F.Cu) (tedit 200000) (tstamp 5FA5538C)
-    (at 243.84 61.214)
+    (at 179.910001 66.354961)
     (descr "GENERIC 2012 (0805) PACKAGE")
     (tags "GENERIC 2012 (0805) PACKAGE")
     (path /5F7E13FC)
@@ -1454,7 +1454,7 @@
   )
 
   (module Capacitors:0805 (layer F.Cu) (tedit 200000) (tstamp 5FA55728)
-    (at 239.268 64.643)
+    (at 171.130001 70.614961)
     (descr "GENERIC 2012 (0805) PACKAGE")
     (tags "GENERIC 2012 (0805) PACKAGE")
     (path /5F7E8BD0)
@@ -1647,7 +1647,7 @@
   )
 
   (module Package_TO_SOT_THT:TO-220-3_Vertical (layer F.Cu) (tedit 5AC8BA0D) (tstamp 5FA5549E)
-    (at 266.954 89.408)
+    (at 117.811001 96.997001)
     (descr "TO-220-3, Vertical, RM 2.54mm, see https://www.vishay.com/docs/66542/to-220-1.pdf")
     (tags "TO-220-3 Vertical RM 2.54mm")
     (path /5F7EE591)
@@ -1863,7 +1863,7 @@
   )
 
   (module Package_TO_SOT_SMD:SOT-23 (layer F.Cu) (tedit 5A02FF57) (tstamp 5FA555A1)
-    (at 240.157 60.96)
+    (at 139.631001 97.307001)
     (descr "SOT-23, Standard")
     (tags SOT-23)
     (path /5F7DDF7C)
@@ -1966,7 +1966,7 @@
   )
 
   (module My-Footprints:WIRE_PAD_1,3mm (layer F.Cu) (tedit 5E0A02AF) (tstamp 5FA5577A)
-    (at 107.188 126.365)
+    (at 166.326 81.072)
     (path /5FC8D212)
     (fp_text reference J12 (at 0 -3.302) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
@@ -2033,7 +2033,7 @@
   )
 
   (module Connectors_Hirose:Hirose_DF63-2P-3.96DSA_02x3.96mm_Straight (layer F.Cu) (tedit 57F0E1A8) (tstamp 5FA5587B)
-    (at 264.033 100.076)
+    (at 168.148 122.682)
     (descr "Hirose DF63 connector, DF63-2P-3.96DSA, 3.96mm pitch, top entry THT")
     (tags "connector hirose df63 vertical through hole")
     (path /5F7F56BF)
@@ -2342,7 +2342,7 @@
   )
 
   (module Fuse_Holders_and_Fuses:Fuseholder5x20_horiz_SemiClosed_Casing10x25mm (layer F.Cu) (tedit 5FA451F3) (tstamp 5FA55DE6)
-    (at 248.793 117.856)
+    (at 106.966 45.307001)
     (descr "Fuseholder, 5x20, Semi closed, horizontal, Casing 10x25mm,")
     (tags "Fuseholder 5x20 Semi closed horizontal Casing 10x25mm Sicherungshalter halbgeschlossen ")
     (path /5F83B017)
@@ -4003,7 +4003,7 @@
   )
 
   (module Capacitors_THT:C_Rect_L18.0mm_W5.0mm_P15.00mm_FKS3_FKP3 (layer F.Cu) (tedit 597BC7C2) (tstamp 5FA56A27)
-    (at 266.192 57.785)
+    (at 79.091001 98.317001)
     (descr "C, Rect series, Radial, pin pitch=15.00mm, , length*width=18*5mm^2, Capacitor, http://www.wima.com/EN/WIMA_FKS_3.pdf")
     (tags "C Rect series Radial pin pitch 15.00mm  length 18mm width 5mm Capacitor")
     (path /5F7FAA2A)
@@ -4076,7 +4076,7 @@
   )
 
   (module Capacitor_THT:C_Rect_L13.0mm_W5.0mm_P10.00mm_FKS3_FKP3_MKS4 (layer F.Cu) (tedit 5AE50EF0) (tstamp 5FA56A5D)
-    (at 251.587 89.408)
+    (at 102.301001 89.907001)
     (descr "C, Rect series, Radial, pin pitch=10.00mm, , length*width=13*5mm^2, Capacitor, http://www.wima.com/EN/WIMA_FKS_3.pdf, http://www.wima.com/EN/WIMA_MKS_4.pdf")
     (tags "C Rect series Radial pin pitch 10.00mm  length 13mm width 5mm Capacitor")
     (path /5F7C9BD5)
