@@ -13,215 +13,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L Transistor_BJT:TIP122 Q?
-U 1 1 5F775EA9
-P 3900 8550
-F 0 "Q?" V 4244 8550 50  0000 C CNN
-F 1 "BD681" V 4153 8550 50  0000 C CNN
-F 2 "TO_SOT_Packages_THT:TO-126_Vertical" H 4100 8475 50  0001 L CIN
-F 3 "" H 3900 8550 50  0001 L CNN
-	1    3900 8550
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC817 Q?
-U 1 1 5F777E6C
-P 4000 9350
-F 0 "Q?" H 4191 9396 50  0000 L CNN
-F 1 "BC817" H 4191 9305 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 4200 9275 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 4000 9350 50  0001 L CNN
-	1    4000 9350
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5F77A712
-P 3450 8750
-F 0 "R?" H 3380 8704 50  0000 R CNN
-F 1 "5k1" H 3380 8795 50  0000 R CNN
-F 2 "Capacitors:0805" V 3380 8750 50  0001 C CNN
-F 3 "~" H 3450 8750 50  0001 C CNN
-	1    3450 8750
-	-1   0    0    1   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5F77B6A1
-P 3000 8750
-F 0 "R?" H 2930 8704 50  0000 R CNN
-F 1 "5k1" H 2930 8795 50  0000 R CNN
-F 2 "Capacitors:0805" V 2930 8750 50  0001 C CNN
-F 3 "~" H 3000 8750 50  0001 C CNN
-	1    3000 8750
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	2350 8450 2350 8200
-Wire Wire Line
-	3000 8600 3000 8450
-Connection ~ 3000 8450
-Wire Wire Line
-	3000 8450 2350 8450
-$Comp
-L Device:D_Zener D?
-U 1 1 5F77C801
-P 3000 9500
-F 0 "D?" V 2954 9579 50  0000 L CNN
-F 1 "8V2" V 3045 9579 50  0000 L CNN
-F 2 "Diode_THT:D_DO-34_SOD68_P7.62mm_Horizontal" H 3000 9500 50  0001 C CNN
-F 3 "~" H 3000 9500 50  0001 C CNN
-	1    3000 9500
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3000 9350 3000 9300
-Wire Wire Line
-	3900 9550 3900 9650
-Wire Wire Line
-	3900 9650 3400 9650
-Wire Wire Line
-	3400 9650 3400 9300
-Wire Wire Line
-	3400 9300 3000 9300
-Connection ~ 3000 9300
-Wire Wire Line
-	3000 9300 3000 8900
-$Comp
-L power:GND #PWR?
-U 1 1 5F77DB18
-P 3000 9800
-F 0 "#PWR?" H 3000 9550 50  0001 C CNN
-F 1 "GND" H 3005 9627 50  0000 C CNN
-F 2 "" H 3000 9800 50  0001 C CNN
-F 3 "" H 3000 9800 50  0001 C CNN
-	1    3000 9800
-	1    0    0    -1  
-$EndComp
-$Comp
-L Transistor_BJT:BC817 Q?
-U 1 1 5F77E614
-P 2350 9300
-F 0 "Q?" H 2541 9346 50  0000 L CNN
-F 1 "BC817" H 2541 9255 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 2550 9225 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 2350 9300 50  0001 L CNN
-	1    2350 9300
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3000 9800 3000 9650
-$Comp
-L power:GND #PWR?
-U 1 1 5F7864B2
-P 2450 9800
-F 0 "#PWR?" H 2450 9550 50  0001 C CNN
-F 1 "GND" H 2455 9627 50  0000 C CNN
-F 2 "" H 2450 9800 50  0001 C CNN
-F 3 "" H 2450 9800 50  0001 C CNN
-	1    2450 9800
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2450 9100 2450 9050
-Wire Wire Line
-	2450 9050 3450 9050
-Connection ~ 3900 9050
-Wire Wire Line
-	3900 9050 3900 9150
-Wire Wire Line
-	2450 9800 2450 9500
-Wire Wire Line
-	1950 9300 2150 9300
-$Comp
-L Device:R R?
-U 1 1 5F788586
-P 1800 9300
-F 0 "R?" V 2007 9300 50  0000 C CNN
-F 1 "10k" V 1916 9300 50  0000 C CNN
-F 2 "Capacitors:0805" V 1730 9300 50  0001 C CNN
-F 3 "~" H 1800 9300 50  0001 C CNN
-	1    1800 9300
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5F78ADB6
-P 4650 8750
-F 0 "R?" H 4580 8704 50  0000 R CNN
-F 1 "5k6" H 4580 8795 50  0000 R CNN
-F 2 "Capacitors:0805" V 4580 8750 50  0001 C CNN
-F 3 "~" H 4650 8750 50  0001 C CNN
-	1    4650 8750
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	4100 8450 4650 8450
-Wire Wire Line
-	4650 8450 4650 8600
-$Comp
-L Device:R R?
-U 1 1 5F78B92D
-P 4650 9500
-F 0 "R?" H 4580 9454 50  0000 R CNN
-F 1 "7k5" H 4580 9545 50  0000 R CNN
-F 2 "Capacitors:0805" V 4580 9500 50  0001 C CNN
-F 3 "~" H 4650 9500 50  0001 C CNN
-	1    4650 9500
-	-1   0    0    1   
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5F78C6B5
-P 4650 9800
-F 0 "#PWR?" H 4650 9550 50  0001 C CNN
-F 1 "GND" H 4655 9627 50  0000 C CNN
-F 2 "" H 4650 9800 50  0001 C CNN
-F 3 "" H 4650 9800 50  0001 C CNN
-	1    4650 9800
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4650 9800 4650 9650
-Wire Wire Line
-	4650 8450 5200 8450
-Connection ~ 4650 8450
-Wire Wire Line
-	4350 9100 4350 9350
-Wire Wire Line
-	4350 9350 4200 9350
-Wire Wire Line
-	3900 8750 3900 9050
-Wire Wire Line
-	3000 8450 3450 8450
-Wire Wire Line
-	3450 8900 3450 9050
-Connection ~ 3450 9050
-Wire Wire Line
-	3450 9050 3900 9050
-Wire Wire Line
-	3450 8600 3450 8450
-Connection ~ 3450 8450
-Wire Wire Line
-	3450 8450 3700 8450
-Wire Wire Line
-	1650 9300 1450 9300
-$Comp
-L power:+24V #PWR?
-U 1 1 5F798EA8
-P 2350 8200
-F 0 "#PWR?" H 2350 8050 50  0001 C CNN
-F 1 "+24V" H 2365 8373 50  0000 C CNN
-F 2 "" H 2350 8200 50  0001 C CNN
-F 3 "" H 2350 8200 50  0001 C CNN
-	1    2350 8200
-	1    0    0    -1  
-$EndComp
-Text GLabel 1450 9300 0    50   Input ~ 0
-FAN_EN
-Text GLabel 5200 8450 2    50   Input ~ 0
-FAN_SUPPLY
 Wire Notes Line
 	650  10375 6525 10375
 Wire Notes Line
@@ -307,8 +98,6 @@ Wire Wire Line
 	20225 3200 20375 3200
 Wire Wire Line
 	20375 3300 20225 3300
-Wire Wire Line
-	20375 3400 20225 3400
 Wire Notes Line
 	6475 11250 6425 11250
 Text Notes 650  1000 0    236  ~ 47
@@ -1811,7 +1600,7 @@ Text Notes 700  5750 0    98   ~ 0
 Heater controll
 Text Notes 700  10600 0    98   ~ 0
 Thermocouple amplifier
-Text Notes 750  8050 0    98   ~ 0
+Text Notes 750  8000 0    98   ~ 0
 Fan speed controll
 Text Notes 650  1550 0    197  ~ 39
 Supply connectors, voltage regulation
@@ -2084,7 +1873,7 @@ Connection ~ 20550 8650
 Wire Wire Line
 	20550 8650 20550 8750
 Text GLabel 18450 9150 2    50   Input ~ 0
-FAN_EN
+FAN_PWM
 Wire Wire Line
 	18450 9150 17950 9150
 $Comp
@@ -2099,27 +1888,9 @@ F 3 "" H 4150 2525 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 20225 3200 0    50   Input ~ 0
-FAN_POT_A
+HOTAIR_FAN_DOWN_SW
 Text GLabel 20225 3300 0    50   Input ~ 0
-FAN_POT_B
-Text GLabel 20225 3400 0    50   Input ~ 0
-FAN_POT_W
-Text GLabel 4975 9200 2    50   Input ~ 0
-FAN_POT_A
-Text GLabel 4975 9000 2    50   Input ~ 0
-FAN_POT_B
-Text GLabel 4975 9100 2    50   Input ~ 0
-FAN_POT_W
-Wire Wire Line
-	4975 9000 4650 9000
-Wire Wire Line
-	4650 8900 4650 9000
-Wire Wire Line
-	4350 9100 4975 9100
-Wire Wire Line
-	4975 9200 4650 9200
-Wire Wire Line
-	4650 9200 4650 9350
+HOTAIR_FAN_UP_SW
 $Comp
 L Connector_Generic:Conn_01x02 J?
 U 1 1 5F82EC48
@@ -2349,4 +2120,400 @@ F 3 "" H 7875 2825 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	7875 2825 7875 2775
+Text GLabel 5925 8600 2    50   Input ~ 0
+FAN_SUPPLY
+$Comp
+L pspice:INDUCTOR L?
+U 1 1 5FA5E69E
+P 4750 8600
+F 0 "L?" H 4750 8815 50  0000 C CNN
+F 1 "220uH" H 4750 8724 50  0000 C CNN
+F 2 "" H 4750 8600 50  0001 C CNN
+F 3 "~" H 4750 8600 50  0001 C CNN
+	1    4750 8600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C?
+U 1 1 5FA5F5BA
+P 5150 8800
+F 0 "C?" H 5275 8825 39  0000 L CNN
+F 1 "47u/35V" H 5275 8750 39  0000 L CNN
+F 2 "" H 5188 8650 50  0001 C CNN
+F 3 "~" H 5150 8800 50  0001 C CNN
+	1    5150 8800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_FET:IRLIZ44N Q?
+U 1 1 5FA88443
+P 3900 8700
+F 0 "Q?" V 4242 8700 50  0000 C CNN
+F 1 "IRLIZ44N" V 4151 8700 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-220F-3_Vertical" H 4150 8625 50  0001 L CIN
+F 3 "http://www.irf.com/product-info/datasheets/data/irliz44n.pdf" H 3900 8700 50  0001 L CNN
+	1    3900 8700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Diode:1N5819 D?
+U 1 1 5FA8A637
+P 4300 8850
+F 0 "D?" V 4254 8929 50  0000 L CNN
+F 1 "1N5819" V 4345 8929 50  0000 L CNN
+F 2 "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 4300 8675 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/88525/1n5817.pdf" H 4300 8850 50  0001 C CNN
+	1    4300 8850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4100 8600 4300 8600
+Wire Wire Line
+	4300 8700 4300 8600
+Connection ~ 4300 8600
+Wire Wire Line
+	4300 8600 4500 8600
+Wire Wire Line
+	5000 8600 5150 8600
+Wire Wire Line
+	5150 8600 5150 8650
+Wire Wire Line
+	5925 8600 5675 8600
+Connection ~ 5150 8600
+$Comp
+L power:GND #PWR?
+U 1 1 5FADB2C0
+P 4300 9050
+F 0 "#PWR?" H 4300 8800 50  0001 C CNN
+F 1 "GND" H 4305 8877 50  0000 C CNN
+F 2 "" H 4300 9050 50  0001 C CNN
+F 3 "" H 4300 9050 50  0001 C CNN
+	1    4300 9050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:CP C?
+U 1 1 5FB2B7EF
+P 5675 8800
+F 0 "C?" H 5793 8838 39  0000 L CNN
+F 1 "47u/35V" H 5793 8763 39  0000 L CNN
+F 2 "" H 5713 8650 50  0001 C CNN
+F 3 "~" H 5675 8800 50  0001 C CNN
+	1    5675 8800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5675 8650 5675 8600
+Connection ~ 5675 8600
+Wire Wire Line
+	5675 8600 5150 8600
+$Comp
+L Transistor_BJT:BC817 Q?
+U 1 1 5FC31F3D
+P 2450 9900
+F 0 "Q?" H 2641 9946 50  0000 L CNN
+F 1 "BC817" H 2641 9855 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 2650 9825 50  0001 L CIN
+F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 2450 9900 50  0001 L CNN
+	1    2450 9900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:1N5819 D?
+U 1 1 5FC341DA
+P 2350 9550
+F 0 "D?" H 2350 9334 50  0000 C CNN
+F 1 "1N5819" H 2350 9425 50  0000 C CNN
+F 2 "Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal" H 2350 9375 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/88525/1n5817.pdf" H 2350 9550 50  0001 C CNN
+	1    2350 9550
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2500 9550 2550 9550
+Wire Wire Line
+	2550 9550 2550 9700
+Wire Wire Line
+	2250 9900 2150 9900
+Wire Wire Line
+	2150 9900 2150 9550
+Wire Wire Line
+	2150 9550 2200 9550
+$Comp
+L Device:C C?
+U 1 1 5FC63AD6
+P 1950 9550
+F 0 "C?" V 1700 9500 50  0000 L CNN
+F 1 "470p" V 1800 9450 50  0000 L CNN
+F 2 "Capacitors:0805" H 1988 9400 50  0001 C CNN
+F 3 "~" H 1950 9550 50  0001 C CNN
+	1    1950 9550
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5FC9711A
+P 1500 9900
+F 0 "R?" V 1600 9950 50  0000 R CNN
+F 1 "100R" V 1400 10000 50  0000 R CNN
+F 2 "Capacitors:0805" V 1430 9900 50  0001 C CNN
+F 3 "~" H 1500 9900 50  0001 C CNN
+	1    1500 9900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5FC97C1C
+P 1950 9900
+F 0 "R?" V 2050 9950 50  0000 R CNN
+F 1 "900R" V 1850 10000 50  0000 R CNN
+F 2 "Capacitors:0805" V 1880 9900 50  0001 C CNN
+F 3 "~" H 1950 9900 50  0001 C CNN
+	1    1950 9900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2100 9900 2150 9900
+Connection ~ 2150 9900
+Wire Wire Line
+	2100 9550 2150 9550
+Connection ~ 2150 9550
+Wire Wire Line
+	1800 9550 1700 9550
+Wire Wire Line
+	1700 9550 1700 9900
+Wire Wire Line
+	1650 9900 1700 9900
+Connection ~ 1700 9900
+Wire Wire Line
+	1700 9900 1800 9900
+Wire Wire Line
+	1350 9900 1150 9900
+$Comp
+L power:GND #PWR?
+U 1 1 5FD50BD2
+P 2550 10100
+F 0 "#PWR?" H 2550 9850 50  0001 C CNN
+F 1 "GND" H 2555 9927 50  0000 C CNN
+F 2 "" H 2550 10100 50  0001 C CNN
+F 3 "" H 2550 10100 50  0001 C CNN
+	1    2550 10100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:BC817 Q?
+U 1 1 5FD82342
+P 3500 9400
+F 0 "Q?" H 3691 9438 39  0000 L CNN
+F 1 "BC817" H 3691 9363 39  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 3700 9325 50  0001 L CIN
+F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 3500 9400 50  0001 L CNN
+	1    3500 9400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:BC807 Q?
+U 1 1 5FD83915
+P 3500 9900
+F 0 "Q?" H 3691 9862 39  0000 L CNN
+F 1 "BC807" H 3691 9937 39  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 3700 9825 50  0001 L CIN
+F 3 "http://www.fairchildsemi.com/ds/BC/BC807.pdf" H 3500 9900 50  0001 L CNN
+	1    3500 9900
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	3300 9900 3150 9900
+Wire Wire Line
+	3150 9900 3150 9550
+Wire Wire Line
+	3150 9400 3300 9400
+Wire Wire Line
+	3600 9600 3600 9650
+Wire Wire Line
+	3600 9650 3900 9650
+Wire Wire Line
+	3900 9650 3900 8900
+Connection ~ 3600 9650
+Wire Wire Line
+	3600 9650 3600 9700
+Wire Wire Line
+	2550 9550 2950 9550
+Connection ~ 2550 9550
+Connection ~ 3150 9550
+Wire Wire Line
+	3150 9550 3150 9400
+$Comp
+L Diode:1N4148 D?
+U 1 1 5FE63D93
+P 3250 8250
+F 0 "D?" H 3250 8034 50  0000 C CNN
+F 1 "1N4148" H 3250 8125 50  0000 C CNN
+F 2 "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal" H 3250 8075 50  0001 C CNN
+F 3 "https://assets.nexperia.com/documents/data-sheet/1N4148_1N4448.pdf" H 3250 8250 50  0001 C CNN
+	1    3250 8250
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5FE669A8
+P 4100 8250
+F 0 "C?" V 3850 8200 50  0000 L CNN
+F 1 "1u" V 3950 8200 50  0000 L CNN
+F 2 "Capacitors:0805" H 4138 8100 50  0001 C CNN
+F 3 "~" H 4100 8250 50  0001 C CNN
+	1    4100 8250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4250 8250 4300 8250
+Wire Wire Line
+	4300 8250 4300 8600
+Wire Wire Line
+	3950 8250 3600 8250
+$Comp
+L power:+24V #PWR?
+U 1 1 5F798EA8
+P 2600 8200
+F 0 "#PWR?" H 2600 8050 50  0001 C CNN
+F 1 "+24V" H 2615 8373 50  0000 C CNN
+F 2 "" H 2600 8200 50  0001 C CNN
+F 3 "" H 2600 8200 50  0001 C CNN
+	1    2600 8200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 8600 2600 8200
+$Comp
+L power:+5V #PWR?
+U 1 1 5FEECD5D
+P 2900 8200
+F 0 "#PWR?" H 2900 8050 50  0001 C CNN
+F 1 "+5V" H 2915 8373 50  0000 C CNN
+F 2 "" H 2900 8200 50  0001 C CNN
+F 3 "" H 2900 8200 50  0001 C CNN
+	1    2900 8200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 8250 2900 8250
+Wire Wire Line
+	2900 8250 2900 8200
+Wire Wire Line
+	3600 8250 3600 9200
+Connection ~ 3600 8250
+Wire Wire Line
+	3600 8250 3400 8250
+Connection ~ 3600 9200
+$Comp
+L Device:R R?
+U 1 1 5FFE39A6
+P 2950 9350
+F 0 "R?" H 2850 9375 50  0000 R CNN
+F 1 "4k7" H 2875 9300 50  0000 R CNN
+F 2 "Capacitors:0805" V 2880 9350 50  0001 C CNN
+F 3 "~" H 2950 9350 50  0001 C CNN
+	1    2950 9350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 9200 3600 9200
+Wire Wire Line
+	2950 9500 2950 9550
+Connection ~ 2950 9550
+Wire Wire Line
+	2950 9550 3150 9550
+$Comp
+L power:GND #PWR?
+U 1 1 6001D3C2
+P 3600 10100
+F 0 "#PWR?" H 3600 9850 50  0001 C CNN
+F 1 "GND" H 3605 9927 50  0000 C CNN
+F 2 "" H 3600 10100 50  0001 C CNN
+F 3 "" H 3600 10100 50  0001 C CNN
+	1    3600 10100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60055AB6
+P 2600 9050
+F 0 "#PWR?" H 2600 8800 50  0001 C CNN
+F 1 "GND" H 2605 8877 50  0000 C CNN
+F 2 "" H 2600 9050 50  0001 C CNN
+F 3 "" H 2600 9050 50  0001 C CNN
+	1    2600 9050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4300 9000 4300 9050
+$Comp
+L power:GND #PWR?
+U 1 1 600C257A
+P 5150 9050
+F 0 "#PWR?" H 5150 8800 50  0001 C CNN
+F 1 "GND" H 5155 8877 50  0000 C CNN
+F 2 "" H 5150 9050 50  0001 C CNN
+F 3 "" H 5150 9050 50  0001 C CNN
+	1    5150 9050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 600C2B07
+P 5675 9050
+F 0 "#PWR?" H 5675 8800 50  0001 C CNN
+F 1 "GND" H 5680 8877 50  0000 C CNN
+F 2 "" H 5675 9050 50  0001 C CNN
+F 3 "" H 5675 9050 50  0001 C CNN
+	1    5675 9050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5675 9050 5675 8950
+Wire Wire Line
+	5150 9050 5150 8950
+Connection ~ 2600 8600
+Wire Wire Line
+	2600 8600 3700 8600
+Wire Wire Line
+	2600 9050 2600 9000
+Wire Wire Line
+	2600 8700 2600 8600
+$Comp
+L Device:CP C?
+U 1 1 5FA60971
+P 2600 8850
+F 0 "C?" H 2718 8888 39  0000 L CNN
+F 1 "100u/35V" H 2718 8813 39  0000 L CNN
+F 2 "" H 2638 8700 50  0001 C CNN
+F 3 "~" H 2600 8850 50  0001 C CNN
+	1    2600 8850
+	1    0    0    -1  
+$EndComp
+Text GLabel 1150 9900 0    50   Input ~ 0
+FAN_PWM
+$Comp
+L power:GND #PWR?
+U 1 1 6030F66F
+P 20200 3500
+F 0 "#PWR?" H 20200 3250 50  0001 C CNN
+F 1 "GND" H 20205 3327 50  0000 C CNN
+F 2 "" H 20200 3500 50  0001 C CNN
+F 3 "" H 20200 3500 50  0001 C CNN
+	1    20200 3500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	20200 3400 20200 3500
+Wire Wire Line
+	20200 3400 20375 3400
+Text GLabel 16425 8750 0    50   Input ~ 0
+HOTAIR_FAN_DOWN_SW
+Text GLabel 16425 8850 0    50   Input ~ 0
+HOTAIR_FAN_UP_SW
+Wire Wire Line
+	16850 8750 16425 8750
+Wire Wire Line
+	16850 8850 16425 8850
 $EndSCHEMATC
