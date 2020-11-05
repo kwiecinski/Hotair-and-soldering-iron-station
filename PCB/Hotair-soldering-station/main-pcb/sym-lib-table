@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name hotair-soldering-station-main-pcb-rescue)(type Legacy)(uri ${KIPRJMOD}/hotair-soldering-station-main-pcb-rescue.lib)(options "")(descr ""))
+)
