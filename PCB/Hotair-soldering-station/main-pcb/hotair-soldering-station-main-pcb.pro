@@ -1,4 +1,4 @@
-update=06.11.2020 13:53:35
+update=26.11.2020 12:06:30
 version=1
 last_client=kicad
 [general]
@@ -57,7 +57,7 @@ ViaDrill5=3.2
 dPairWidth1=0.2
 dPairGap1=0.25
 dPairViaGap1=0.25
-SilkLineWidth=0.12
+SilkLineWidth=0.4
 SilkTextSizeV=1
 SilkTextSizeH=1
 SilkTextSizeThickness=0.15
@@ -262,7 +262,7 @@ dPairViaGap=0.25
 [pcbnew/Netclasses/1]
 Name=230V
 Clearance=3
-TrackWidth=0.25
+TrackWidth=0.2
 ViaDiameter=0.8
 ViaDrill=0.4
 uViaDiameter=0.3
