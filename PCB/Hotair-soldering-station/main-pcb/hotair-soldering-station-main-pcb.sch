@@ -65,17 +65,6 @@ F 3 "http://www.fairchildsemi.com/ds/MO/MOC3031M.pdf" H 2700 6350 50  0001 L CNN
 	1    2700 6350
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:+3V3 #PWR0101
-U 1 1 5F7DC810
-P 2350 6075
-F 0 "#PWR0101" H 2350 5925 50  0001 C CNN
-F 1 "+3V3" H 2365 6248 50  0000 C CNN
-F 2 "" H 2350 6075 50  0001 C CNN
-F 3 "" H 2350 6075 50  0001 C CNN
-	1    2350 6075
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	2400 6250 2350 6250
 Wire Wire Line
@@ -111,7 +100,7 @@ L Device:R R6
 U 1 1 5F7E13FC
 P 2350 6700
 F 0 "R6" H 2280 6654 50  0000 R CNN
-F 1 "160R" H 2280 6745 50  0000 R CNN
+F 1 "320R" H 2280 6745 50  0000 R CNN
 F 2 "Capacitors:0805" V 2280 6700 50  0001 C CNN
 F 3 "~" H 2350 6700 50  0001 C CNN
 	1    2350 6700
@@ -817,32 +806,20 @@ Text Notes 7050 11050 0    98   ~ 0
 Soldering iron connector\n
 Wire Notes Line
 	12700 16075 12750 16075
-Text GLabel 16450 9550 0    50   Input ~ 0
+Text GLabel 18450 8950 2    50   Input ~ 0
 HOTAIR_UP_SW
-Text GLabel 16450 9450 0    50   Input ~ 0
-HOTAIR_DOWN_SW
-Text GLabel 16450 9350 0    50   Input ~ 0
-SOLDER_UP_SW
-Text GLabel 16450 9250 0    50   Input ~ 0
-SOLDER_DOWN_SW
 Text GLabel 16450 9150 0    50   Input ~ 0
-HOTAIR_ON_SW
-Text GLabel 16450 9050 0    50   Input ~ 0
-SOLDER_ON_SW
+HOTAIR_DOWN_SW
 Text GLabel 18450 8850 2    50   Input ~ 0
 7SEG_DIN
 Text GLabel 18450 8650 2    50   Input ~ 0
 7SEG_CLK
 Text GLabel 18450 8750 2    50   Input ~ 0
 7SEG_LATCH
-Text GLabel 18450 8450 2    50   Input ~ 0
-SOLD_IRON_HEATER_CTRL
 Text GLabel 11925 9750 2    50   Input ~ 0
 THERM_IRON_ADC
 Text GLabel 18450 8150 2    50   Input ~ 0
 THERM_IRON_ADC
-Text GLabel 18450 8550 2    50   Input ~ 0
-HOTAIR_HEATER_CTRL
 $Comp
 L Device:R R7
 U 1 1 5F7FF6A4
@@ -1077,7 +1054,7 @@ F 3 "~" H 22150 6350 50  0001 C CNN
 	1    22150 6350
 	1    0    0    -1  
 $EndComp
-Text GLabel 18450 8350 2    50   Input ~ 0
+Text GLabel 18450 9050 2    50   Input ~ 0
 UART_DBG_TX
 Wire Wire Line
 	17950 8350 18450 8350
@@ -1110,21 +1087,17 @@ Wire Wire Line
 Wire Wire Line
 	16850 9250 16450 9250
 Wire Wire Line
-	16450 9350 16850 9350
+	15450 9350 16850 9350
 Wire Wire Line
 	16450 9450 16850 9450
 Wire Wire Line
-	16850 9550 16450 9550
+	16850 9550 15450 9550
 Wire Wire Line
 	18450 8450 17950 8450
 Wire Wire Line
 	18450 8550 17950 8550
-Text GLabel 16450 9650 0    50   Input ~ 0
+Text GLabel 16425 8850 0    50   Input ~ 0
 HOTAIR_REED_SW
-Wire Wire Line
-	16450 9650 16850 9650
-Text GLabel 18450 8950 2    50   Input ~ 0
-BUZZER
 Wire Wire Line
 	18450 8950 17950 8950
 Text GLabel 21600 6450 0    50   Input ~ 0
@@ -1188,8 +1161,6 @@ Wire Wire Line
 	3750 13975 3900 13975
 Wire Wire Line
 	3900 14175 3750 14175
-Text GLabel 3750 13975 0    50   Input ~ 0
-SOLDERING_IRON_THERM
 Text Notes 775  13075 0    98   ~ 0
 HOTAIR connector\n
 Wire Notes Line
@@ -1542,7 +1513,7 @@ U 1 1 5F81B329
 P 14550 6300
 F 0 "C19" H 14665 6346 50  0000 L CNN
 F 1 "100n" H 14665 6255 50  0000 L CNN
-F 2 "Capacitors:0805" H 14588 6150 50  0001 C CNN
+F 2 "Capacitors:0603" H 14588 6150 50  0001 C CNN
 F 3 "~" H 14550 6300 50  0001 C CNN
 	1    14550 6300
 	1    0    0    -1  
@@ -1564,7 +1535,7 @@ U 1 1 5F8FBF61
 P 14150 6300
 F 0 "C18" H 14265 6346 50  0000 L CNN
 F 1 "100n" H 14265 6255 50  0000 L CNN
-F 2 "Capacitors:0805" H 14188 6150 50  0001 C CNN
+F 2 "Capacitors:0603" H 14188 6150 50  0001 C CNN
 F 3 "~" H 14150 6300 50  0001 C CNN
 	1    14150 6300
 	1    0    0    -1  
@@ -1575,7 +1546,7 @@ U 1 1 5F8FC6DC
 P 13700 6300
 F 0 "C17" H 13815 6346 50  0000 L CNN
 F 1 "100n" H 13815 6255 50  0000 L CNN
-F 2 "Capacitors:0805" H 13738 6150 50  0001 C CNN
+F 2 "Capacitors:0603" H 13738 6150 50  0001 C CNN
 F 3 "~" H 13700 6300 50  0001 C CNN
 	1    13700 6300
 	1    0    0    -1  
@@ -1632,8 +1603,6 @@ F 3 "" H 20550 9450 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	20550 9450 20550 9350
-Wire Wire Line
-	17950 9050 20150 9050
 $Comp
 L Device:R R32
 U 1 1 5FA010C4
@@ -1647,7 +1616,6 @@ F 3 "~" H 20150 8850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	20150 9000 20150 9050
-Connection ~ 20150 9050
 Wire Wire Line
 	20150 9050 20250 9050
 Wire Wire Line
@@ -1657,8 +1625,6 @@ Wire Wire Line
 Connection ~ 20550 8650
 Wire Wire Line
 	20550 8650 20550 8750
-Text GLabel 18450 9150 2    50   Input ~ 0
-FAN_PWM
 Wire Wire Line
 	18450 9150 17950 9150
 $Comp
@@ -2252,9 +2218,9 @@ F 3 "~" H 2600 8850 50  0001 C CNN
 $EndComp
 Text GLabel 1150 9900 0    50   Input ~ 0
 FAN_PWM
-Text GLabel 16425 8750 0    50   Input ~ 0
+Text GLabel 18450 9250 2    50   Input ~ 0
 HOTAIR_FAN_DOWN_SW
-Text GLabel 16425 8850 0    50   Input ~ 0
+Text GLabel 18450 9150 2    50   Input ~ 0
 HOTAIR_FAN_UP_SW
 Wire Wire Line
 	16850 8750 16425 8750
@@ -2335,42 +2301,29 @@ $EndComp
 $Comp
 L Connector_Generic:Conn_01x01 J10
 U 1 1 5FC8B12E
-P 19150 9250
-F 0 "J10" H 19225 9250 50  0000 L CNN
-F 1 "PA11" H 19400 9250 50  0000 L CNN
-F 2 "My-Footprints:WIRE_PAD_1,3mm" H 19150 9250 50  0001 C CNN
-F 3 "~" H 19150 9250 50  0001 C CNN
-	1    19150 9250
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector_Generic:Conn_01x01 J11
-U 1 1 5FC8CFCD
-P 19150 9350
-F 0 "J11" H 19225 9350 50  0000 L CNN
-F 1 "PA12" H 19400 9350 50  0000 L CNN
-F 2 "My-Footprints:WIRE_PAD_1,3mm" H 19150 9350 50  0001 C CNN
-F 3 "~" H 19150 9350 50  0001 C CNN
-	1    19150 9350
-	1    0    0    -1  
+P 15250 9550
+F 0 "J10" H 15325 9550 50  0000 L CNN
+F 1 "PB6" H 15500 9550 50  0000 L CNN
+F 2 "My-Footprints:WIRE_PAD_1,3mm" H 15250 9550 50  0001 C CNN
+F 3 "~" H 15250 9550 50  0001 C CNN
+	1    15250 9550
+	-1   0    0    1   
 $EndComp
 $Comp
 L Connector_Generic:Conn_01x01 J12
 U 1 1 5FC8D212
-P 19150 9650
-F 0 "J12" H 19225 9650 50  0000 L CNN
-F 1 "PA15" H 19400 9650 50  0000 L CNN
-F 2 "My-Footprints:WIRE_PAD_1,3mm" H 19150 9650 50  0001 C CNN
-F 3 "~" H 19150 9650 50  0001 C CNN
-	1    19150 9650
-	1    0    0    -1  
+P 15250 9650
+F 0 "J12" H 15325 9650 50  0000 L CNN
+F 1 "PB7" H 15500 9650 50  0000 L CNN
+F 2 "My-Footprints:WIRE_PAD_1,3mm" H 15250 9650 50  0001 C CNN
+F 3 "~" H 15250 9650 50  0001 C CNN
+	1    15250 9650
+	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	18950 9250 17950 9250
+	18450 9250 17950 9250
 Wire Wire Line
-	17950 9350 18950 9350
-Wire Wire Line
-	17950 9650 18950 9650
+	17950 9350 18450 9350
 $Comp
 L Connector_Generic:Conn_02x07_Counter_Clockwise J2
 U 1 1 5F813D31
@@ -2574,4 +2527,59 @@ Wire Wire Line
 	2150 13850 2225 13850
 Wire Wire Line
 	2225 13850 2225 14025
+Text GLabel 18450 8550 2    50   Input ~ 0
+BUZZER
+Text GLabel 18450 8450 2    50   Input ~ 0
+HOTAIR_HEATER_CTRL
+Text GLabel 16450 9250 0    50   Input ~ 0
+SOLD_IRON_HEATER_CTRL
+Wire Wire Line
+	15450 9650 16850 9650
+Wire Wire Line
+	17950 9050 18450 9050
+Wire Wire Line
+	17950 9650 19875 9650
+Wire Wire Line
+	19875 9650 19875 9050
+Wire Wire Line
+	19875 9050 20150 9050
+Connection ~ 20150 9050
+Text GLabel 3750 13975 0    50   Input ~ 0
+HOTAIR_THERM
+$Comp
+L power:+5V #PWR0101
+U 1 1 5FE11A9C
+P 2350 6075
+F 0 "#PWR0101" H 2350 5925 50  0001 C CNN
+F 1 "+5V" H 2365 6248 50  0000 C CNN
+F 2 "" H 2350 6075 50  0001 C CNN
+F 3 "" H 2350 6075 50  0001 C CNN
+	1    2350 6075
+	1    0    0    -1  
+$EndComp
+Text GLabel 18450 8350 2    50   Input ~ 0
+SOLDER_DOWN_SW
+Text GLabel 16425 8750 0    50   Input ~ 0
+SOLDER_ON_SW
+Text GLabel 16450 9050 0    50   Input ~ 0
+SOLDER_UP_SW
+Text GLabel 18450 9350 2    50   Input ~ 0
+HOTAIR_ON_SW
+Text GLabel 16450 9450 0    50   Input ~ 0
+FAN_PWM
+$Comp
+L Connector_Generic:Conn_01x01 J11
+U 1 1 5FC8CFCD
+P 15250 9350
+F 0 "J11" H 15325 9350 50  0000 L CNN
+F 1 "PB4" H 15500 9350 50  0000 L CNN
+F 2 "My-Footprints:WIRE_PAD_1,3mm" H 15250 9350 50  0001 C CNN
+F 3 "~" H 15250 9350 50  0001 C CNN
+	1    15250 9350
+	-1   0    0    1   
+$EndComp
+Text Notes 15625 9975 0    50   ~ 0
+TIM3_CH2 - PWM
+Text Notes 15625 10075 0    50   ~ 0
+TIM14CH1 - Output compare (buzer)
 $EndSCHEMATC
