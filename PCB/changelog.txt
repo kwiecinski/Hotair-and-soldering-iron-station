@@ -1,0 +1,4 @@
+MAIN PCB:
+
+V1.1
+- 3V3 regulator feedback resistors values fixed
