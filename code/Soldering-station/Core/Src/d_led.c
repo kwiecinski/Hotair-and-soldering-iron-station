@@ -2,8 +2,13 @@
 #include "main.h"
 #include "d_led.h"
 #include "spi.h"
+#include "tim.h"
+#include "usart.h"
+#include "gpio.h"
+#include <string.h>
+#include "usart.h"
 
-
+//anode bit positions
 #define SEG_A  11
 #define SEG_B  0
 #define SEG_C  5
@@ -12,11 +17,10 @@
 #define SEG_F  10
 #define SEG_G  4
 #define SEG_DP 6
-
+//catiode bit positions
 #define DIG1_IRON_CA  8
 #define DIG2_IRON_CA  9
 #define DIG3_IRON_CA  12
-
 #define DIG1_HOTAIR_CA  3
 #define DIG2_HOTAIR_CA  2
 #define DIG3_HOTAIR_CA  1
@@ -26,46 +30,44 @@
 #define DIGIT2 2
 #define DIGIT3 3
 #define DIGIT4 4
+#define DIGIT5 5
+#define DIGIT6 6
 
-
-
-
-
+#define DECIMAL_POINT_ON  1
+#define DECIMAL_POINT_OFF 0
 
 void Set_Anode_Outputs(unsigned char sign, unsigned char decimal_point, unsigned int *display_data);
 void One_Digit_Handler(unsigned char sign, unsigned char digit_number, unsigned char decimal_point);
 
+
+
+/*
+*
+*	Write data into 74HC595D via hardware SPI
+*
+*/
 void Write_Display_Data(unsigned int *display_data)
 {
+	unsigned char display_data_table[2];
 
-	unsigned char display_data_LSB = (unsigned char) (*display_data);
-	unsigned char display_data_MSB = (unsigned char) (*display_data>>8);
+	display_data_table[1] = (unsigned char) *display_data;
+	display_data_table[0] = (unsigned char) ((*display_data)>>8);
 
-	  HAL_GPIO_WritePin(DISP_LATCH_GPIO_Port, DISP_LATCH_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(DISP_LATCH_GPIO_Port, DISP_LATCH_Pin, GPIO_PIN_RESET);
 
-	  HAL_SPI_Transmit(&hspi1,&display_data_LSB, 1, 100);
-	  HAL_SPI_Transmit(&hspi1,&display_data_MSB, 1, 100);
+	HAL_SPI_Transmit(&hspi1,&display_data_table[0], 2, 1000);
+	while(HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY){};
 
-	  HAL_GPIO_WritePin(DISP_LATCH_GPIO_Port, DISP_LATCH_Pin, GPIO_PIN_SET);
-
+	HAL_GPIO_WritePin(DISP_LATCH_GPIO_Port, DISP_LATCH_Pin, GPIO_PIN_SET);
 }
 
 
-void Test_Display (void)
-{
+/*
+*
+*	Letters and digits definitions
+*
+*/
 
-	unsigned int display_data=0xFFFF;
-
-	display_data = display_data | 0<<DIG1_IRON_CA;
-	display_data = display_data | 0<<DIG2_IRON_CA;
-	display_data = display_data | 0<<DIG3_IRON_CA;
-	display_data = display_data | 0<<DIG1_HOTAIR_CA;
-	display_data = display_data | 0<<DIG2_HOTAIR_CA;
-	display_data = display_data | 0<<DIG3_HOTAIR_CA;
-
-	Write_Display_Data(&display_data);
-
-}
 
 unsigned char Sign_Anode_Data(unsigned char sign)
 {
@@ -123,6 +125,13 @@ unsigned char Sign_Anode_Data(unsigned char sign)
     return 0;
 }
 
+/*
+*
+*	Disable all digits
+*
+*/
+
+
 void Disable_All_Digits(void)
 {
 
@@ -131,6 +140,17 @@ void Disable_All_Digits(void)
 
 }
 
+/*
+*
+*	Main function handling display
+*	inputs:
+*	*text - pointer to first element of char array
+*	decimal_point - determines which decimal points have to be enabled
+*	eg.
+*	0b0001	- only first display
+*	0b0101  - first and third display
+*
+*/
 
 
 void Display_7Seg(unsigned char *text, unsigned char decimal_point)
@@ -139,167 +159,217 @@ void Display_7Seg(unsigned char *text, unsigned char decimal_point)
 
     if(enable_digit<=DIGIT1)
     {
-        if(decimal_point & 0b1000)
+        if(decimal_point & 0b100000)
         {
-            One_Digit_Handler(*text,DIGIT1,DECIMAL_POINT_ON);
+            One_Digit_Handler(*(text+5),DIGIT1,DECIMAL_POINT_ON);
         }else
         {
-            One_Digit_Handler(*text,DIGIT1,DECIMAL_POINT_OFF);
+            One_Digit_Handler(*(text+5),DIGIT1,DECIMAL_POINT_OFF);
         }
         enable_digit=DIGIT2;
 
     }else if(enable_digit==DIGIT2)
     {
-        if(decimal_point & 0b0100)
+        if(decimal_point & 0b010000)
         {
-            One_Digit_Handler(*(text+1),DIGIT2,DECIMAL_POINT_ON);
+            One_Digit_Handler(*(text+4),DIGIT2,DECIMAL_POINT_ON);
         }else
         {
-            One_Digit_Handler(*(text+1),DIGIT2,DECIMAL_POINT_OFF);
+            One_Digit_Handler(*(text+4),DIGIT2,DECIMAL_POINT_OFF);
         }
         enable_digit=DIGIT3;
 
     }else if(enable_digit==DIGIT3)
     {
-        if(decimal_point & 0b0010)
+        if(decimal_point & 0b001000)
         {
-           One_Digit_Handler(*(text+2),DIGIT3,DECIMAL_POINT_ON);
+           One_Digit_Handler(*(text+3),DIGIT3,DECIMAL_POINT_ON);
         }else
         {
-           One_Digit_Handler(*(text+2),DIGIT3,DECIMAL_POINT_OFF);
+           One_Digit_Handler(*(text+3),DIGIT3,DECIMAL_POINT_OFF);
         }
         enable_digit=DIGIT4;
 
-    }else if(enable_digit>=DIGIT4)
+    }else if(enable_digit==DIGIT4)
     {
-        if(decimal_point & 0b0001)
+        if(decimal_point & 0b000100)
         {
-            One_Digit_Handler(*(text+3),DIGIT4,DECIMAL_POINT_ON);
+           One_Digit_Handler(*(text+0),DIGIT4,DECIMAL_POINT_ON);
         }else
         {
-            One_Digit_Handler(*(text+3),DIGIT4,DECIMAL_POINT_OFF);
+           One_Digit_Handler(*(text+0),DIGIT4,DECIMAL_POINT_OFF);
+        }
+        enable_digit=DIGIT5;
+
+    }else if(enable_digit==DIGIT5)
+    {
+        if(decimal_point & 0b000010)
+        {
+           One_Digit_Handler(*(text+1),DIGIT5,DECIMAL_POINT_ON);
+        }else
+        {
+           One_Digit_Handler(*(text+1),DIGIT5,DECIMAL_POINT_OFF);
+        }
+        enable_digit=DIGIT6;
+
+    }else if(enable_digit>=DIGIT6)
+    {
+        if(decimal_point & 0b000001)
+        {
+            One_Digit_Handler(*(text+2),DIGIT6,DECIMAL_POINT_ON);
+        }else
+        {
+            One_Digit_Handler(*(text+2),DIGIT6,DECIMAL_POINT_OFF);
         }
         enable_digit=DIGIT1;
     }
 
 }
 
-
-
-
+/*
+*
+*	Turn on and turn off single digit
+*
+*/
 
 void One_Digit_Handler(unsigned char sign, unsigned char digit_number, unsigned char decimal_point)
 {
-
 	unsigned int display_data;
 
     Disable_All_Digits();
     Set_Anode_Outputs(Sign_Anode_Data(sign),decimal_point,&display_data);
 
-
-
     if(digit_number == DIGIT1)
     {
-    	display_data = display_data | 1<<DIG1_IRON_CA;
-    	display_data = display_data | 0<<DIG2_IRON_CA;
-    	display_data = display_data | 0<<DIG3_IRON_CA;
-    	display_data = display_data | 0<<DIG1_HOTAIR_CA;
-    }
+    	display_data &= ~(1<<DIG1_IRON_CA);
+    	display_data |= 1<<DIG2_IRON_CA;
+    	display_data |= 1<<DIG3_IRON_CA;
+    	display_data |= 1<<DIG1_HOTAIR_CA;
+    	display_data |= 1<<DIG2_HOTAIR_CA;
+    	display_data |= 1<<DIG3_HOTAIR_CA;
 
-    if(digit_number == DIGIT2)
+    }else if(digit_number == DIGIT2)
     {
-    	display_data = display_data | 0<<DIG1_IRON_CA;
-    	display_data = display_data | 1<<DIG2_IRON_CA;
-    	display_data = display_data | 0<<DIG3_IRON_CA;
-    	display_data = display_data | 0<<DIG1_HOTAIR_CA;
-    }
+    	display_data |= 1<<DIG1_IRON_CA;
+    	display_data &= ~(1<<DIG2_IRON_CA);
+    	display_data |= 1<<DIG3_IRON_CA;
+    	display_data |= 1<<DIG1_HOTAIR_CA;
+    	display_data |= 1<<DIG2_HOTAIR_CA;
+    	display_data |= 1<<DIG3_HOTAIR_CA;
 
-    if(digit_number == DIGIT3)
+    }else if(digit_number == DIGIT3)
     {
-    	display_data = display_data | 0<<DIG1_IRON_CA;
-    	display_data = display_data | 0<<DIG2_IRON_CA;
-    	display_data = display_data | 1<<DIG3_IRON_CA;
-    	display_data = display_data | 0<<DIG1_HOTAIR_CA;
-    }
+    	display_data |= 1<<DIG1_IRON_CA;
+    	display_data |= 1<<DIG2_IRON_CA;
+    	display_data &= ~(1<<DIG3_IRON_CA);
+    	display_data |= 1<<DIG1_HOTAIR_CA;
+    	display_data |= 1<<DIG2_HOTAIR_CA;
+    	display_data |= 1<<DIG3_HOTAIR_CA;
 
-
-    if(digit_number == DIGIT4)
+    }else if(digit_number == DIGIT4)
     {
-    	display_data = display_data | 0<<DIG1_IRON_CA;
-    	display_data = display_data | 0<<DIG2_IRON_CA;
-    	display_data = display_data | 0<<DIG3_IRON_CA;
-    	display_data = display_data | 1<<DIG1_HOTAIR_CA;
-    }
+    	display_data |= 1<<DIG1_IRON_CA;
+    	display_data |= 1<<DIG2_IRON_CA;
+    	display_data |= 1<<DIG3_IRON_CA;
+    	display_data &= ~(1<<DIG1_HOTAIR_CA);
+    	display_data |= 1<<DIG2_HOTAIR_CA;
+    	display_data |= 1<<DIG3_HOTAIR_CA;
 
+    }else if(digit_number == DIGIT5)
+    {
+    	display_data |= 1<<DIG1_IRON_CA;
+    	display_data |= 1<<DIG2_IRON_CA;
+    	display_data |= 1<<DIG3_IRON_CA;
+    	display_data |= 1<<DIG1_HOTAIR_CA;
+    	display_data &= ~(1<<DIG2_HOTAIR_CA);
+    	display_data |= 1<<DIG3_HOTAIR_CA;
+
+    }else if(digit_number == DIGIT6)
+    {
+    	display_data |= 1<<DIG1_IRON_CA;
+    	display_data |= 1<<DIG2_IRON_CA;
+    	display_data |= 1<<DIG3_IRON_CA;
+    	display_data |= 1<<DIG1_HOTAIR_CA;
+    	display_data |= 1<<DIG2_HOTAIR_CA;
+    	display_data &= ~(1<<DIG3_HOTAIR_CA);
+    }
 
    Write_Display_Data(&display_data);
+}
 
- }
+
+
+/*
+*
+*	Turns on individual anodes based on the data from the character table
+*
+*/
+
 
 void Set_Anode_Outputs(unsigned char sign, unsigned char decimal_point, unsigned int *display_data)
 {
 
     if(sign>>7 & 1)
     {
-    	*display_data = *display_data | 1<<SEG_A;
+    	*display_data |=  1<<SEG_A;
     }else
     {
-    	*display_data = *display_data | 0<<SEG_A;
+    	*display_data &= ~(1<<SEG_A);
     }
 
     if(sign>>6 & 1)
     {
-    	*display_data = *display_data | 1<<SEG_B;
+    	*display_data |=  1<<SEG_B;
     }else
     {
-    	*display_data = *display_data | 0<<SEG_B;
+    	*display_data &= ~(1<<SEG_B);
     }
 
     if(sign>>5 & 1)
     {
-    	*display_data = *display_data | 1<<SEG_C;
+    	*display_data |=  1<<SEG_C;
     }else
     {
-    	*display_data = *display_data | 0<<SEG_C;
+    	*display_data &= ~(1<<SEG_C);
     }
 
     if(sign>>4 & 1)
     {
-    	*display_data = *display_data | 1<<SEG_D;
+    	*display_data |=  1<<SEG_D;
     }else
     {
-    	*display_data = *display_data | 0<<SEG_D;
+    	*display_data &= ~(1<<SEG_D);
     }
 
     if(sign>>3 & 1)
     {
-    	*display_data = *display_data | 1<<SEG_E;
+    	*display_data |=  1<<SEG_E;
     }else
     {
-    	*display_data = *display_data | 0<<SEG_E;
+    	*display_data &= ~(1<<SEG_E);
     }
 
     if(sign>>2 & 1)
     {
-    	*display_data = *display_data | 1<<SEG_F;
+    	*display_data |= 1<<SEG_F;
     }else
     {
-    	*display_data = *display_data | 0<<SEG_F;
+    	*display_data &= ~(1<<SEG_F);
     }
 
     if(sign>>1 & 1)
     {
-    	*display_data = *display_data | 1<<SEG_G;
+    	*display_data |=  1<<SEG_G;
     }else
     {
-    	*display_data = *display_data | 0<<SEG_G;
+    	*display_data &= ~(1<<SEG_G);
     }
 
     if(decimal_point==1)
     {
-    	*display_data = *display_data | 1<<SEG_DP;
+    	*display_data |= 1<<SEG_DP;
     }else
     {
-    	*display_data = *display_data | 0<<SEG_DP;
+    	*display_data &= ~(1<<SEG_DP);
     }
 }

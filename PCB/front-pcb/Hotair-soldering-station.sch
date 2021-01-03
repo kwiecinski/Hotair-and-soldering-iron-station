@@ -1116,19 +1116,11 @@ Wire Wire Line
 	2225 6775 2225 8275
 Wire Wire Line
 	2575 6775 2225 6775
-Wire Wire Line
-	2425 6575 2575 6575
-Connection ~ 2425 6975
-Wire Wire Line
-	2425 6575 2425 6975
 Connection ~ 2425 7175
 Wire Wire Line
 	2425 6975 2425 7175
 Wire Wire Line
 	2575 6975 2425 6975
-Connection ~ 2425 8075
-Wire Wire Line
-	2425 7175 2425 8075
 Wire Wire Line
 	2575 7175 2425 7175
 Wire Wire Line
@@ -1137,10 +1129,6 @@ Connection ~ 2425 8475
 Wire Wire Line
 	2575 8475 2425 8475
 Connection ~ 2425 8675
-Wire Wire Line
-	2425 8075 2425 8475
-Wire Wire Line
-	2575 8075 2425 8075
 Wire Wire Line
 	2425 8675 2425 8825
 Wire Wire Line
@@ -1616,4 +1604,28 @@ Wire Wire Line
 	3700 5300 3700 5425
 Wire Wire Line
 	3700 5725 3700 5775
+Wire Wire Line
+	2425 7175 2425 8475
+Wire Wire Line
+	2575 8075 2350 8075
+Wire Wire Line
+	2350 8075 2350 6575
+Wire Wire Line
+	2350 6575 2575 6575
+$Comp
+L power:+3.3V #PWR?
+U 1 1 5FF4B733
+P 2375 6100
+F 0 "#PWR?" H 2375 5950 50  0001 C CNN
+F 1 "+3.3V" H 2390 6273 50  0000 C CNN
+F 2 "" H 2375 6100 50  0001 C CNN
+F 3 "" H 2375 6100 50  0001 C CNN
+	1    2375 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2350 6575 2350 6100
+Wire Wire Line
+	2350 6100 2375 6100
+Connection ~ 2350 6575
 $EndSCHEMATC

@@ -100,10 +100,37 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
-  unsigned char text[5] ="1234";
+  unsigned char text[7] ="653172";
 
   __HAL_SPI_ENABLE(&hspi1);
+  HAL_SPI_Init(&hspi1);
 
+  /*
+  __HAL_TIM_ENABLE(&htim14);
+  HAL_TIM_Base_MspInit(&htim14);
+  HAL_TIM_MspPostInit(&htim14);
+*/
+
+
+  __HAL_TIM_ENABLE(&htim3);
+  HAL_TIM_PWM_MspInit(&htim3);
+  HAL_TIM_Base_MspInit(&htim3);
+  HAL_TIM_MspPostInit(&htim3);
+
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_2);
+
+
+  //Maximum value of CCR2 register (100% duty cycle) is equal AutoReaload Register value
+   signed char duty=0;
+
+   TIM3->CCR2=htim3.Init.Period*duty/100;
+
+
+   unsigned char flag=0;
+
+
+  //HAL_TIM_OC_Start(&htim14,TIM_CHANNEL_1);
+  HAL_TIM_OC_Stop(&htim14,TIM_CHANNEL_1);
 /*
   void send_string(char* s)
   {
@@ -118,10 +145,34 @@ int main(void)
   while (1)
   {
 
-	  Test_Display();
+	 // Test_Display();
 
-	  //Display_7Seg(&text[0],DECIMAL_POINT_ON);
-	 HAL_Delay(20);
+	//Display_7Seg(&text[0],0xFF);
+/*
+	  if(flag==0)
+	  {
+		  duty=duty+5;
+	  }else
+	  {
+		  duty=duty-5;
+	  }
+*/
+	  duty=90;
+	TIM3->CCR2=(htim3.Init.Period+1)*duty/100;
+
+	 HAL_Delay(500);
+/*
+	 if(duty>=90)
+	 {
+		 HAL_Delay(5000);
+		 flag=1;
+
+	 }else if(duty<=0)
+	 {
+		 HAL_Delay(5000);
+		 flag=0;
+	 }
+*/
 
     /* USER CODE END WHILE */
 
