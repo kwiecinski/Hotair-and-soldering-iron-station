@@ -68,8 +68,8 @@ void Error_Handler(void);
 #define THERM_HOTAIR_ADC_GPIO_Port GPIOA
 #define SOLDER_DOWN_SW_Pin GPIO_PIN_2
 #define SOLDER_DOWN_SW_GPIO_Port GPIOA
-#define HOTAIR_HEATER_CTRL_Pin GPIO_PIN_3
-#define HOTAIR_HEATER_CTRL_GPIO_Port GPIOA
+#define FAN_ADC_Pin GPIO_PIN_3
+#define FAN_ADC_GPIO_Port GPIOA
 #define BUZZER_Pin GPIO_PIN_4
 #define BUZZER_GPIO_Port GPIOA
 #define DISP_CLK_Pin GPIO_PIN_5
@@ -98,6 +98,8 @@ void Error_Handler(void);
 #define SOLD_IRON_HEATER_CTRL_GPIO_Port GPIOB
 #define FAN_PWM_Pin GPIO_PIN_5
 #define FAN_PWM_GPIO_Port GPIOB
+#define HOTAIR_HEATER_CTRL_Pin GPIO_PIN_7
+#define HOTAIR_HEATER_CTRL_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

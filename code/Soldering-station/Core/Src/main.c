@@ -31,6 +31,9 @@
 
 #include <string.h>
 #include "d_led.h"
+#include "fan_regulator.h"
+#include <stdio.h>
+#include "retarget.h"
 
 /* USER CODE END Includes */
 
@@ -100,44 +103,40 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
-  unsigned char text[7] ="653172";
+  //unsigned char text[7] ="653172";
 
-  __HAL_SPI_ENABLE(&hspi1);
-  HAL_SPI_Init(&hspi1);
+  //__HAL_SPI_ENABLE(&hspi1);
+  //HAL_SPI_Init(&hspi1);
 
   /*
   __HAL_TIM_ENABLE(&htim14);
   HAL_TIM_Base_MspInit(&htim14);
   HAL_TIM_MspPostInit(&htim14);
 */
-
-
+  ADC_Init();
+  RetargetInit(&huart1);
   __HAL_TIM_ENABLE(&htim3);
   HAL_TIM_PWM_MspInit(&htim3);
   HAL_TIM_Base_MspInit(&htim3);
   HAL_TIM_MspPostInit(&htim3);
-
   HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_2);
 
-
   //Maximum value of CCR2 register (100% duty cycle) is equal AutoReaload Register value
-   signed char duty=0;
+   signed int duty=10;
+
+   signed int fan_voltage_set=22000;
+
 
    TIM3->CCR2=htim3.Init.Period*duty/100;
 
 
    unsigned char flag=0;
-
+   uint16_t fan_voltage;
 
   //HAL_TIM_OC_Start(&htim14,TIM_CHANNEL_1);
-  HAL_TIM_OC_Stop(&htim14,TIM_CHANNEL_1);
-/*
-  void send_string(char* s)
-  {
-  	HAL_UART_Transmit(&huart1, (uint8_t*)s, strlen(s), 1000);
-  }
+//  HAL_TIM_OC_Stop(&htim14,TIM_CHANNEL_1);
 
-*/
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -145,9 +144,10 @@ int main(void)
   while (1)
   {
 
-	 // Test_Display();
+	 //Test_Display();
 
 	//Display_7Seg(&text[0],0xFF);
+
 /*
 	  if(flag==0)
 	  {
@@ -156,13 +156,13 @@ int main(void)
 	  {
 		  duty=duty-5;
 	  }
-*/
-	  duty=90;
+
+
 	TIM3->CCR2=(htim3.Init.Period+1)*duty/100;
 
 	 HAL_Delay(500);
-/*
-	 if(duty>=90)
+
+	 if(duty>= (htim3.Init.Period+1) )
 	 {
 		 HAL_Delay(5000);
 		 flag=1;
@@ -172,7 +172,62 @@ int main(void)
 		 HAL_Delay(5000);
 		 flag=0;
 	 }
+
+	 printf("Duty: %d \n\r", duty);
+
 */
+
+
+	fan_voltage = ADC_Read_Fan_Voltage();
+
+
+
+
+
+
+    if(fan_voltage > fan_voltage_set)
+    {
+    	duty++;
+    }else if(fan_voltage < fan_voltage_set-500)
+	{
+		duty--;
+	}else
+	{
+
+		printf("Reg done!: %d \n\r", fan_voltage_set);
+		fan_voltage_set=fan_voltage_set-1000;
+		//HAL_Delay(1000);
+
+
+
+
+
+		if(fan_voltage_set<=7000)
+		{
+			fan_voltage_set=22000;
+		}
+
+	}
+
+    TIM3->CCR2=duty;
+
+
+    if(duty >= (htim3.Init.Period+1))
+	{
+
+    	duty--;
+
+	}else if(duty <0)
+	{
+		duty++;
+	}
+
+
+    HAL_Delay(10);
+
+
+	//printf("Duty: %d \n\r", duty);
+
 
     /* USER CODE END WHILE */
 
