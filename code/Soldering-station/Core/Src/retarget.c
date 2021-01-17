@@ -20,7 +20,7 @@
 
 UART_HandleTypeDef *gHuart;
 
-void RetargetInit(UART_HandleTypeDef *huart) {
+void Init_Retarget(UART_HandleTypeDef *huart) {
   gHuart = huart;
 
   /* Disable I/O buffering for STDOUT stream, so that

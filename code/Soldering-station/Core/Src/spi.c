@@ -22,6 +22,13 @@
 
 /* USER CODE BEGIN 0 */
 
+void Init_SPI(void)
+{
+	__HAL_SPI_ENABLE(&hspi1);
+	HAL_SPI_Init(&hspi1);
+}
+
+
 /* USER CODE END 0 */
 
 SPI_HandleTypeDef hspi1;

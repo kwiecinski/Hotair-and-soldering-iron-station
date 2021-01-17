@@ -1,11 +1,13 @@
-
+#include <string.h>
+#include <stdio.h>
+#include "display_7seg.h"
 #include "main.h"
-#include "d_led.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include <string.h>
+
+
 #include "usart.h"
 
 //anode bit positions
@@ -38,7 +40,43 @@
 
 void Set_Anode_Outputs(unsigned char sign, unsigned char decimal_point, unsigned int *display_data);
 void One_Digit_Handler(unsigned char sign, unsigned char digit_number, unsigned char decimal_point);
+void Display_7Seg(unsigned char *text, unsigned char decimal_point);
+void Disable_All_Digits(void);
 
+
+void Test_Display(void)
+{
+	unsigned char text[7] = "000000";
+	uint32_t counter=0,
+			 digits_to_display=0;
+
+	while(1)
+	{
+
+		Display_7Seg(&text[0],0xFF);
+
+		HAL_Delay(2);	//5ms multiplex time
+
+		counter++;
+
+		if(counter>500)
+		{
+			if(digits_to_display>=999999)
+			{
+				Disable_All_Digits();
+
+				printf("Test 7 seg display done! \n\r");
+				HAL_Delay(2000);
+				break;
+			}
+
+			digits_to_display=digits_to_display+111111;
+			sprintf(text, "%d", digits_to_display);
+
+			counter=0;
+		}
+	}
+}
 
 
 /*
