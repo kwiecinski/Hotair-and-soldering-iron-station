@@ -37,6 +37,7 @@
 #include "fan.h"
 #include "buzzer.h"
 #include "temperature.h"
+#include "ds18b20.h"
 
 /* USER CODE END Includes */
 
@@ -68,6 +69,8 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+
 
 /* USER CODE END 0 */
 
@@ -104,6 +107,7 @@ int main(void)
   MX_TIM14_Init();
   MX_USART1_UART_Init();
   MX_SPI1_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 
 
@@ -113,20 +117,26 @@ int main(void)
   Disable_All_Digits();
   Init_Fan();
   Denit_Fan();
+  Init_Delay_Timer();
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
 /*
 	 Test_Fan();
 	 Test_Display();
 	 Test_Buzzer();
+
+
+	 // Read_Temperature();
 */
 
-	  Read_Temperature();
-
+	 ds1820_read();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

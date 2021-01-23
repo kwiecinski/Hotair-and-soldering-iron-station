@@ -1,19 +1,55 @@
-/*
- * ds18b20.c
- *
- *  Created on: Jan 17, 2021
- *      Author: LPCusr
- */
+#include <string.h>
+#include <stdio.h>
+#include "main.h"
+#include "tim.h"
+#include "gpio.h"
 
 
+void Init_Delay_Timer(void)
+{
+	HAL_TIM_Base_Start(&htim1);
+}
+
+void delay_us (uint16_t us)
+{
+	__HAL_TIM_SET_COUNTER(&htim1,0);  // set the counter value a 0
+	while (__HAL_TIM_GET_COUNTER(&htim1) < (us));  // wait for the counter to reach the us input in the parameter
+}
+
+uint16_t make16(uint8_t b1, uint8_t b2)
+{
+	uint16_t combined = b1 << 8 | b2;
+    return combined;
+}
+
+/*******************1-wire communication functions********************/
+
+/************onewire_reset*************************************************/
+/*This function initiates the 1wire bus */
+/* */
+/*PARAMETERS: */
+/*RETURNS: */
+/*********************************************************************/
+
+void Set_Pin_Input(void)
+{
+	DS18B20_DATA_GPIO_Port->MODER &= ~(GPIO_MODER_MODER15);
+}
+
+void Set_Pin_Output(void)
+{
+	DS18B20_DATA_GPIO_Port->MODER |= GPIO_MODER_MODER15_0;
+}
 
 void onewire_reset()  // OK if just using a single permanently connected device
 {
-	output_low(one_wire_pin);
-	HAL_Delay(500); // pull 1-wire low for reset pulse
-	output_float(one_wire_pin); // float 1-wire high
-	HAL_Delay(500); // wait-out remaining initialisation window.
-	output_float(one_wire_pin);
+	Set_Pin_Output();   // set the pin as output
+	HAL_GPIO_WritePin(DS18B20_DATA_GPIO_Port, DS18B20_DATA_Pin, 0);  // pull the pin low
+	delay_us(480);   // delay according to datasheet
+	Set_Pin_Input();    // set the pin as input
+	delay_us(80);    // delay according to datasheet
+	while(HAL_GPIO_ReadPin (DS18B20_DATA_GPIO_Port, DS18B20_DATA_Pin)==1);   // if the pin is low i.e the presence pulse is detected
+	delay_us(400);
 }
 
 /*********************** onewire_write() ********************************/
@@ -23,22 +59,29 @@ void onewire_reset()  // OK if just using a single permanently connected device
 /*Returns: */
 /*********************************************************************/
 
-void onewire_write(int data)
+void onewire_write(uint8_t data)
 {
-	int count;
 
-	for (count=0; count<8; ++count)
+	for (uint8_t i=0; i<8; i++)
 	{
+		if ((data & (1<<i))!=0)  // if the bit is high
+		{
+			// write 1
 
-		output_low(one_wire_pin);
-		delay_us( 2 ); // pull 1-wire low to initiate write time-slot.
-		output_bit(one_wire_pin, shift_right(&data,1,0)); // set output bit on 1-wire
-		delay_us( 60 ); // wait until end of write slot.
-		output_float(one_wire_pin); // set 1-wire high again,
-		delay_us( 2 ); // for more than 1us minimum.
+			Set_Pin_Output();
+			HAL_GPIO_WritePin (DS18B20_DATA_GPIO_Port, DS18B20_DATA_Pin, 0);
+			delay_us(2);
+			Set_Pin_Input();
+			delay_us(50);
 
+		}else  // if the bit is low
+		{
+			Set_Pin_Output();
+			HAL_GPIO_WritePin (DS18B20_DATA_GPIO_Port, DS18B20_DATA_Pin, 0);
+			delay_us(50);
+			Set_Pin_Input();
+		}
 	}
-
 }
 
 /*********************** read1wire() *********************************/
@@ -48,32 +91,29 @@ void onewire_write(int data)
 /*Returns: 8-bit (1-byte) data from sensor */
 /*********************************************************************/
 
-int onewire_read()
+uint8_t onewire_read(void)
 {
- int count, data;
-
-	for (count=0; count<8; ++count)
+	uint8_t value=0;
+	for (uint8_t i=0;i<8;i++)
 	{
-		output_low(one_wire_pin);
-		delay_us( 2 ); // pull 1-wire low to initiate read time-slot.
-		output_float(one_wire_pin); // now let 1-wire float high,
-		delay_us( 8 ); // let device state stabilise,
-		shift_right(&data,1,input(one_wire_pin)); // and load result.
-		delay_us( 120 ); // wait until end of read slot.
+		Set_Pin_Output();    // set as output
+
+		HAL_GPIO_WritePin (DS18B20_DATA_GPIO_Port, DS18B20_DATA_Pin, 0);  // pull the data pin LOW
+		delay_us(2);  // wait for 2 us
+
+		Set_Pin_Input();
+		if (HAL_GPIO_ReadPin (DS18B20_DATA_GPIO_Port, DS18B20_DATA_Pin))  // if the pin is HIGH
+		{
+			value |= 1<<i;  // read = 1
+		}
+		delay_us(60);  // wait for 60 us
 	}
-
-
- return( data );
+	return value;
 }
 
-
-#define error 0xFFFF
-
-volatile int8 temp_counter;
-
-int8 CRC8(int8 *inData, int8 len)
+uint8_t CRC8(uint8_t *inData, uint8_t len)
 {
-   int8 crc;
+   uint8_t crc;
    crc = 0;
    for(; len; len--)
    {
@@ -85,56 +125,50 @@ int8 CRC8(int8 *inData, int8 len)
 }
 
 
-float ds1820_read()
+void ds1820_read(void)
 {
- 	int1 conv_ok;
-	int8 busy=0, frametab[9],i,fail_counter;
-	signed int16 temp;
+
+	uint8_t frametab[9],i, busy;
+	int16_t temp;
 	float result;
 
+	onewire_reset();
+	onewire_write(0xCC);
+	onewire_write(0x44);
+	while (busy==0)
+		{
+			busy=onewire_read();
+		}
 
-	conv_ok=true;
-	fail_counter=0;
-	while(conv_ok==true)
+	onewire_reset();
+	onewire_write(0xCC);
+	onewire_write(0xBE);
+
+	for(i=0;i<=8;i++)
 	{
-		onewire_reset();
-		onewire_write(0xCC);
-		onewire_write(0x44);
-		HAL_Delay(1000);	//wait for conv ~1s
-		while (busy == 0)
-		{
-			restart_wdt();
-			busy = onewire_read();
-			if (temp_counter==0)
-			{
-				return error;
-			}
-		}
-		onewire_reset();
-		onewire_write(0xCC);
-		onewire_write(0xBE);
-
-		for(i=0;i<=8;i++)
-		{
-			frametab[i]=onewire_read();
-		}
-
-		if(frametab[8]==CRC8(&frametab,8))
-		{
-			conv_ok=false;
-			temp = make16(frametab[1], frametab[0]);
-			result= ((float)temp/16.0)*10;
-			return(result);
-		}
-
-		delay_ms(50);
-
-		fail_counter++;
-		if(fail_counter>10)
-		{
-			return error;
-		}
+		frametab[i]=onewire_read();
 	}
+
+/*
+	for(i=0;i<=8;i++)
+	{
+		printf("%d: %d \r\n",i,frametab[i]);
+	}
+
+*/
+	if(frametab[8]==CRC8(&frametab[0],8))
+	{
+
+		temp = make16(frametab[1], frametab[0]);
+		result= ((float)temp/16.0)*10;
+		printf("DS18B20 temp: %d.%d\r\n",(int16_t)result/10, abs((int16_t)result%10));
+
+	}else
+	{
+		printf("DS18B20 CRC bad \r\n");
+	}
+
+	HAL_Delay(2000);
 
 
 }

@@ -5,6 +5,8 @@
  *      Author: LPCusr
  */
 
+#include <stdio.h>
+#include <string.h>
 #include "main.h"
 #include "tim.h"
 #include "usart.h"

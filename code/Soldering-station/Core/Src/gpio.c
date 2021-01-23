@@ -62,7 +62,7 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pins : PAPin PAPin PAPin PAPin 
                            PAPin PAPin */
   GPIO_InitStruct.Pin = SOLDER_DOWN_SW_Pin|HOTAIR_UP_SW_Pin|HOTAIR_FAN_UP_SW_Pin|HOTAIR_FAN_DOWN_SW_Pin 
-                          |HOTAIR_ON_SW_Pin|EDS18B20_DATA_Pin;
+                          |HOTAIR_ON_SW_Pin|DS18B20_DATA_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);

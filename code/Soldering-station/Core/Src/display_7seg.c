@@ -71,7 +71,7 @@ void Test_Display(void)
 			}
 
 			digits_to_display=digits_to_display+111111;
-			sprintf(text, "%d", digits_to_display);
+			printf(text, "%ld", digits_to_display);
 
 			counter=0;
 		}
