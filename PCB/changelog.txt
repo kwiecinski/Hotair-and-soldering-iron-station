@@ -1,4 +1,8 @@
 MAIN PCB:
 
 V1.1
+Main PCB:
 - 3V3 regulator feedback resistors values fixed
+- Replace switchmode FAN converter to linear PWM
+- Add MAX31855 Thermocouple interface
+- Remove DC18B20
