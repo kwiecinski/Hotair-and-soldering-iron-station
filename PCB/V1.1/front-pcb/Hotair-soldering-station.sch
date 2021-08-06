@@ -335,709 +335,6 @@ Text GLabel 14675 7075 2    50   Input ~ 0
 SOLDER_ON_SW
 Wire Notes Line
 	15675 4725 11425 4725
-$Comp
-L Hotair-soldering-station-rescue:3-dig-7-seg-display-common-anode-My-Lib U4
-U 1 1 5F79E7AA
-P 8200 7975
-F 0 "U4" H 8250 8025 50  0000 C CNN
-F 1 "3-dig-7-seg-display-common-anode" H 8525 8059 50  0001 C CNN
-F 2 "My-Footprints:3-digit-7-segment-display" H 8200 7975 50  0001 C CNN
-F 3 "" H 8200 7975 50  0001 C CNN
-	1    8200 7975
-	1    0    0    -1  
-$EndComp
-$Comp
-L Transistor_BJT:BC807 Q9
-U 1 1 5F7DAE3F
-P 9850 5625
-F 0 "Q9" V 10178 5625 50  0000 C CNN
-F 1 "BC807" V 10087 5625 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 10050 5550 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC807.pdf" H 9850 5625 50  0001 L CNN
-	1    9850 5625
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC807 Q10
-U 1 1 5F7E04CF
-P 9850 6275
-F 0 "Q10" V 10178 6275 50  0000 C CNN
-F 1 "BC807" V 10087 6275 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 10050 6200 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC807.pdf" H 9850 6275 50  0001 L CNN
-	1    9850 6275
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC807 Q11
-U 1 1 5F7E0DDB
-P 9850 6975
-F 0 "Q11" V 10178 6975 50  0000 C CNN
-F 1 "BC807" V 10087 6975 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 10050 6900 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC807.pdf" H 9850 6975 50  0001 L CNN
-	1    9850 6975
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	9650 6175 9600 6175
-Wire Wire Line
-	9600 6175 9600 5625
-Wire Wire Line
-	10050 6875 10150 6875
-Wire Wire Line
-	10150 6875 10150 6175
-Wire Wire Line
-	10050 5525 10150 5525
-Connection ~ 10150 5525
-Wire Wire Line
-	10150 5525 10150 5325
-Wire Wire Line
-	10050 6175 10150 6175
-Connection ~ 10150 6175
-Wire Wire Line
-	10150 6175 10150 5525
-$Comp
-L power:+3.3V #PWR0109
-U 1 1 5F7FF0D7
-P 10150 5325
-F 0 "#PWR0109" H 10150 5175 50  0001 C CNN
-F 1 "+3.3V" H 10165 5498 50  0000 C CNN
-F 2 "" H 10150 5325 50  0001 C CNN
-F 3 "" H 10150 5325 50  0001 C CNN
-	1    10150 5325
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R18
-U 1 1 5F7FFAC4
-P 10450 7175
-F 0 "R18" V 10525 7225 50  0000 R CNN
-F 1 "10k" V 10350 7250 50  0000 R CNN
-F 2 "Capacitors:0805" V 10380 7175 50  0001 C CNN
-F 3 "~" H 10450 7175 50  0001 C CNN
-	1    10450 7175
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R17
-U 1 1 5F8015CB
-P 10450 6475
-F 0 "R17" V 10550 6525 50  0000 R CNN
-F 1 "10k" V 10350 6550 50  0000 R CNN
-F 2 "Capacitors:0805" V 10380 6475 50  0001 C CNN
-F 3 "~" H 10450 6475 50  0001 C CNN
-	1    10450 6475
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R21
-U 1 1 5F801C4F
-P 10500 5825
-F 0 "R21" V 10575 5875 50  0000 R CNN
-F 1 "10k" V 10400 5900 50  0000 R CNN
-F 2 "Capacitors:0805" V 10430 5825 50  0001 C CNN
-F 3 "~" H 10500 5825 50  0001 C CNN
-	1    10500 5825
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	9850 5825 10350 5825
-Wire Wire Line
-	9850 6475 10300 6475
-Wire Wire Line
-	9850 7175 10300 7175
-Wire Wire Line
-	9500 5725 9500 6875
-Wire Wire Line
-	9500 6875 9650 6875
-$Comp
-L Transistor_BJT:BC807 Q12
-U 1 1 5F831349
-P 9850 8125
-F 0 "Q12" V 10178 8125 50  0000 C CNN
-F 1 "BC807" V 10087 8125 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 10050 8050 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC807.pdf" H 9850 8125 50  0001 L CNN
-	1    9850 8125
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC807 Q13
-U 1 1 5F83134F
-P 9850 8775
-F 0 "Q13" V 10178 8775 50  0000 C CNN
-F 1 "BC807" V 10087 8775 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 10050 8700 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC807.pdf" H 9850 8775 50  0001 L CNN
-	1    9850 8775
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC807 Q14
-U 1 1 5F831355
-P 9850 9475
-F 0 "Q14" V 10178 9475 50  0000 C CNN
-F 1 "BC807" V 10087 9475 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 10050 9400 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC807.pdf" H 9850 9475 50  0001 L CNN
-	1    9850 9475
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	9650 8675 9600 8675
-Wire Wire Line
-	9600 8675 9600 8125
-Wire Wire Line
-	10050 9375 10150 9375
-Wire Wire Line
-	10150 9375 10150 8675
-Wire Wire Line
-	10050 8025 10150 8025
-Connection ~ 10150 8025
-Wire Wire Line
-	10150 8025 10150 7825
-Wire Wire Line
-	10050 8675 10150 8675
-Connection ~ 10150 8675
-Wire Wire Line
-	10150 8675 10150 8025
-$Comp
-L power:+3.3V #PWR0110
-U 1 1 5F831365
-P 10150 7825
-F 0 "#PWR0110" H 10150 7675 50  0001 C CNN
-F 1 "+3.3V" H 10165 7998 50  0000 C CNN
-F 2 "" H 10150 7825 50  0001 C CNN
-F 3 "" H 10150 7825 50  0001 C CNN
-	1    10150 7825
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R20
-U 1 1 5F83136B
-P 10475 9675
-F 0 "R20" V 10550 9725 50  0000 R CNN
-F 1 "10k" V 10375 9750 50  0000 R CNN
-F 2 "Capacitors:0805" V 10405 9675 50  0001 C CNN
-F 3 "~" H 10475 9675 50  0001 C CNN
-	1    10475 9675
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R19
-U 1 1 5F831371
-P 10450 8975
-F 0 "R19" V 10550 9025 50  0000 R CNN
-F 1 "10k" V 10350 9050 50  0000 R CNN
-F 2 "Capacitors:0805" V 10380 8975 50  0001 C CNN
-F 3 "~" H 10450 8975 50  0001 C CNN
-	1    10450 8975
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R22
-U 1 1 5F831377
-P 10500 8325
-F 0 "R22" V 10575 8375 50  0000 R CNN
-F 1 "10k" V 10400 8400 50  0000 R CNN
-F 2 "Capacitors:0805" V 10430 8325 50  0001 C CNN
-F 3 "~" H 10500 8325 50  0001 C CNN
-	1    10500 8325
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	9850 8325 10350 8325
-Wire Wire Line
-	9850 8975 10300 8975
-Wire Wire Line
-	9850 9675 10325 9675
-Wire Wire Line
-	9500 8225 9500 9375
-Wire Wire Line
-	9500 9375 9650 9375
-Wire Wire Line
-	8950 8025 9650 8025
-Wire Wire Line
-	8950 8125 9600 8125
-Wire Wire Line
-	8950 8225 9500 8225
-$Comp
-L Transistor_BJT:BC817 Q1
-U 1 1 5F84B680
-P 6400 5475
-F 0 "Q1" V 6728 5475 50  0000 C CNN
-F 1 "BC817" V 6637 5475 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 6600 5400 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 6400 5475 50  0001 L CNN
-	1    6400 5475
-	0    1    -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC817 Q2
-U 1 1 5F84D9EF
-P 6400 5975
-F 0 "Q2" V 6675 6075 50  0000 C CNN
-F 1 "BC817" V 6600 6150 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 6600 5900 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 6400 5975 50  0001 L CNN
-	1    6400 5975
-	0    1    -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC817 Q3
-U 1 1 5F84DFF5
-P 6400 6475
-F 0 "Q3" V 6650 6625 50  0000 C CNN
-F 1 "BC817" V 6575 6700 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 6600 6400 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 6400 6475 50  0001 L CNN
-	1    6400 6475
-	0    1    -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC817 Q4
-U 1 1 5F84E64B
-P 6400 6975
-F 0 "Q4" V 6650 7125 50  0000 C CNN
-F 1 "BC817" V 6575 7200 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 6600 6900 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 6400 6975 50  0001 L CNN
-	1    6400 6975
-	0    1    -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC817 Q5
-U 1 1 5F84F2AD
-P 6400 7425
-F 0 "Q5" V 6650 7575 50  0000 C CNN
-F 1 "BC817" V 6575 7650 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 6600 7350 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 6400 7425 50  0001 L CNN
-	1    6400 7425
-	0    1    -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC817 Q6
-U 1 1 5F84F95C
-P 6400 7875
-F 0 "Q6" V 6650 8000 50  0000 C CNN
-F 1 "BC817" V 6575 8075 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 6600 7800 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 6400 7875 50  0001 L CNN
-	1    6400 7875
-	0    1    -1   0   
-$EndComp
-Wire Wire Line
-	8950 5625 9600 5625
-Wire Wire Line
-	8950 5725 9500 5725
-Wire Wire Line
-	8950 5525 9650 5525
-$Comp
-L Hotair-soldering-station-rescue:3-dig-7-seg-display-common-anode-My-Lib U3
-U 1 1 5F79D382
-P 8200 5475
-F 0 "U3" H 8250 5525 50  0000 C CNN
-F 1 "My-Footprints:3-digit-7-segment-display" H 8525 5559 50  0001 C CNN
-F 2 "My-Footprints:3-digit-7-segment-display" H 8200 5475 50  0001 C CNN
-F 3 "" H 8200 5475 50  0001 C CNN
-	1    8200 5475
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R16
-U 1 1 5F8671AE
-P 7300 7425
-F 0 "R16" V 7300 7475 50  0000 R CNN
-F 1 "120R" H 7230 7470 50  0001 R CNN
-F 2 "Capacitors:0805" V 7230 7425 50  0001 C CNN
-F 3 "~" H 7300 7425 50  0001 C CNN
-	1    7300 7425
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R15
-U 1 1 5F866FF8
-P 7300 7325
-F 0 "R15" V 7300 7375 50  0000 R CNN
-F 1 "120R" H 7230 7370 50  0001 R CNN
-F 2 "Capacitors:0805" V 7230 7325 50  0001 C CNN
-F 3 "~" H 7300 7325 50  0001 C CNN
-	1    7300 7325
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R14
-U 1 1 5F866DF3
-P 7300 7225
-F 0 "R14" V 7300 7275 50  0000 R CNN
-F 1 "120R" H 7230 7270 50  0001 R CNN
-F 2 "Capacitors:0805" V 7230 7225 50  0001 C CNN
-F 3 "~" H 7300 7225 50  0001 C CNN
-	1    7300 7225
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R13
-U 1 1 5F866C03
-P 7300 7125
-F 0 "R13" V 7300 7175 50  0000 R CNN
-F 1 "120R" H 7230 7170 50  0001 R CNN
-F 2 "Capacitors:0805" V 7230 7125 50  0001 C CNN
-F 3 "~" H 7300 7125 50  0001 C CNN
-	1    7300 7125
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R12
-U 1 1 5F866A39
-P 7300 7025
-F 0 "R12" V 7300 7075 50  0000 R CNN
-F 1 "120R" H 7230 7070 50  0001 R CNN
-F 2 "Capacitors:0805" V 7230 7025 50  0001 C CNN
-F 3 "~" H 7300 7025 50  0001 C CNN
-	1    7300 7025
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R11
-U 1 1 5F866854
-P 7300 6925
-F 0 "R11" V 7300 6975 50  0000 R CNN
-F 1 "120R" H 7230 6970 50  0001 R CNN
-F 2 "Capacitors:0805" V 7230 6925 50  0001 C CNN
-F 3 "~" H 7300 6925 50  0001 C CNN
-	1    7300 6925
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R10
-U 1 1 5F86670E
-P 7300 6825
-F 0 "R10" V 7300 6875 50  0000 R CNN
-F 1 "120R" H 7230 6870 50  0001 R CNN
-F 2 "Capacitors:0805" V 7230 6825 50  0001 C CNN
-F 3 "~" H 7300 6825 50  0001 C CNN
-	1    7300 6825
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R9
-U 1 1 5F864714
-P 7300 6725
-F 0 "R9" V 7300 6775 50  0000 R CNN
-F 1 "120R" H 7230 6770 50  0001 R CNN
-F 2 "Capacitors:0805" V 7230 6725 50  0001 C CNN
-F 3 "~" H 7300 6725 50  0001 C CNN
-	1    7300 6725
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC817 Q7
-U 1 1 5F8BBE6B
-P 6400 8325
-F 0 "Q7" V 6650 8475 50  0000 C CNN
-F 1 "BC817" V 6575 8550 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 6600 8250 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 6400 8325 50  0001 L CNN
-	1    6400 8325
-	0    1    -1   0   
-$EndComp
-$Comp
-L Transistor_BJT:BC817 Q8
-U 1 1 5F8BC457
-P 6400 8775
-F 0 "Q8" V 6650 8900 50  0000 C CNN
-F 1 "BC817" V 6575 8975 50  0000 C CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 6600 8700 50  0001 L CIN
-F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 6400 8775 50  0001 L CNN
-	1    6400 8775
-	0    1    -1   0   
-$EndComp
-Wire Wire Line
-	7150 6725 7100 6725
-Wire Wire Line
-	7100 6725 7100 5375
-Wire Wire Line
-	7100 5375 6600 5375
-Wire Wire Line
-	6600 5875 7050 5875
-Wire Wire Line
-	7050 5875 7050 6825
-Wire Wire Line
-	7050 6825 7150 6825
-Wire Wire Line
-	7150 6925 7000 6925
-Wire Wire Line
-	7000 6925 7000 6375
-Wire Wire Line
-	7000 6375 6600 6375
-Wire Wire Line
-	7150 7025 6950 7025
-Wire Wire Line
-	6950 7025 6950 6875
-Wire Wire Line
-	6950 6875 6600 6875
-Wire Wire Line
-	7150 7125 6950 7125
-Wire Wire Line
-	6950 7125 6950 7325
-Wire Wire Line
-	6950 7325 6600 7325
-Wire Wire Line
-	7150 7225 7000 7225
-Wire Wire Line
-	7000 7225 7000 7775
-Wire Wire Line
-	7000 7775 6600 7775
-Wire Wire Line
-	7150 7325 7050 7325
-Wire Wire Line
-	7050 7325 7050 8225
-Wire Wire Line
-	7050 8225 6600 8225
-Wire Wire Line
-	7150 7425 7100 7425
-Wire Wire Line
-	7100 7425 7100 8675
-Wire Wire Line
-	7100 8675 6600 8675
-Wire Wire Line
-	6200 8675 6150 8675
-Wire Wire Line
-	6150 8675 6150 8225
-Wire Wire Line
-	6150 5375 6200 5375
-Wire Wire Line
-	6200 5875 6150 5875
-Connection ~ 6150 5875
-Wire Wire Line
-	6150 5875 6150 5375
-Wire Wire Line
-	6200 6375 6150 6375
-Connection ~ 6150 6375
-Wire Wire Line
-	6150 6375 6150 5875
-Wire Wire Line
-	6200 6875 6150 6875
-Connection ~ 6150 6875
-Wire Wire Line
-	6150 6875 6150 6375
-Wire Wire Line
-	6200 7325 6150 7325
-Connection ~ 6150 7325
-Wire Wire Line
-	6150 7325 6150 6875
-Wire Wire Line
-	6200 7775 6150 7775
-Connection ~ 6150 7775
-Wire Wire Line
-	6150 7775 6150 7325
-Wire Wire Line
-	6200 8225 6150 8225
-Connection ~ 6150 8225
-Wire Wire Line
-	6150 8225 6150 7775
-Wire Wire Line
-	8100 6225 8000 6225
-Wire Wire Line
-	8000 6225 8000 6725
-Wire Wire Line
-	8000 8725 8100 8725
-Wire Wire Line
-	8100 8625 7950 8625
-Wire Wire Line
-	7950 8625 7950 6825
-Wire Wire Line
-	7950 6125 8100 6125
-Wire Wire Line
-	8100 6025 7900 6025
-Wire Wire Line
-	7900 6025 7900 6925
-Wire Wire Line
-	7900 8525 8100 8525
-Wire Wire Line
-	8100 8425 7850 8425
-Wire Wire Line
-	7850 8425 7850 7025
-Wire Wire Line
-	7850 5925 8100 5925
-Wire Wire Line
-	8100 5825 7800 5825
-Wire Wire Line
-	7800 5825 7800 7125
-Wire Wire Line
-	7800 8325 8100 8325
-Wire Wire Line
-	8100 5725 7750 5725
-Wire Wire Line
-	7750 5725 7750 7225
-Wire Wire Line
-	7750 8225 8100 8225
-Wire Wire Line
-	8100 8125 7700 8125
-Wire Wire Line
-	7700 8125 7700 7325
-Wire Wire Line
-	7700 5625 8100 5625
-Wire Wire Line
-	8100 8025 7650 8025
-Wire Wire Line
-	7650 8025 7650 7425
-Wire Wire Line
-	7650 5525 8100 5525
-Wire Wire Line
-	7450 6725 8000 6725
-Connection ~ 8000 6725
-Wire Wire Line
-	8000 6725 8000 8725
-Wire Wire Line
-	7450 6825 7950 6825
-Connection ~ 7950 6825
-Wire Wire Line
-	7950 6825 7950 6125
-Wire Wire Line
-	7450 6925 7900 6925
-Connection ~ 7900 6925
-Wire Wire Line
-	7900 6925 7900 8525
-Wire Wire Line
-	7450 7025 7850 7025
-Connection ~ 7850 7025
-Wire Wire Line
-	7850 7025 7850 5925
-Wire Wire Line
-	7450 7125 7800 7125
-Connection ~ 7800 7125
-Wire Wire Line
-	7800 7125 7800 8325
-Wire Wire Line
-	7450 7225 7750 7225
-Connection ~ 7750 7225
-Wire Wire Line
-	7750 7225 7750 8225
-Wire Wire Line
-	7450 7325 7700 7325
-Connection ~ 7700 7325
-Wire Wire Line
-	7700 7325 7700 5625
-Wire Wire Line
-	7450 7425 7650 7425
-Connection ~ 7650 7425
-Wire Wire Line
-	7650 7425 7650 5525
-Wire Wire Line
-	6400 5675 6400 5725
-Wire Wire Line
-	6400 5725 5700 5725
-Wire Wire Line
-	6400 6175 6400 6225
-Wire Wire Line
-	6400 6225 5700 6225
-Wire Wire Line
-	6400 6675 6400 6725
-Wire Wire Line
-	6400 6725 5700 6725
-Wire Wire Line
-	6400 7175 6400 7225
-Wire Wire Line
-	6400 7225 5700 7225
-Wire Wire Line
-	6400 7625 6400 7675
-Wire Wire Line
-	6400 7675 5700 7675
-Wire Wire Line
-	6400 8075 6400 8125
-Wire Wire Line
-	6400 8125 5700 8125
-Wire Wire Line
-	6400 8525 6400 8575
-Wire Wire Line
-	6400 8575 5700 8575
-Wire Wire Line
-	6400 8975 6400 9025
-Wire Wire Line
-	6400 9025 5700 9025
-$Comp
-L Device:R R2
-U 1 1 5FAA982C
-P 5550 6225
-F 0 "R2" V 5625 6275 50  0000 R CNN
-F 1 "10k" V 5450 6300 50  0000 R CNN
-F 2 "Capacitors:0805" V 5480 6225 50  0001 C CNN
-F 3 "~" H 5550 6225 50  0001 C CNN
-	1    5550 6225
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R3
-U 1 1 5FAA9BE6
-P 5550 6725
-F 0 "R3" V 5625 6775 50  0000 R CNN
-F 1 "10k" V 5450 6800 50  0000 R CNN
-F 2 "Capacitors:0805" V 5480 6725 50  0001 C CNN
-F 3 "~" H 5550 6725 50  0001 C CNN
-	1    5550 6725
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R4
-U 1 1 5FAAA1B0
-P 5550 7225
-F 0 "R4" V 5625 7250 50  0000 R CNN
-F 1 "10k" V 5450 7275 50  0000 R CNN
-F 2 "Capacitors:0805" V 5480 7225 50  0001 C CNN
-F 3 "~" H 5550 7225 50  0001 C CNN
-	1    5550 7225
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R5
-U 1 1 5FAAA791
-P 5550 7675
-F 0 "R5" V 5625 7725 50  0000 R CNN
-F 1 "10k" V 5450 7750 50  0000 R CNN
-F 2 "Capacitors:0805" V 5480 7675 50  0001 C CNN
-F 3 "~" H 5550 7675 50  0001 C CNN
-	1    5550 7675
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R6
-U 1 1 5FAAAC4E
-P 5550 8125
-F 0 "R6" V 5650 8175 50  0000 R CNN
-F 1 "5k6" V 5450 8200 50  0000 R CNN
-F 2 "Capacitors:0805" V 5480 8125 50  0001 C CNN
-F 3 "~" H 5550 8125 50  0001 C CNN
-	1    5550 8125
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R7
-U 1 1 5FAAB23C
-P 5550 8575
-F 0 "R7" V 5650 8625 50  0000 R CNN
-F 1 "10k" V 5450 8650 50  0000 R CNN
-F 2 "Capacitors:0805" V 5480 8575 50  0001 C CNN
-F 3 "~" H 5550 8575 50  0001 C CNN
-	1    5550 8575
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R8
-U 1 1 5FAAB621
-P 5550 9025
-F 0 "R8" V 5625 9075 50  0000 R CNN
-F 1 "10k" V 5450 9100 50  0000 R CNN
-F 2 "Capacitors:0805" V 5480 9025 50  0001 C CNN
-F 3 "~" H 5550 9025 50  0001 C CNN
-	1    5550 9025
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	5050 9025 5400 9025
 Wire Wire Line
 	3375 6975 3825 6975
 Wire Wire Line
@@ -1045,21 +342,13 @@ Wire Wire Line
 Wire Wire Line
 	3375 6775 3825 6775
 Wire Wire Line
-	5025 7225 5400 7225
-Wire Wire Line
 	3375 6675 3825 6675
 Wire Wire Line
-	5025 6725 5400 6725
-Wire Wire Line
 	3375 6575 3825 6575
-Wire Wire Line
-	5025 6225 5400 6225
 Wire Wire Line
 	3375 6475 3825 6475
 Wire Wire Line
 	3825 6375 3375 6375
-Wire Wire Line
-	5400 5725 5025 5725
 Wire Wire Line
 	3425 7775 3425 7675
 Wire Wire Line
@@ -1175,25 +464,13 @@ F 4 "" H 2875 6775 60  0001 C CNN "Pole4"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10625 9675 10700 9675
-Wire Wire Line
 	3800 7875 3375 7875
 Wire Wire Line
 	3375 7975 3800 7975
 Wire Wire Line
-	10700 8975 10600 8975
-Wire Wire Line
-	10650 8325 10700 8325
-Wire Wire Line
 	3375 8175 3800 8175
 Wire Wire Line
-	10750 7175 10600 7175
-Wire Wire Line
-	10600 6475 10750 6475
-Wire Wire Line
 	3800 8275 3375 8275
-Wire Wire Line
-	10650 5825 10750 5825
 Wire Wire Line
 	3800 8375 3375 8375
 Wire Notes Line
@@ -1264,103 +541,12 @@ Wire Notes Line
 	15575 2475 12375 2475
 Wire Notes Line
 	6800 14375 6750 14375
-$Comp
-L power:GND #PWR0116
-U 1 1 5F7BE909
-P 6150 9175
-F 0 "#PWR0116" H 6150 8925 50  0001 C CNN
-F 1 "GND" H 6155 9002 50  0000 C CNN
-F 2 "" H 6150 9175 50  0001 C CNN
-F 3 "" H 6150 9175 50  0001 C CNN
-	1    6150 9175
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6150 9175 6150 8675
-Connection ~ 6150 8675
-$Comp
-L Device:R R1
-U 1 1 5FAA91BA
-P 5550 5725
-F 0 "R1" V 5625 5775 50  0000 R CNN
-F 1 "10k" V 5450 5800 50  0000 R CNN
-F 2 "Capacitors:0805" V 5480 5725 50  0001 C CNN
-F 3 "~" H 5550 5725 50  0001 C CNN
-	1    5550 5725
-	0    -1   -1   0   
-$EndComp
-Text Notes 8300 5075 0    50   ~ 0
-1,75V @ 10mA\n1,78V @ 15mA
-Text Notes 7175 6650 0    50   ~ 0
-8x120R
 Text Notes 975  1200 0    236  ~ 47
 SMD Rework, Soldering station - Front PCB
 Wire Wire Line
 	3375 8075 3800 8075
 Wire Wire Line
 	3825 7075 3375 7075
-Text GLabel 3800 8175 2    50   Input ~ 0
-SEG_A
-Text GLabel 3825 6375 2    50   Input ~ 0
-SEG_B
-Text GLabel 3825 6875 2    50   Input ~ 0
-SEG_C
-Text GLabel 3825 7075 2    50   Input ~ 0
-SEG_D
-Text GLabel 3800 8375 2    50   Input ~ 0
-SEG_E
-Text GLabel 3800 8075 2    50   Input ~ 0
-SEG_F
-Text GLabel 3825 6775 2    50   Input ~ 0
-SEG_G
-Text GLabel 3825 6975 2    50   Input ~ 0
-SEG_DP
-Text GLabel 3825 6675 2    50   Input ~ 0
-HOTAIR_DIG1
-Text GLabel 3825 6575 2    50   Input ~ 0
-HOTAIR_DIG2
-Text GLabel 3825 6475 2    50   Input ~ 0
-HOTAIR_DIG3
-Text GLabel 3800 8275 2    50   Input ~ 0
-IRON_DIG1
-Text GLabel 3800 7975 2    50   Input ~ 0
-IRON_DIG2
-Text GLabel 3800 7875 2    50   Input ~ 0
-IRON_DIG3
-Text GLabel 5050 9025 0    50   Input ~ 0
-SEG_A
-Text GLabel 5025 8575 0    50   Input ~ 0
-SEG_B
-Text GLabel 5025 8125 0    50   Input ~ 0
-SEG_C
-Text GLabel 5025 7675 0    50   Input ~ 0
-SEG_D
-Text GLabel 5025 7225 0    50   Input ~ 0
-SEG_E
-Text GLabel 5025 6725 0    50   Input ~ 0
-SEG_F
-Text GLabel 5025 6225 0    50   Input ~ 0
-SEG_G
-Text GLabel 5025 5725 0    50   Input ~ 0
-SEG_DP
-Wire Wire Line
-	5400 8575 5025 8575
-Wire Wire Line
-	5400 8125 5025 8125
-Wire Wire Line
-	5400 7675 5025 7675
-Text GLabel 10700 8325 2    50   Input ~ 0
-HOTAIR_DIG1
-Text GLabel 10700 8975 2    50   Input ~ 0
-HOTAIR_DIG2
-Text GLabel 10700 9675 2    50   Input ~ 0
-HOTAIR_DIG3
-Text GLabel 10750 5825 2    50   Input ~ 0
-IRON_DIG1
-Text GLabel 10750 6475 2    50   Input ~ 0
-IRON_DIG2
-Text GLabel 10750 7175 2    50   Input ~ 0
-IRON_DIG3
 $Comp
 L power:GND #PWR0117
 U 1 1 5F8FF5FC
@@ -1528,11 +714,6 @@ Wire Wire Line
 	12675 3475 12675 4125
 Wire Wire Line
 	12675 3475 13775 3475
-Wire Wire Line
-	12675 3375 12675 3475
-Wire Wire Line
-	12675 3375 13775 3375
-Connection ~ 12675 3475
 $Comp
 L Switch:SW_Push SW6
 U 1 1 5F8FF5F6
@@ -1628,4 +809,85 @@ Wire Wire Line
 Wire Wire Line
 	2350 6100 2375 6100
 Connection ~ 2350 6575
+$Comp
+L Display_Character:RC1602A U?
+U 1 1 610F9654
+P 6150 6875
+F 0 "U?" H 6325 7600 50  0000 C CNN
+F 1 "RC1602A" H 6450 7525 50  0000 C CNN
+F 2 "Display:RC1602A" H 6250 6075 50  0001 C CNN
+F 3 "http://www.raystar-optronics.com/down.php?ProID=18" H 6250 6775 50  0001 C CNN
+	1    6150 6875
+	1    0    0    -1  
+$EndComp
+Text GLabel 3825 6375 2    50   Input ~ 0
+LCD_RS
+Text GLabel 3825 6475 2    50   Input ~ 0
+LCD_E
+Text GLabel 3825 6575 2    50   Input ~ 0
+LCD_DB4
+Text GLabel 3825 6675 2    50   Input ~ 0
+LCD_DB5
+Text GLabel 3825 6775 2    50   Input ~ 0
+LCD_DB6
+Text GLabel 3825 6875 2    50   Input ~ 0
+LCD_DB7
+Wire Wire Line
+	13775 3375 13300 3375
+Wire Wire Line
+	13300 3375 13300 3100
+$Comp
+L power:+5V #PWR?
+U 1 1 61105CF3
+P 13300 3100
+F 0 "#PWR?" H 13300 2950 50  0001 C CNN
+F 1 "+5V" H 13315 3273 50  0000 C CNN
+F 2 "" H 13300 3100 50  0001 C CNN
+F 3 "" H 13300 3100 50  0001 C CNN
+	1    13300 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 611063A2
+P 6150 6025
+F 0 "#PWR?" H 6150 5875 50  0001 C CNN
+F 1 "+5V" H 6165 6198 50  0000 C CNN
+F 2 "" H 6150 6025 50  0001 C CNN
+F 3 "" H 6150 6025 50  0001 C CNN
+	1    6150 6025
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6150 6025 6150 6175
+$Comp
+L power:GND #PWR?
+U 1 1 6110C1B1
+P 6150 7700
+F 0 "#PWR?" H 6150 7450 50  0001 C CNN
+F 1 "GND" H 6155 7527 50  0000 C CNN
+F 2 "" H 6150 7700 50  0001 C CNN
+F 3 "" H 6150 7700 50  0001 C CNN
+	1    6150 7700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6150 7575 6150 7700
+Text GLabel 5625 6375 0    50   Input ~ 0
+LCD_RS
+$Comp
+L power:GND #PWR?
+U 1 1 611118D3
+P 5600 7600
+F 0 "#PWR?" H 5600 7350 50  0001 C CNN
+F 1 "GND" H 5605 7427 50  0000 C CNN
+F 2 "" H 5600 7600 50  0001 C CNN
+F 3 "" H 5600 7600 50  0001 C CNN
+	1    5600 7600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5750 6475 5600 6475
+Wire Wire Line
+	5600 6475 5600 7600
 $EndSCHEMATC
