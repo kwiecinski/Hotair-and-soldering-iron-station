@@ -350,21 +350,6 @@ Wire Wire Line
 Wire Wire Line
 	3825 6375 3375 6375
 Wire Wire Line
-	3425 7775 3425 7675
-Wire Wire Line
-	3375 7775 3425 7775
-$Comp
-L power:+3.3V #PWR0111
-U 1 1 5F7CBAA3
-P 3425 7675
-F 0 "#PWR0111" H 3425 7525 50  0001 C CNN
-F 1 "+3.3V" H 3440 7848 50  0000 C CNN
-F 2 "" H 3425 7675 50  0001 C CNN
-F 3 "" H 3425 7675 50  0001 C CNN
-	1    3425 7675
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
 	3425 6275 3425 6225
 Wire Wire Line
 	3375 6275 3425 6275
@@ -386,71 +371,13 @@ Text GLabel 1375 6475 0    50   Input ~ 0
 Text GLabel 1375 6275 0    50   Input ~ 0
 7SEG_DIN
 Wire Wire Line
-	3375 7425 3375 7175
-Wire Wire Line
-	2575 7425 3375 7425
-Wire Wire Line
-	2575 7775 2575 7425
-Wire Wire Line
 	1375 6275 2575 6275
-Connection ~ 2225 6775
-Wire Wire Line
-	2225 6775 1375 6775
-Connection ~ 2125 6475
-Wire Wire Line
-	2125 6475 1375 6475
-Wire Wire Line
-	2225 8275 2575 8275
-Wire Wire Line
-	2225 6775 2225 8275
-Wire Wire Line
-	2575 6775 2225 6775
-Connection ~ 2425 7175
 Wire Wire Line
 	2425 6975 2425 7175
 Wire Wire Line
 	2575 6975 2425 6975
 Wire Wire Line
 	2575 7175 2425 7175
-Wire Wire Line
-	2425 8475 2425 8675
-Connection ~ 2425 8475
-Wire Wire Line
-	2575 8475 2425 8475
-Connection ~ 2425 8675
-Wire Wire Line
-	2425 8675 2425 8825
-Wire Wire Line
-	2575 8675 2425 8675
-$Comp
-L power:GND #PWR0113
-U 1 1 5F7A79C4
-P 2425 8825
-F 0 "#PWR0113" H 2425 8575 50  0001 C CNN
-F 1 "GND" H 2430 8652 50  0000 C CNN
-F 2 "" H 2425 8825 50  0001 C CNN
-F 3 "" H 2425 8825 50  0001 C CNN
-	1    2425 8825
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2125 7975 2575 7975
-Wire Wire Line
-	2125 6475 2125 7975
-Wire Wire Line
-	2575 6475 2125 6475
-$Comp
-L SparkFun-IC-Logic:74HC595D U2
-U 1 1 5F7A37BF
-P 2975 8225
-F 0 "U2" H 2975 8929 45  0000 C CNN
-F 1 "74HC595D" H 2975 8845 45  0000 C CNN
-F 2 "Silicon-Standard:SO16" H 2975 8925 20  0001 C CNN
-F 3 "" H 2975 8225 50  0001 C CNN
-F 4 "" H 2875 8275 60  0001 C CNN "Pole4"
-	1    2975 8225
-	1    0    0    -1  
-$EndComp
 $Comp
 L SparkFun-IC-Logic:74HC595D U1
 U 1 1 5F7A16CC
@@ -463,16 +390,6 @@ F 4 "" H 2875 6775 60  0001 C CNN "Pole4"
 	1    2975 6725
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3800 7875 3375 7875
-Wire Wire Line
-	3375 7975 3800 7975
-Wire Wire Line
-	3375 8175 3800 8175
-Wire Wire Line
-	3800 8275 3375 8275
-Wire Wire Line
-	3800 8375 3375 8375
 Wire Notes Line
 	11300 10725 11300 4725
 $Comp
@@ -543,8 +460,6 @@ Wire Notes Line
 	6800 14375 6750 14375
 Text Notes 975  1200 0    236  ~ 47
 SMD Rework, Soldering station - Front PCB
-Wire Wire Line
-	3375 8075 3800 8075
 Wire Wire Line
 	3825 7075 3375 7075
 $Comp
@@ -786,29 +701,20 @@ Wire Wire Line
 Wire Wire Line
 	3700 5725 3700 5775
 Wire Wire Line
-	2425 7175 2425 8475
-Wire Wire Line
-	2575 8075 2350 8075
-Wire Wire Line
-	2350 8075 2350 6575
-Wire Wire Line
 	2350 6575 2575 6575
 $Comp
 L power:+3.3V #PWR?
 U 1 1 5FF4B733
-P 2375 6100
-F 0 "#PWR?" H 2375 5950 50  0001 C CNN
-F 1 "+3.3V" H 2390 6273 50  0000 C CNN
-F 2 "" H 2375 6100 50  0001 C CNN
-F 3 "" H 2375 6100 50  0001 C CNN
-	1    2375 6100
+P 2350 6100
+F 0 "#PWR?" H 2350 5950 50  0001 C CNN
+F 1 "+3.3V" H 2365 6273 50  0000 C CNN
+F 2 "" H 2350 6100 50  0001 C CNN
+F 3 "" H 2350 6100 50  0001 C CNN
+	1    2350 6100
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	2350 6575 2350 6100
-Wire Wire Line
-	2350 6100 2375 6100
-Connection ~ 2350 6575
 $Comp
 L Display_Character:RC1602A U?
 U 1 1 610F9654
@@ -873,4 +779,187 @@ F 3 "" H 6150 7700 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6150 7575 6150 7700
+$Comp
+L power:GND #PWR?
+U 1 1 611118D3
+P 5600 7600
+F 0 "#PWR?" H 5600 7350 50  0001 C CNN
+F 1 "GND" H 5605 7427 50  0000 C CNN
+F 2 "" H 5600 7600 50  0001 C CNN
+F 3 "" H 5600 7600 50  0001 C CNN
+	1    5600 7600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5750 6475 5600 6475
+Wire Wire Line
+	5600 6475 5600 7600
+Wire Wire Line
+	1375 6775 2575 6775
+Wire Wire Line
+	1375 6475 2575 6475
+$Comp
+L power:GND #PWR?
+U 1 1 6147FA1B
+P 2425 7325
+F 0 "#PWR?" H 2425 7075 50  0001 C CNN
+F 1 "GND" H 2430 7152 50  0000 C CNN
+F 2 "" H 2425 7325 50  0001 C CNN
+F 3 "" H 2425 7325 50  0001 C CNN
+	1    2425 7325
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2425 7325 2425 7175
+Connection ~ 2425 7175
+Text GLabel 5475 6375 0    50   Input ~ 0
+LCD_RS
+Text GLabel 5475 6575 0    50   Input ~ 0
+LCD_E
+Text GLabel 5525 7075 0    50   Input ~ 0
+LCD_DB4
+Text GLabel 5525 7175 0    50   Input ~ 0
+LCD_DB5
+Text GLabel 5525 7275 0    50   Input ~ 0
+LCD_DB6
+Text GLabel 5525 7375 0    50   Input ~ 0
+LCD_DB7
+Wire Wire Line
+	5750 7075 5525 7075
+Wire Wire Line
+	5750 7175 5525 7175
+Wire Wire Line
+	5750 7275 5525 7275
+Wire Wire Line
+	5750 7375 5525 7375
+Wire Wire Line
+	5475 6575 5750 6575
+Wire Wire Line
+	5750 6375 5475 6375
+$Comp
+L Transistor_BJT:BC817 Q?
+U 1 1 6149EAB6
+P 7350 8125
+F 0 "Q?" H 7300 8375 50  0000 L CNN
+F 1 "BC817" H 7125 8275 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 7550 8050 50  0001 L CIN
+F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 7350 8125 50  0001 L CNN
+	1    7350 8125
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:BC817 Q?
+U 1 1 614A0612
+P 8850 8125
+F 0 "Q?" H 9041 8171 50  0000 L CNN
+F 1 "BC817" H 9041 8080 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 9050 8050 50  0001 L CIN
+F 3 "http://www.fairchildsemi.com/ds/BC/BC817.pdf" H 8850 8125 50  0001 L CNN
+	1    8850 8125
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 614A1E6D
+P 7450 7625
+F 0 "R?" H 7380 7579 50  0000 R CNN
+F 1 "10k" H 7380 7670 50  0000 R CNN
+F 2 "Capacitors:0805" V 7380 7625 50  0001 C CNN
+F 3 "~" H 7450 7625 50  0001 C CNN
+	1    7450 7625
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 614A284D
+P 8950 7650
+F 0 "R?" H 8880 7604 50  0000 R CNN
+F 1 "10k" H 8880 7695 50  0000 R CNN
+F 2 "Capacitors:0805" V 8880 7650 50  0001 C CNN
+F 3 "~" H 8950 7650 50  0001 C CNN
+	1    8950 7650
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7450 7325 7450 7475
+Wire Wire Line
+	7450 7325 8950 7325
+Wire Wire Line
+	8950 7325 8950 7500
+Wire Wire Line
+	7450 7775 7450 7925
+Wire Wire Line
+	8950 7800 8950 7925
+Wire Wire Line
+	6550 7075 7450 7075
+Wire Wire Line
+	7450 7075 7450 7325
+Connection ~ 7450 7325
+$Comp
+L power:+3.3V #PWR?
+U 1 1 614C1AB1
+P 6750 6000
+F 0 "#PWR?" H 6750 5850 50  0001 C CNN
+F 1 "+3.3V" H 6765 6173 50  0000 C CNN
+F 2 "" H 6750 6000 50  0001 C CNN
+F 3 "" H 6750 6000 50  0001 C CNN
+	1    6750 6000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6550 7175 6750 7175
+Wire Wire Line
+	6750 7175 6750 6000
+Text GLabel 3825 6975 2    50   Input ~ 0
+LCD_BACKLIGHT_1
+Text GLabel 3825 7075 2    50   Input ~ 0
+LCD_BACKLIGHT_2
+Text GLabel 6850 8125 0    50   Input ~ 0
+LCD_BACKLIGHT_1
+Text GLabel 8350 8125 0    50   Input ~ 0
+LCD_BACKLIGHT_2
+$Comp
+L Device:R R?
+U 1 1 614CD4CB
+P 8500 8125
+F 0 "R?" H 8430 8079 50  0000 R CNN
+F 1 "10k" H 8430 8170 50  0000 R CNN
+F 2 "Capacitors:0805" V 8430 8125 50  0001 C CNN
+F 3 "~" H 8500 8125 50  0001 C CNN
+	1    8500 8125
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 614CDEFA
+P 7000 8125
+F 0 "R?" H 6930 8079 50  0000 R CNN
+F 1 "10k" H 6930 8170 50  0000 R CNN
+F 2 "Capacitors:0805" V 6930 8125 50  0001 C CNN
+F 3 "~" H 7000 8125 50  0001 C CNN
+	1    7000 8125
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 614CE767
+P 7450 8325
+F 0 "#PWR?" H 7450 8075 50  0001 C CNN
+F 1 "GND" H 7455 8152 50  0000 C CNN
+F 2 "" H 7450 8325 50  0001 C CNN
+F 3 "" H 7450 8325 50  0001 C CNN
+	1    7450 8325
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 614CED74
+P 8950 8325
+F 0 "#PWR?" H 8950 8075 50  0001 C CNN
+F 1 "GND" H 8955 8152 50  0000 C CNN
+F 2 "" H 8950 8325 50  0001 C CNN
+F 3 "" H 8950 8325 50  0001 C CNN
+	1    8950 8325
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
