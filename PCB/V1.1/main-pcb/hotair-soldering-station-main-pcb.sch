@@ -393,17 +393,6 @@ HOTAIR_ADC
 Wire Notes Line
 	650  12850 6525 12850
 $Comp
-L MCU_ST_STM32F0:STM32F030K6Tx U5
-U 1 1 5F834A58
-P 18925 10925
-F 0 "U5" H 19125 11875 50  0000 C CNN
-F 1 "STM32F030K6Tx" H 19375 11775 50  0000 C CNN
-F 2 "Package_QFP:LQFP-32_7x7mm_P0.8mm" H 18425 10025 50  0001 R CNN
-F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00088500.pdf" H 18925 10925 50  0001 C CNN
-	1    18925 10925
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:+3.3V #PWR0124
 U 1 1 5F836C06
 P 17350 6650
