@@ -32,24 +32,18 @@ Wire Wire Line
 	20375 2800 20125 2800
 Wire Wire Line
 	20125 2800 20125 2550
-Text GLabel 20150 3400 0    50   Input ~ 0
-HOTAIR_UP_SW
-Text GLabel 20150 3300 0    50   Input ~ 0
-HOTAIR_DOWN_SW
-Text GLabel 20150 3200 0    50   Input ~ 0
-SOLDER_UP_SW
-Text GLabel 20150 3100 0    50   Input ~ 0
-SOLDER_DOWN_SW
 Text GLabel 21150 3200 2    50   Input ~ 0
-HOTAIR_ON_SW
+HOTAIR_UP_SW
 Text GLabel 21150 3100 2    50   Input ~ 0
-SOLDER_ON_SW
-Text GLabel 21150 2800 2    50   Input ~ 0
-SPI1_MOSI
-Text GLabel 21150 3000 2    50   Input ~ 0
-SPI1_SCK
+HOTAIR_DOWN_SW
+Text GLabel 20150 3400 0    50   Input ~ 0
+SOLDER_UP_SW
+Text GLabel 20150 3300 0    50   Input ~ 0
+SOLDER_DOWN_SW
 Text GLabel 21150 2900 2    50   Input ~ 0
-7SEG_LATCH
+HOTAIR_ON_SW
+Text GLabel 21150 2800 2    50   Input ~ 0
+SOLDER_ON_SW
 Wire Notes Line
 	6475 11250 6425 11250
 Text Notes 650  1000 0    236  ~ 47
@@ -363,18 +357,6 @@ Text Notes 7050 11050 0    98   ~ 0
 Soldering iron connector\n
 Wire Notes Line
 	12700 16075 12750 16075
-Text GLabel 18450 8950 2    50   Input ~ 0
-HOTAIR_UP_SW
-Text GLabel 16250 8550 0    50   Input ~ 0
-HOTAIR_DOWN_SW
-Text GLabel 18450 8850 2    50   Input ~ 0
-SPI1_MOSI
-Text GLabel 18450 8650 2    50   Input ~ 0
-SPI1_SCK
-Text GLabel 18450 8750 2    50   Input ~ 0
-SPI1_MISO
-Text GLabel 18450 8150 2    50   Input ~ 0
-IRON_T12_ADC
 $Comp
 L Device:R R18
 U 1 1 5F7FF6E4
@@ -387,9 +369,7 @@ F 3 "~" H 5425 12050 50  0001 C CNN
 	0    -1   1    0   
 $EndComp
 Text GLabel 5625 12050 2    50   Input ~ 0
-HOTAIR_ADC
-Text GLabel 18450 8250 2    50   Input ~ 0
-HOTAIR_ADC
+HOTAIR_TEMP_ADC
 Wire Notes Line
 	650  12850 6525 12850
 $Comp
@@ -449,7 +429,7 @@ F 3 "~" H 22150 6350 50  0001 C CNN
 	1    22150 6350
 	1    0    0    -1  
 $EndComp
-Text GLabel 18450 9050 2    50   Input ~ 0
+Text GLabel 18450 9650 2    50   Input ~ 0
 UART_DBG_TX
 Wire Wire Line
 	17950 8350 18450 8350
@@ -486,13 +466,9 @@ Wire Wire Line
 Wire Wire Line
 	16250 8850 16650 8850
 Wire Wire Line
-	16650 8950 16250 8950
-Wire Wire Line
 	18450 8450 17950 8450
 Wire Wire Line
 	18450 8550 17950 8550
-Text GLabel 16225 8250 0    50   Input ~ 0
-HOTAIR_REED_SW
 Wire Wire Line
 	18450 8950 17950 8950
 Text GLabel 21600 6450 0    50   Input ~ 0
@@ -1029,15 +1005,11 @@ Wire Wire Line
 Text GLabel 4325 9200 2    50   Input ~ 0
 FAN_SUPPLY
 Text GLabel 1650 9200 0    50   Input ~ 0
-FAN_PWM
-Text GLabel 18450 9250 2    50   Input ~ 0
-HOTAIR_FAN_DOWN_SW
-Text GLabel 18450 9150 2    50   Input ~ 0
-HOTAIR_FAN_UP_SW
+HOTAIR_FAN_PWM
 Wire Wire Line
-	16650 8150 16225 8150
+	16650 8150 16250 8150
 Wire Wire Line
-	16650 8250 16225 8250
+	16650 8250 16250 8250
 $Comp
 L Connector_Generic:Conn_01x06 J9
 U 1 1 5FA5E496
@@ -1136,15 +1108,6 @@ F 3 "" H 19100 3425 50  0001 C CNN
 	1    19100 3425
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	20375 2900 19100 2900
-Wire Wire Line
-	19100 2900 19100 3000
-Wire Wire Line
-	20375 3000 19100 3000
-Connection ~ 19100 3000
-Wire Wire Line
-	19100 3000 19100 3425
 Wire Wire Line
 	11100 7025 11425 7025
 $Comp
@@ -1259,14 +1222,6 @@ Wire Wire Line
 	2150 13850 2225 13850
 Wire Wire Line
 	2225 13850 2225 14025
-Text GLabel 18450 8550 2    50   Input ~ 0
-BUZZER
-Text GLabel 16250 9050 0    50   Input ~ 0
-HOTAIR_HEATER_CTRL
-Text GLabel 16250 8750 0    50   Input ~ 0
-IRON_WEP_HEATER_CTRL
-Wire Wire Line
-	16250 9050 16650 9050
 Wire Wire Line
 	17950 9050 18450 9050
 Text GLabel 3750 13975 0    50   Input ~ 0
@@ -1282,14 +1237,6 @@ F 3 "" H 2350 6075 50  0001 C CNN
 	1    2350 6075
 	1    0    0    -1  
 $EndComp
-Text GLabel 16225 8150 0    50   Input ~ 0
-SOLDER_ON_SW
-Text GLabel 16250 8450 0    50   Input ~ 0
-SOLDER_UP_SW
-Text GLabel 18450 9350 2    50   Input ~ 0
-HOTAIR_ON_SW
-Text GLabel 16250 8850 0    50   Input ~ 0
-FAN_PWM
 Text Notes 14275 9375 0    50   ~ 0
 TIM3_CH2 - PWM
 Text Notes 14275 9475 0    50   ~ 0
@@ -1332,8 +1279,6 @@ Wire Wire Line
 Connection ~ 14125 11425
 Wire Wire Line
 	14125 11425 14125 11450
-Text GLabel 18450 8450 2    50   Input ~ 0
-FAN_ADC
 Wire Wire Line
 	4525 11575 5225 11575
 Wire Wire Line
@@ -1440,7 +1385,7 @@ Connection ~ 10500 10175
 Wire Wire Line
 	10300 10175 10500 10175
 Text GLabel 11850 10075 2    50   Input ~ 0
-IRON_T12_ADC
+IRON_T12_TEMP_ADC
 $Comp
 L Device:R R16
 U 1 1 60DFB802
@@ -1452,7 +1397,7 @@ F 3 "~" H 3925 12150 50  0001 C CNN
 	1    3925 12150
 	0    -1   1    0   
 $EndComp
-Text GLabel 11150 11800 0    50   Input ~ 0
+Text GLabel 11400 11800 0    50   Input ~ 0
 IRON_T12_HEATER
 Text GLabel 11400 12000 0    50   Input ~ 0
 IRON_T12_THERM
@@ -1487,15 +1432,6 @@ $EndComp
 Wire Wire Line
 	11400 12000 11625 12000
 Wire Wire Line
-	11150 11800 11500 11800
-Wire Wire Line
-	11625 11900 11500 11900
-Wire Wire Line
-	11500 11900 11500 11800
-Connection ~ 11500 11800
-Wire Wire Line
-	11500 11800 11625 11800
-Wire Wire Line
 	11625 11700 11500 11700
 Wire Wire Line
 	11500 11700 11500 11600
@@ -1504,10 +1440,6 @@ Wire Wire Line
 	11500 11600 11625 11600
 Text GLabel 11400 12100 0    50   Input ~ 0
 THERM_GND
-Text GLabel 18450 9650 2    50   Input ~ 0
-MAX31855_HOTAIR_CS
-Text GLabel 16250 8650 0    50   Input ~ 0
-MAX31855_IRON_CS
 $Comp
 L Sensor_Temperature:MAX31855KASA U7
 U 1 1 60E38068
@@ -1772,7 +1704,7 @@ Connection ~ 3875 9700
 Wire Wire Line
 	3875 9700 3875 9750
 Text GLabel 4325 9700 2    50   Input ~ 0
-FAN_ADC
+HOTAIR_FAN_ADC
 Wire Notes Line
 	725  3250 8700 3250
 Wire Notes Line
@@ -2267,10 +2199,6 @@ F 3 "" H 11800 8575 50  0001 C CNN
 	1    11800 8575
 	1    0    0    -1  
 $EndComp
-Text GLabel 18450 8350 2    50   Input ~ 0
-SOLDER_DOWN_SW
-Text GLabel 16250 8950 0    50   Input ~ 0
-IRON_T12_HEATER_CTRL
 Wire Wire Line
 	18450 9650 17950 9650
 Wire Wire Line
@@ -2533,21 +2461,6 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	16500 7250 16500 7375
-Wire Wire Line
-	16650 7250 16500 7250
-$Comp
-L power:GND #PWR0116
-U 1 1 5FA8FEE8
-P 16500 7375
-F 0 "#PWR0116" H 16500 7125 50  0001 C CNN
-F 1 "GND" H 16505 7202 50  0000 C CNN
-F 2 "" H 16500 7375 50  0001 C CNN
-F 3 "" H 16500 7375 50  0001 C CNN
-	1    16500 7375
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
 	17250 9900 17150 9900
 Wire Wire Line
 	17150 9900 17150 9850
@@ -2562,4 +2475,124 @@ Wire Wire Line
 Wire Wire Line
 	17550 6800 17550 6850
 Connection ~ 17450 6800
+Text GLabel 21150 3000 2    50   Input ~ 0
+SOLDER_SELECT_SW
+Wire Wire Line
+	19100 2900 19100 3425
+Wire Wire Line
+	20375 2900 19100 2900
+Text GLabel 20150 3000 0    50   Input ~ 0
+MENU_UP_SW
+Text GLabel 20150 3100 0    50   Input ~ 0
+MENU_OK_SW
+Text GLabel 20150 3200 0    50   Input ~ 0
+MENU_DOWN_SW
+Wire Wire Line
+	20375 3000 20150 3000
+Text GLabel 16250 9650 0    50   Input ~ 0
+LCD_D7
+Text GLabel 16250 9550 0    50   Input ~ 0
+LCD_D6
+Text GLabel 16250 9450 0    50   Input ~ 0
+LCD_D5
+Text GLabel 16250 9350 0    50   Input ~ 0
+LCD_D4
+Text GLabel 16250 9250 0    50   Input ~ 0
+LCD_EN
+Text GLabel 16250 9150 0    50   Input ~ 0
+LCD_RW
+Text GLabel 16250 9050 0    50   Input ~ 0
+LCD_RS
+Text GLabel 16250 8950 0    50   Input ~ 0
+LCD_BACKLIGHT_PWM
+Wire Wire Line
+	11400 11800 11625 11800
+Text GLabel 11400 11900 0    50   Input ~ 0
+IRON_T12_MOTION_SW
+Wire Wire Line
+	11400 11900 11625 11900
+Text GLabel 10425 18475 0    50   Input ~ 0
+IRON_T12_MOTION_SW
+Wire Wire Line
+	16650 8350 16250 8350
+Wire Wire Line
+	16650 8950 16250 8950
+Wire Wire Line
+	16250 9050 16650 9050
+Wire Wire Line
+	16650 9150 16250 9150
+Wire Wire Line
+	16250 9250 16650 9250
+Wire Wire Line
+	16650 9350 16250 9350
+Wire Wire Line
+	16650 9450 16250 9450
+Wire Wire Line
+	16250 9550 16650 9550
+Wire Wire Line
+	16650 9650 16250 9650
+Text GLabel 14350 7700 0    50   Input ~ 0
+MENU_DOWN_SW
+Text GLabel 14350 7600 0    50   Input ~ 0
+MENU_OK_SW
+Text GLabel 14350 7500 0    50   Input ~ 0
+MENU_UP_SW
+Text GLabel 14375 8100 0    50   Input ~ 0
+SOLDER_SELECT_SW
+Text GLabel 14375 8000 0    50   Input ~ 0
+SOLDER_DOWN_SW
+Text GLabel 14375 8600 0    50   Input ~ 0
+HOTAIR_ON_SW
+Text GLabel 14350 7900 0    50   Input ~ 0
+SOLDER_UP_SW
+Text GLabel 14350 7800 0    50   Input ~ 0
+SOLDER_ON_SW
+Text GLabel 14375 8400 0    50   Input ~ 0
+HOTAIR_FAN_UP_SW
+Text GLabel 14375 8500 0    50   Input ~ 0
+HOTAIR_FAN_DOWN_SW
+Text GLabel 14375 8200 0    50   Input ~ 0
+HOTAIR_DOWN_SW
+Text GLabel 14375 8300 0    50   Input ~ 0
+HOTAIR_UP_SW
+Text GLabel 20075 8225 2    50   Input ~ 0
+IRON_T12_MOTION_SW
+Text GLabel 20075 8325 2    50   Input ~ 0
+IRON_T12_HEATER_CTRL
+Text GLabel 20075 7500 2    50   Input ~ 0
+HOTAIR_FAN_ADC
+Text GLabel 20075 7400 2    50   Input ~ 0
+HOTAIR_FAN_PWM
+Text GLabel 20075 8600 2    50   Input ~ 0
+IRON_WEP_HEATER_CTRL
+Text GLabel 20075 7700 2    50   Input ~ 0
+HOTAIR_HEATER_CTRL
+Text GLabel 20075 7800 2    50   Input ~ 0
+HOTAIR_REED_SW
+Text GLabel 20075 7600 2    50   Input ~ 0
+HOTAIR_TEMP_ADC
+Text GLabel 18450 8550 2    50   Input ~ 0
+BUZZER
+Text GLabel 19775 9725 2    50   Input ~ 0
+MAX31855_IRON_CS
+Text GLabel 19775 9625 2    50   Input ~ 0
+MAX31855_HOTAIR_CS
+Text GLabel 19775 9425 2    50   Input ~ 0
+SPI1_MISO
+Text GLabel 19775 9325 2    50   Input ~ 0
+SPI1_SCK
+Text GLabel 19775 9525 2    50   Input ~ 0
+SPI1_MOSI
+Text GLabel 20075 8125 2    50   Input ~ 0
+IRON_T12_TEMP_ADC
+Wire Wire Line
+	16650 7750 16250 7750
+Wire Wire Line
+	16250 7850 16650 7850
+Wire Wire Line
+	16650 7950 16250 7950
+Wire Wire Line
+	16650 7450 16250 7450
+Wire Wire Line
+	16650 7550 16250 7550
 $EndSCHEMATC
