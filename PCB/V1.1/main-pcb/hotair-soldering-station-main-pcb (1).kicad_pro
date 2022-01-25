@@ -45,10 +45,16 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.508
+          "min_clearance": 0.25
         }
       },
-      "diff_pair_dimensions": [],
+      "diff_pair_dimensions": [
+        {
+          "gap": 0.0,
+          "via_gap": 0.0,
+          "width": 0.0
+        }
+      ],
       "drc_exclusions": [],
       "meta": {
         "filename": "board_design_settings.json",
@@ -115,6 +121,8 @@
       },
       "track_widths": [
         0.0,
+        0.3,
+        0.35,
         0.4,
         0.5,
         0.6,
@@ -135,6 +143,10 @@
         {
           "diameter": 0.0,
           "drill": 0.0
+        },
+        {
+          "diameter": 0.7,
+          "drill": 0.4
         },
         {
           "diameter": 1.2,
@@ -379,7 +391,7 @@
     "classes": [
       {
         "bus_width": 12.0,
-        "clearance": 0.7,
+        "clearance": 0.25,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -389,7 +401,7 @@
         "name": "Default",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
+        "track_width": 0.3,
         "via_diameter": 0.8,
         "via_drill": 0.4,
         "wire_width": 6.0
@@ -417,7 +429,7 @@
       },
       {
         "bus_width": 12.0,
-        "clearance": 0.7,
+        "clearance": 0.25,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -425,9 +437,7 @@
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
         "name": "gnd",
-        "nets": [
-          "GND"
-        ],
+        "nets": [],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 2.0,
@@ -437,7 +447,7 @@
       },
       {
         "bus_width": 12.0,
-        "clearance": 0.3,
+        "clearance": 0.25,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -454,13 +464,16 @@
           "HOTAIR_REED_SW",
           "HOTAIR_THERM",
           "HOTAIR_UP_SW",
+          "IRON_T12_HEATER",
+          "IRON_T12_HEATER_CTRL",
+          "IRON_T12_MOTION_SW",
           "SWCLK",
           "SWDIO"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.5,
-        "via_diameter": 0.8,
+        "track_width": 0.3,
+        "via_diameter": 0.7,
         "via_drill": 0.4,
         "wire_width": 6.0
       }
