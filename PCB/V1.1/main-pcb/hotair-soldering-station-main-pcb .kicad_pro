@@ -55,7 +55,15 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "clearance|62611000|58674000|e980edfc-8292-453e-9895-1e90f3e668c2|6c31025a-c574-415b-b71c-ea7aed038a46",
+        "clearance|63856000|57556000|926b8375-ffaf-4fad-b3a8-409b91c6d808|6c31025a-c574-415b-b71c-ea7aed038a46",
+        "clearance|67691000|57556000|c9f58c8c-cc4a-47c0-9154-6c936f5fb1c8|6c31025a-c574-415b-b71c-ea7aed038a46",
+        "clearance|67691000|57556000|d9cf2d61-3126-40fe-a66d-ae5145f94be8|6c31025a-c574-415b-b71c-ea7aed038a46",
+        "clearance|67691000|58674000|8361a38f-a22f-43ae-a5b4-0655a5280e37|6c31025a-c574-415b-b71c-ea7aed038a46",
+        "track_dangling|77601000|87380000|49eb4ebd-581d-4974-8520-0d4dffff4b9e|00000000-0000-0000-0000-000000000000",
+        "track_dangling|77609000|88380000|c85fa509-f398-4de4-b976-4cb4d00cd65a|00000000-0000-0000-0000-000000000000"
+      ],
       "meta": {
         "filename": "board_design_settings.json",
         "version": 2
@@ -384,14 +392,14 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "hotair-soldering-station-main-pcb.kicad_pro",
+    "filename": "hotair-soldering-station-main-pcb .kicad_pro",
     "version": 1
   },
   "net_settings": {
     "classes": [
       {
         "bus_width": 12.0,
-        "clearance": 0.25,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -447,7 +455,7 @@
       },
       {
         "bus_width": 12.0,
-        "clearance": 0.25,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
