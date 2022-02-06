@@ -1,8 +1,12 @@
-MAIN PCB:
-
 V1.1
-Main PCB:
 - 3V3 regulator feedback resistors values fixed
 - Replace switchmode FAN converter to linear PWM
 - Add MAX31855 Thermocouple interface
 - Remove DC18B20
+- Change MCU to STM32F103C6T6
+- Change T12 6pin connector to two connector (5pin and 3pin)
+- Add menu buttons
+- Change display to LCD 2x16
+- Add two soldering irons interface - WEP and T12 
+- Change resistors in 230V heater controll circuit to smaller size
+- Fix fan controll MOSFET wrong orientation
