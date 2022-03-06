@@ -10,3 +10,7 @@ V1.1
 - Add two soldering irons interface - WEP and T12 
 - Change resistors in 230V heater controll circuit to smaller size
 - Fix fan controll MOSFET wrong orientation
+
+V1.2 TODO
+- Add 10n capacitor and 4k7 resistor on reset
+- Add 4k7 pullup resistor on debug uart

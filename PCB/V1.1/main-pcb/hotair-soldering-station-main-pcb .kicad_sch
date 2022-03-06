@@ -4503,6 +4503,11 @@
     (effects (font (size 5.9944 5.9944) (thickness 1.1989) bold) (justify left bottom))
     (uuid 42d3f9d6-2a47-41a8-b942-295fcb83bcd8)
   )
+  (text "If hotair temp. is measured by thermocouple\nsolder R1 resistor\ndo not solder R19 and R16\non C3 solder resistor anywhere between 0R-1M"
+    (at 89.535 281.305 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid 4ea4579d-5095-4a44-af25-12f1bba5192f)
+  )
   (text "Thermocouple amplifier" (at 179.07 215.9 0)
     (effects (font (size 2.4892 2.4892)) (justify left bottom))
     (uuid 78b44915-d68e-4488-a873-34767153ef98)
@@ -5565,7 +5570,7 @@
     (uuid 00000000-0000-0000-0000-00005f813d31)
     (property "Reference" "J2" (id 0) (at 523.875 65.6082 0))
     (property "Value" "FRONT_PANEL (IDC r. 2,54)" (id 1) (at 525.145 67.945 0))
-    (property "Footprint" "My-Footprints:Conn-01x14" (id 2) (at 522.605 78.74 0)
+    (property "Footprint" "My-Footprints:Conn-01x14-IDC" (id 2) (at 522.605 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 522.605 78.74 0)
@@ -6750,7 +6755,7 @@
     (property "Reference" "C2" (id 0) (at 107.696 250.9266 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "100n" (id 1) (at 107.696 253.238 0)
+    (property "Value" "10n" (id 1) (at 107.696 253.238 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Capacitors:0805" (id 2) (at 105.7402 255.905 0)
@@ -8086,7 +8091,7 @@
     (property "Reference" "R38" (id 0) (at 401.955 58.42 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "300R" (id 1) (at 396.875 57.15 90)
+    (property "Value" "xx" (id 1) (at 396.875 57.15 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Capacitors:0805" (id 2) (at 401.193 59.055 90)
@@ -8137,7 +8142,7 @@
     (property "Reference" "R40" (id 0) (at 401.955 67.945 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "300R" (id 1) (at 396.875 66.675 90)
+    (property "Value" "xx" (id 1) (at 396.875 66.675 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "Capacitors:0805" (id 2) (at 401.193 68.58 90)
@@ -8465,7 +8470,7 @@
       (reference "C1") (unit 1) (value "100n") (footprint "Capacitors:0805")
     )
     (path "/00000000-0000-0000-0000-000060e4b0d9"
-      (reference "C2") (unit 1) (value "100n") (footprint "Capacitors:0805")
+      (reference "C2") (unit 1) (value "10n") (footprint "Capacitors:0805")
     )
     (path "/00000000-0000-0000-0000-00006129441a"
       (reference "C3") (unit 1) (value "10n") (footprint "Capacitors:0805")
@@ -8534,7 +8539,7 @@
       (reference "J1") (unit 1) (value "230VAC_IN") (footprint "My-Footprints:Screw-Terminal-5.00mm-3pin")
     )
     (path "/00000000-0000-0000-0000-00005f813d31"
-      (reference "J2") (unit 1) (value "FRONT_PANEL (IDC r. 2,54)") (footprint "My-Footprints:Conn-01x14")
+      (reference "J2") (unit 1) (value "FRONT_PANEL (IDC r. 2,54)") (footprint "My-Footprints:Conn-01x14-IDC")
     )
     (path "/00000000-0000-0000-0000-00005f97bd89"
       (reference "J3") (unit 1) (value "EARTH_GND") (footprint "My-Footprints:Screw-Terminal-5.00mm-2pin")
@@ -8720,13 +8725,13 @@
       (reference "R37") (unit 1) (value "4,7k") (footprint "Capacitors:0805")
     )
     (path "/00000000-0000-0000-0000-000061c9824b"
-      (reference "R38") (unit 1) (value "300R") (footprint "Capacitors:0805")
+      (reference "R38") (unit 1) (value "xx") (footprint "Capacitors:0805")
     )
     (path "/00000000-0000-0000-0000-000061c4bdf0"
       (reference "R39") (unit 1) (value "300R") (footprint "Capacitors:0805")
     )
     (path "/4e1612ff-a765-47e6-b496-7d3286644f48"
-      (reference "R40") (unit 1) (value "300R") (footprint "Capacitors:0805")
+      (reference "R40") (unit 1) (value "xx") (footprint "Capacitors:0805")
     )
     (path "/00000000-0000-0000-0000-00005f7da3cf"
       (reference "U1") (unit 1) (value "MOC3041M") (footprint "Housings_DIP:DIP-6_W7.62mm_LongPads")
