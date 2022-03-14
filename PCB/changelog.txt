@@ -14,3 +14,6 @@ V1.1
 V1.2 TODO
 - Add 10n capacitor and 4k7 resistor on reset
 - Add 4k7 pullup resistor on debug uart
+- Chane Fan regulator resistors: R7 - 2.2k, R10 - 15k, R14 - 33k, R15 - 2k2.
+
+
