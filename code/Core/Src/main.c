@@ -31,6 +31,8 @@
 #include "retarget.h"
 #include "LCD16x2/LCD.h"
 #include "MAX31855/MAX31855.h"
+#include "utils.h"
+#include "test_wep.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -99,31 +101,24 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM4_Init();
   MX_USART2_UART_Init();
+
   /* USER CODE BEGIN 2 */
+  Start_generic_timer();
 
+  //Init printf retarget
+  RetargetInit(&huart2);
 
+  //Init LCD display
   LCD_Init();
   LCD_DisplayOn();
   LCD_Clear();
-  LCD_Puts(0,0,"test");
 
 
-  RetargetInit(&huart2);
   HAL_TIM_PWM_Start(&htim4,TIM_CHANNEL_1);
- // HAL_TIM_Base_Init(&htim3);
- // HAL_NVIC_EnableIRQ(TIM3_IRQn);
-  //HAL_TIM_Base_Start_IT(&htim3);
   HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
 
 
-  uint16_t counter=0;
-  char str[12];
-
-  float temp=0;	// Variable to get Temperature
-  char lcd[16];
-
-  	  HAL_GPIO_WritePin(MAX31855_IRON_CS_GPIO_Port,MAX31855_IRON_CS_Pin,GPIO_PIN_SET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -134,6 +129,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+
+	  Test_WEP();
+
+
 /*
 	  printf("Hello! \r\n");
 	  LCD_Clear();
@@ -141,29 +141,6 @@ int main(void)
 	  LCD_Puts(0,0,str);
 	    counter++;
 	  */
-
-	  temp=Max31855_Read_Temp(); 			// Gets Temperature from MAX31855
-	  sprintf(lcd,"T=%3d",(int)temp);		// Conversation to Char
-	  LCD_Clear();
-	  LCD_Puts(0, 0, lcd); 			// LCD Show
-	  switch(Error){
-	  case 0:
-		  LCD_Puts(0, 1,"NORMAL          ");
-	  	break;
-	  case 1:
-		  LCD_Puts(0, 1,"OPEN CONNECTION ");
-	  	break;
-	  case 2:
-		  LCD_Puts(0, 1,"SHORT TO GND    ");
-	  	break;
-	  case 4:
-		  LCD_Puts(0, 1,"SHORT TO VCC    ");
-	  	break;
-	  default:
-	  	break;
-	  }
-	  HAL_Delay(1000);
-
 
 
   }

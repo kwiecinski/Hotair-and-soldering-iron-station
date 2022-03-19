@@ -1,60 +1,89 @@
-/*************************************************************************************
- Title	 :  MAXIM Integrated MAX31855 Library for STM32 Using HAL Libraries
- Author  :  Bardia Alikhan Afshar <bardia.a.afshar@gmail.com>
- Software:  STM32CubeIDE
- Hardware:  Any STM32 device
-*************************************************************************************/
 #include <string.h>
 #include <stdio.h>
 
 #include"MAX31855.h"
 #include "spi.h"
-// ------------------- Variables ----------------
 
-uint8_t Error=0;                                      // Thermocouple Connection acknowledge Flag
-uint32_t sign=0;									  // Sign bit
-uint8_t SPI_BUFF[4],DATARX[4];                                    // Raw Data from MAX6675
+
+
 // ------------------- Functions ----------------
-float Max31855_Read_Temp(void)
+void Max31855_Read_Temp(MAX_TEMP_DATA *max_data, uint8_t chip_select)
 {
-	int Temp=0;                                           // Temperature Variable
+	uint8_t SPI_BUFF[4],DATARX[4]; 						 // Raw Data from MAX6675
 
-	HAL_GPIO_WritePin(SSPORT,SSPIN,GPIO_PIN_RESET);       // Low State for SPI Communication
-	HAL_SPI_Receive(&hspi1,SPI_BUFF,4,1);                // DATA Transfer
-	HAL_GPIO_WritePin(SSPORT,SSPIN,GPIO_PIN_SET);         // High State for SPI Communication
+	max_data->get_temperature=0;
+	max_data->get_cold_junction_temperature=0;
+	max_data->error=0;
 
+
+	if(chip_select==READ_HOTAIR)
+	{
+		HAL_GPIO_WritePin(SSPORT_HOTAIR,SSPIN_HOTAIR,GPIO_PIN_RESET);      // Low State for SPI Communication
+		HAL_SPI_Receive(&hspi1,SPI_BUFF,4,1);                // DATA Transfer
+		HAL_GPIO_WritePin(SSPORT_HOTAIR,SSPIN_HOTAIR,GPIO_PIN_SET);        // High State for SPI Communication
+
+	}else if(chip_select==READ_IRON)
+	{
+
+		HAL_GPIO_WritePin(SSPORT_IRON,SSPIN_IRON,GPIO_PIN_RESET);      // Low State for SPI Communication
+		HAL_SPI_Receive(&hspi1,SPI_BUFF,4,1);                // DATA Transfer
+		HAL_GPIO_WritePin(SSPORT_IRON,SSPIN_IRON,GPIO_PIN_SET);        // High State for SPI Communication
+	}
+
+
+	// There is some weird problem in HAL_SPI_Receive, it write data not in correct order.
+	// The last byte is first. For clarity i switched bytes in correct order.
 	DATARX[3]=SPI_BUFF[0];
 	DATARX[0]=SPI_BUFF[1];
 	DATARX[1]=SPI_BUFF[2];
 	DATARX[2]=SPI_BUFF[3];
 
-	for(uint8_t i=0;i<4;i++)
-	{
-	  printf("%d:%X ",i,DATARX[i]);
-	}
-	printf("\n\r");
 
-	Error=DATARX[3]&0x07;								  // Error Detection
-	sign=(DATARX[0]&(0x80))>>7;							  // Sign Bit calculation
+	max_data->error=DATARX[3]&0x07;								  // Error Detection
+    uint8_t sign=(DATARX[0]&(0x80))>>7;							  // Sign Bit for thermocouple
 
 
 
 	if(DATARX[3] & 0x07)
 	{
-		// Returns Error Number
-		return(-1*(DATARX[3] & 0x07));
-	}
-		else if(sign==1)
-		{									  // Negative Temperature
-			Temp = (DATARX[0] << 6) | (DATARX[1] >> 2);
-			Temp&=0b01111111111111;
-			Temp^=0b01111111111111;
-			return((double)-Temp/4);
-		}
+		max_data->error= DATARX[3] & 0x07;
+		// error, no temperature can be measured
+		return;
+	}else if(sign==1)
+	{
+		// Negative Temperature
+		//14-Bit Thermocouple Temperature Data - DATARX[0] all 8 bit and DATARX[1] first 6 bits
+		max_data->get_temperature = ((DATARX[0] << 8) | DATARX[1])>>2;
+		max_data->get_temperature &= 0b01111111111111;
+		max_data->get_temperature ^= 0b01111111111111;
+		// I subtract -0.25 because -0.25= 0b1111 1111 1111 11 (from datasheet example)
+		max_data->get_temperature = (float)-max_data->get_temperature/4-0.25;
 
-		else												  // Positive Temperature
+	}else								 // Positive Temperature
+	{
+		max_data->get_temperature = ((DATARX[0] << 8) | DATARX[1])>>2;
+		max_data->get_temperature = (float)max_data->get_temperature/4;
+
+	}
+
+	max_data->error=0;
+	sign=(DATARX[2]&(0x80))>>7;	// Sign Bit for reference junction
+
+	if(sign==1)
 		{
-			Temp = (DATARX[0] << 6) | (DATARX[1] >> 2);
-			return((double)Temp / 4);
+			// Negative Temperature
+			//12-Bit reference junction temperature data - DATARX[2] all 8 bit and DATARX[3] first 4 bits
+			max_data->get_cold_junction_temperature = ((DATARX[2] << 8) | DATARX[3])>>4;
+			max_data->get_cold_junction_temperature &= 0b01111111111111;
+			max_data->get_cold_junction_temperature ^= 0b01111111111111;
+			// I subtract -0.25 because -0.25= 0b1111 1111 1111 11 (from datasheet example)
+			max_data->get_cold_junction_temperature = (float)-max_data->get_cold_junction_temperature/16-0.0625;
+			return;
+
+	}else								 // Positive Temperature
+		{
+			max_data->get_cold_junction_temperature = ((DATARX[2] << 8) | DATARX[3])>>4;
+			max_data->get_cold_junction_temperature = (float)max_data->get_cold_junction_temperature/16;
+			return;
 		}
 }

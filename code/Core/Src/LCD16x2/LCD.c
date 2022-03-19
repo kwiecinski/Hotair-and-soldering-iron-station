@@ -8,6 +8,11 @@
 
 #include "LCD.h"
 #include "LCD_Config.h"
+#include "tim.h"
+#include "utils.h"
+
+#define HW_DELAY 1
+
 #if _LCD_USE_FREERTOS==1
 #include "cmsis_os.h"
 #endif
@@ -68,12 +73,23 @@ static LCD_Options_t LCD_Opts;
 #define LCD_5x10DOTS            0x04
 #define LCD_5x8DOTS             0x00
 //############################################################################################
+#if HW_DELAY==0
 void  LCD_Delay_us(uint16_t  us)
 {
   uint32_t  Div = (SysTick->LOAD+1)/1000;
   uint32_t  StartMicros = HAL_GetTick()*1000 + (1000- SysTick->VAL/Div);
-  while((HAL_GetTick()*1000 + (1000-SysTick->VAL/Div)-StartMicros < us));  
+  while((HAL_GetTick()*1000 + (1000-SysTick->VAL/Div)-StartMicros < us));
 }
+#else
+
+void  LCD_Delay_us(uint16_t  us)
+{
+	Delay_us(us);
+}
+
+#endif
+
+
 //############################################################################################
 void  LCD_Delay_ms(uint8_t  ms)
 {
