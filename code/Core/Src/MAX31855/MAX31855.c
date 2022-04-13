@@ -4,9 +4,11 @@
 #include"MAX31855.h"
 #include "spi.h"
 
-
-
-// ------------------- Functions ----------------
+/**
+  * Reads data from MAX31855 chip.
+  * Inputs: pointer to MAX_TEMP_DATA struct, selected chip
+  * Outputs: thermocuple temp, cold junction temp, errors
+  */
 void Max31855_Read_Temp(MAX_TEMP_DATA *max_data, uint8_t chip_select)
 {
 	uint8_t SPI_BUFF[4],DATARX[4]; 						 // Raw Data from MAX6675
@@ -19,14 +21,15 @@ void Max31855_Read_Temp(MAX_TEMP_DATA *max_data, uint8_t chip_select)
 	if(chip_select==READ_HOTAIR)
 	{
 		HAL_GPIO_WritePin(SSPORT_HOTAIR,SSPIN_HOTAIR,GPIO_PIN_RESET);      // Low State for SPI Communication
-		HAL_SPI_Receive(&hspi1,SPI_BUFF,4,1);                // DATA Transfer
+		HAL_SPI_Receive(&hspi1,SPI_BUFF,4,2);                // DATA Transfer
+		HAL_Delay(1);
 		HAL_GPIO_WritePin(SSPORT_HOTAIR,SSPIN_HOTAIR,GPIO_PIN_SET);        // High State for SPI Communication
-
 	}else if(chip_select==READ_IRON)
 	{
 
 		HAL_GPIO_WritePin(SSPORT_IRON,SSPIN_IRON,GPIO_PIN_RESET);      // Low State for SPI Communication
-		HAL_SPI_Receive(&hspi1,SPI_BUFF,4,1);                // DATA Transfer
+		HAL_SPI_Receive(&hspi1,SPI_BUFF,4,2);                // DATA Transfer
+		HAL_Delay(1);
 		HAL_GPIO_WritePin(SSPORT_IRON,SSPIN_IRON,GPIO_PIN_SET);        // High State for SPI Communication
 	}
 
@@ -38,7 +41,7 @@ void Max31855_Read_Temp(MAX_TEMP_DATA *max_data, uint8_t chip_select)
 	DATARX[1]=SPI_BUFF[2];
 	DATARX[2]=SPI_BUFF[3];
 
-
+	//printf("%d %d %d %d \n\r", DATARX[0],DATARX[1],DATARX[2],DATARX[3] );
 	max_data->error=DATARX[3]&0x07;								  // Error Detection
     uint8_t sign=(DATARX[0]&(0x80))>>7;							  // Sign Bit for thermocouple
 

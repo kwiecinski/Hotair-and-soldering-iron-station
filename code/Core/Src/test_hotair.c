@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "main.h"
 #include "adc.h"
+#include "adc_functions.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
@@ -10,13 +11,13 @@
 #include "LCD16x2/LCD.h"
 #include "utils.h"
 
-void Show_MAX_data_LCD(MAX_TEMP_DATA *data, int16_t compensaded_temp)
+void Show_HOTAIR_data(MAX_TEMP_DATA *data, int16_t compensaded_temp)
 {
 
 		char lcd[10];
 		sprintf(lcd,"T%-3d",compensaded_temp);			// Conversation to Char
 		LCD_Clear();
-		LCD_Puts(0,0,"TEST WEP");
+		LCD_Puts(0,0,"TEST HAR");
 		LCD_Puts(9, 0, lcd);
 		sprintf(lcd,"%-2d",data->get_cold_junction_temperature);
 		LCD_Puts(14, 0, lcd);
@@ -58,26 +59,42 @@ void Show_MAX_data_LCD(MAX_TEMP_DATA *data, int16_t compensaded_temp)
  * duration time in ms
  */
 
-void Set_WEP_PWM(uint32_t duty_cycle, uint32_t frequency)
+void Set_Fan_PWM(uint8_t ducy_cycle)
 {
-	HAL_GPIO_WritePin(IRON_WEP_HEATER_CTRL_GPIO_Port, IRON_WEP_HEATER_CTRL_Pin, GPIO_PIN_SET);
-	Delay_us(1000000/frequency*(duty_cycle)/100);
-	HAL_GPIO_WritePin(IRON_WEP_HEATER_CTRL_GPIO_Port, IRON_WEP_HEATER_CTRL_Pin, GPIO_PIN_RESET);
-	Delay_us(1000000/frequency*(100-(duty_cycle))/100);
+
+	TIM_OC_InitTypeDef sConfigOC = {0};
+	sConfigOC.OCMode = TIM_OCMODE_PWM1;
+	sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+	sConfigOC.OCNPolarity = TIM_OCNPOLARITY_HIGH;
+	sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+	sConfigOC.OCIdleState = TIM_OCIDLESTATE_RESET;
+	sConfigOC.OCNIdleState = TIM_OCNIDLESTATE_RESET;
+
+
+	HAL_TIM_PWM_Stop(&htim1,TIM_CHANNEL_1);
+	sConfigOC.Pulse = htim1.Init.Period*ducy_cycle/100;
+	HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_1);
+	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
 }
 
+//time in ms - minimu time 25ms
+void Set_HOTAIR_Time(uint16_t time)
+{
+	HAL_GPIO_WritePin(HOTAIR_HEATER_CTRL_GPIO_Port, HOTAIR_HEATER_CTRL_Pin , GPIO_PIN_SET);
+	HAL_Delay(time);
+	HAL_GPIO_WritePin(HOTAIR_HEATER_CTRL_GPIO_Port, HOTAIR_HEATER_CTRL_Pin , GPIO_PIN_RESET);
+}
 
-void Test_WEP(void)
+void Test_HOTAIR(void)
 {
 	MAX_TEMP_DATA data;
 	MAX_TEMP_DATA data_old;
 	const uint16_t set_temp=320;		// target  TIP temp
-	const uint16_t frequency=1000;		// switch frequency in Hz
-	int16_t cnt;
 	int16_t compensaded_temp;
 
 
-	printf("Testing WEP soldering iron, heating to %d \r\n",set_temp);
+
+	printf("Testing HOTAIR, heating to %d \r\n",set_temp);
 
 	while(1)
 	{
@@ -86,66 +103,50 @@ void Test_WEP(void)
 		// Even that the transistor is turned off due to the self-induction voltage (the heater has a slight inductance)
 		// It inject some noise to de thermocouple system.
 		// Need to experiment to achieve optimal time
-		HAL_GPIO_WritePin(IRON_WEP_HEATER_CTRL_GPIO_Port, IRON_WEP_HEATER_CTRL_Pin, GPIO_PIN_RESET);
+
+		 Set_Fan_PWM(30);
+
 		HAL_Delay(10);
-		Max31855_Read_Temp(&data,READ_IRON);
+		Max31855_Read_Temp(&data,READ_HOTAIR);
 		HAL_Delay(10);
 
 		// Compensation equation calculated from excel
-		compensaded_temp=(data.get_temperature*69+500)/100;
+		//compensaded_temp=(data.get_temperature*69+500)/100;
+		compensaded_temp=data.get_temperature;
 
-		// Update LCD and send to debug uart if temp values or error status change
 		if((data_old.get_temperature != data.get_temperature) |
 		   (data_old.get_cold_junction_temperature != data.get_cold_junction_temperature) |
 		   (data_old.get_temperature != data.get_temperature) |
 		   (data_old.error != data.error))
 		{
 
-			Show_MAX_data_LCD(&data,compensaded_temp);
+			Show_HOTAIR_data(&data,compensaded_temp);
 		}
 
-		data_old.error=data.error;
-		data_old.get_cold_junction_temperature=data.get_cold_junction_temperature;
-		data_old.get_temperature=data.get_temperature;
-
-		if(data.error != MAX31855_THERMOCOUPLE_OK)
-		{
-			HAL_GPIO_WritePin(IRON_WEP_HEATER_CTRL_GPIO_Port, IRON_WEP_HEATER_CTRL_Pin, GPIO_PIN_RESET);
-
-		}else
+		if(compensaded_temp<set_temp)
 		{
 			if(compensaded_temp<set_temp/4)
 			{
-				cnt=frequency;
-				while(cnt)
-				{
-					Set_WEP_PWM(100,frequency);
-					cnt--;
-				}
+				Set_HOTAIR_Time(400);
+
 			}else if(compensaded_temp>=set_temp/4 && compensaded_temp<set_temp/2)
 			{
-				cnt=frequency;
-				while(cnt)
-				{
-					Set_WEP_PWM(75,frequency);
-					cnt--;
-				}
+
+				Set_HOTAIR_Time(200);
 
 			}else if(compensaded_temp>=set_temp/2 && compensaded_temp<set_temp)
 			{
-				cnt=frequency;
-				while(cnt)
-				{
-					Set_WEP_PWM(50,frequency);
-					cnt--;
-				}
-
-			}else if(compensaded_temp>=set_temp)
-			{
-				Set_WEP_PWM(0,frequency);
-				LCD_Puts(10, 1,"      ");
-				LCD_Puts(10, 1,"HEATED");
+				Set_HOTAIR_Time(100);
 			}
-		} //else end
+
+		}else
+		{
+			printf("HEATED");
+			LCD_Puts(10, 1,"      ");
+			LCD_Puts(10, 1,"HEATED");
+		}
+
+		HAL_Delay(500);
 	} //while end
+
 }

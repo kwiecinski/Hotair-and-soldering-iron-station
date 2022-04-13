@@ -11,7 +11,10 @@
 #include "tim.h"
 #include "utils.h"
 
-#define HW_DELAY 1
+#define HW_DELAY 			1
+#define BACKLIGHT_ON  		HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2)
+#define BACKLIGHT_OFF  		HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_2)
+
 
 #if _LCD_USE_FREERTOS==1
 #include "cmsis_os.h"
@@ -102,6 +105,9 @@ void  LCD_Delay_ms(uint8_t  ms)
 //############################################################################################
 void LCD_Init(void)
 {	
+
+  BACKLIGHT_ON;
+
   GPIO_InitTypeDef  gpio;
   gpio.Mode = GPIO_MODE_OUTPUT_PP;
   gpio.Speed = GPIO_SPEED_FREQ_HIGH;
