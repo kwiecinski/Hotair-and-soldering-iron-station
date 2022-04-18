@@ -20,23 +20,28 @@ typedef struct
 }T12_TEMP_DATA;
 
 
-#define OPAMP_GAIN 200
+#define OPAMP_GAIN 					200
 #define THERMOCOUPLE_COEFFICIENT 	0.021		// mv/C
-#define AMBIENT_TEMP		20					// TODO - need to read this from MAX31855 or uC internat temp sensor
+#define AMBIENT_TEMP				20			// TODO - need to read this from MAX31855 or uC internat temp sensor
 
 
-void Show_T12_data(int16_t compensaded_temp)
+void Show_T12_data(int16_t compensaded_temp, float temp_voltage)
 {
 
-		char lcd[10];
-		sprintf(lcd,"T%-3d",compensaded_temp);			// Conversation to Char
-		LCD_Clear();
-		LCD_Puts(0,0,"TEST T12");
-		//LCD_Puts(9, 0, lcd);
-		//sprintf(lcd,"%-2d",data->get_cold_junction_temperature);
-		//LCD_Puts(14, 0, lcd);
+	// show on LCD
+	char lcd[10];
+	sprintf(lcd,"T%-3d",compensaded_temp);			// Conversation to Char
+	LCD_Clear();
+	LCD_Puts(0,0,"TEST T12");
+	LCD_Puts(12, 0, lcd);							// show temp
+	sprintf(lcd,"V%-.1f",temp_voltage);
+	LCD_Puts(0, 1, lcd);							// show ADC temp voltage
 
-		printf("T12 tip temp:%u[C]\r\n",compensaded_temp);
+
+	// send via UART
+	printf("T12 tip temp:%u[C]\r\n",compensaded_temp);
+	printf("Thermocouple voltage: %.1f[mV] \r\n",temp_voltage);
+
 
 }
 
@@ -46,13 +51,17 @@ void Test_T12(void)
 
 	const uint16_t set_temp=320;		// target  TIP temp
 	const uint16_t frequency=1000;		// switch frequency in Hz
+	int16_t compensaded_temp,compensaded_temp_old;
+	float temp,temp_voltage;
+	uint8_t htd_cnt=0;
+
+	//PWM channel config
 	TIM_OC_InitTypeDef sConfigOC = {0};
 	sConfigOC.OCMode = TIM_OCMODE_PWM1;
 	sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
 	sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
 
-	int16_t compensaded_temp,compensaded_temp_old;
-	float temp;
+
 
 	printf("Testing T12 soldering iron, heating to %d \r\n",set_temp);
 
@@ -67,7 +76,9 @@ void Test_T12(void)
 
 			HAL_TIM_PWM_Stop(&htim4,TIM_CHANNEL_1);
 			HAL_Delay(20);
-			temp=((ADC_Read_Voltage(T12_ADC_INPUT)/OPAMP_GAIN) + AMBIENT_TEMP*THERMOCOUPLE_COEFFICIENT)/THERMOCOUPLE_COEFFICIENT;
+
+			temp_voltage=ADC_Read_Voltage(T12_ADC_INPUT);
+			temp=((temp_voltage/OPAMP_GAIN) + AMBIENT_TEMP*THERMOCOUPLE_COEFFICIENT)/THERMOCOUPLE_COEFFICIENT;
 
 
 
@@ -79,7 +90,7 @@ void Test_T12(void)
 
 		if(compensaded_temp!=compensaded_temp_old)
 		{
-			Show_T12_data(compensaded_temp);
+			Show_T12_data(compensaded_temp,temp_voltage);
 		}
 
 		compensaded_temp_old=compensaded_temp;
@@ -108,16 +119,16 @@ void Test_T12(void)
 
 		}else
 		{
-
-			/*
-			sConfigOC.Pulse = htim4.Init.Period/2;
-			HAL_TIM_PWM_ConfigChannel(&htim4, &sConfigOC, TIM_CHANNEL_1);
-			HAL_TIM_PWM_Start(&htim4,TIM_CHANNEL_1);
-			while(1){}
-			*/
 			HAL_TIM_PWM_Stop(&htim4,TIM_CHANNEL_1);
 			LCD_Puts(10, 1,"      ");
 			LCD_Puts(10, 1,"HEATED");
+			Buzzer(1000);
+			HAL_Delay(3000);
+			htd_cnt++;
+			if(htd_cnt>2)
+			{
+				break;
+			}
 		}
 
 	} //while end

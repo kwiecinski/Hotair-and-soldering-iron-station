@@ -18,7 +18,7 @@
 #define ADC_FAN_DIVIDER_TOP    	33000
 #define ADC_FAN_DIVIDER_BOTTOM 	2200
 
-#define VREFINT		(uint16_t) 1200
+#define VREFINT		             1200
 // #define VREFINT_CAL_ADDR ((uint16_t*)((uint32_t)0x1FFFF7BA))  // In STM32F103 no such register
 
 #define ADC_FAN_CHANNEL 		ADC_CHANNEL_1
@@ -50,15 +50,12 @@ uint16_t ADC_Read_Raw(uint32_t channel)
 
 	HAL_ADC_ConfigChannel(&hadc1, &adc_ch);
 	//end channel selection
-	HAL_Delay(1);
 	HAL_ADC_Start(&hadc1);
-	HAL_Delay(1);
 
 	while(HAL_ADC_PollForConversion(&hadc1, 1000)!=HAL_OK)
 	{
 	}
 
-	HAL_Delay(1);
 	adc_value = HAL_ADC_GetValue(&hadc1);
 	HAL_ADC_Stop(&hadc1);
 
@@ -94,7 +91,6 @@ float ADC_Read_Voltage(uint8_t adc_input)
 {
 
 	const uint8_t number_of_samples=50;
-	uint16_t value;
 	float sum;
 
 
@@ -115,8 +111,8 @@ float ADC_Read_Voltage(uint8_t adc_input)
 				sum = sum + ADC_Read_Raw(ADC_FAN_CHANNEL);
 			}
 
-			sum = sum / (uint32_t) number_of_samples;
-
+			sum = sum / number_of_samples;
+			ADC_Read_Refrence();		//dummy read refrence
 			sum = ADC_Read_Refrence() * sum / FULL_SCALE_ADC;
 			return (sum * (ADC_FAN_DIVIDER_BOTTOM + ADC_FAN_DIVIDER_TOP) / ADC_FAN_DIVIDER_BOTTOM);
 
@@ -128,8 +124,8 @@ float ADC_Read_Voltage(uint8_t adc_input)
 				sum = sum + ADC_Read_Raw(ADC_HOTAIR_CHANNEL);
 			}
 
-			sum = sum / (uint32_t) number_of_samples;
-
+			sum = sum / number_of_samples;
+			ADC_Read_Refrence();		//dummy read refrence
 			sum = ADC_Read_Refrence() *  sum / FULL_SCALE_ADC;
 			return sum;
 
@@ -140,8 +136,8 @@ float ADC_Read_Voltage(uint8_t adc_input)
 			{
 				sum = sum + ADC_Read_Raw(ADC_T12_CHANNEL);
 			}
-			sum = sum / (float) number_of_samples;
-
+			sum = sum /  number_of_samples;
+			ADC_Read_Refrence();		//dummy read refrence
 			sum = (ADC_Read_Refrence() * sum) / FULL_SCALE_ADC;
 
 			return sum ;

@@ -35,6 +35,7 @@
 #include "test_wep.h"
 #include "adc_functions.h"
 #include "test_t12.h"
+#include "test_buttons.h"
 
 /* USER CODE END Includes */
 
@@ -118,11 +119,6 @@ int main(void)
 
   Init_ADC();
 
-
-
-
-
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -136,8 +132,8 @@ int main(void)
 
 	 //Test_WEP();
 	 //Test_T12();
-	  Test_HOTAIR();
-	  HAL_Delay(1000);
+	 //Test_HOTAIR();
+	  Test_Buttons();
 
   }
   /* USER CODE END 3 */

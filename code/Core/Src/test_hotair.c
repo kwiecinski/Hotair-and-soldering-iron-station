@@ -11,54 +11,34 @@
 #include "LCD16x2/LCD.h"
 #include "utils.h"
 
-void Show_HOTAIR_data(MAX_TEMP_DATA *data, int16_t compensaded_temp)
+
+#define OPAMP_GAIN 					123			// read from schematic - non-inverting opamp gain
+#define THERMOCOUPLE_COEFFICIENT 	0.040		// mv/C
+#define AMBIENT_TEMP				20			// TODO - need to read this from MAX31855 or uC internat temp sensor
+
+
+void Show_HOTAIR_data(int16_t compensaded_temp, float temp_voltage, float fan_voltage)
 {
 
-		char lcd[10];
-		sprintf(lcd,"T%-3d",compensaded_temp);			// Conversation to Char
-		LCD_Clear();
-		LCD_Puts(0,0,"TEST HAR");
-		LCD_Puts(9, 0, lcd);
-		sprintf(lcd,"%-2d",data->get_cold_junction_temperature);
-		LCD_Puts(14, 0, lcd);
+	// show on LCD
+	char lcd[10];
+	sprintf(lcd,"T%-3d",compensaded_temp);			// Conversation to Char
+	LCD_Clear();
+	LCD_Puts(0,0,"TEST HOTAIR");
+	LCD_Puts(12, 0, lcd);							// show temp
+	sprintf(lcd,"V%-.1f",temp_voltage);
+	LCD_Puts(0, 1, lcd);							// show ADC temp voltage
+	sprintf(lcd,"F%-.1f",fan_voltage/1000);
+	LCD_Puts(8, 1, lcd);							// show ADC fan  voltage
 
-    // Send to LCD
-	switch(data->error)
-	{
-		case MAX31855_THERMOCOUPLE_OK: 				LCD_Puts(0, 1,"NORMAL");
-		break;
-		case MAX31855_THERMOCOUPLE_OPEN_CIRCUIT:    LCD_Puts(0, 1,"OPEN ");
-		break;
-		case MAX31855_THERMOCOUPLE_SHORT_TO_GND:    LCD_Puts(0, 1,"SHORT GND");
-		break;
-		case MAX31855_THERMOCOUPLE_SHORT_TO_VCC:    LCD_Puts(0, 1,"SHORT VCC");
-		break;
-		default:
-		break;
-	}
-	 // Send to debug uart
-	switch(data->error)
-	{
-		case MAX31855_THERMOCOUPLE_OK:				printf("Iron compensated temp: %d%cC\r\n",compensaded_temp,'\xF8');
-													printf("Iron temp: %d%cC\r\n",data->get_temperature,'\xF8');
-		break;
-		case MAX31855_THERMOCOUPLE_OPEN_CIRCUIT:    printf("MAX ERROR: Open circuit \r\n");
-		break;
-		case MAX31855_THERMOCOUPLE_SHORT_TO_GND:    printf("MAX ERROR: Short to GND \r\n");
-		break;
-		case MAX31855_THERMOCOUPLE_SHORT_TO_VCC:    printf("MAX ERROR: Short to VCC \r\n");
-		break;
-		default:
-		break;
-	}
+	// send via UART
+	printf("HOTAIR tip temp:%u[C]\r\n",compensaded_temp);
+	printf("Thermocouple voltage: %.1f[mV] \r\n",temp_voltage);
+	printf("Fan voltage: %.1f[V] \r\n\r\n",fan_voltage/1000);
 }
 
 
-/* Generate software PWM
- * frequency in Hz - minimum 16Hz, maximum 6553Hz
- * duration time in ms
- */
-
+// Set fan PWM using HW PWM, ducy cycle from 0-100
 void Set_Fan_PWM(uint8_t ducy_cycle)
 {
 
@@ -77,7 +57,7 @@ void Set_Fan_PWM(uint8_t ducy_cycle)
 	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
 }
 
-//time in ms - minimu time 25ms
+// time in ms - minimum time 25ms
 void Set_HOTAIR_Time(uint16_t time)
 {
 	HAL_GPIO_WritePin(HOTAIR_HEATER_CTRL_GPIO_Port, HOTAIR_HEATER_CTRL_Pin , GPIO_PIN_SET);
@@ -85,68 +65,61 @@ void Set_HOTAIR_Time(uint16_t time)
 	HAL_GPIO_WritePin(HOTAIR_HEATER_CTRL_GPIO_Port, HOTAIR_HEATER_CTRL_Pin , GPIO_PIN_RESET);
 }
 
+// Test heater and temp sensor for hotair
 void Test_HOTAIR(void)
 {
-	MAX_TEMP_DATA data;
-	MAX_TEMP_DATA data_old;
 	const uint16_t set_temp=320;		// target  TIP temp
-	int16_t compensaded_temp;
+	int16_t compensaded_temp,compensaded_temp_old;
+	float temp, temp_voltage, fan_voltage;
 
+	printf("Testing HOTAIR, heating to %d[C] \r\n",set_temp);
 
-
-	printf("Testing HOTAIR, heating to %d \r\n",set_temp);
+	Set_Fan_PWM(50);
 
 	while(1)
 	{
-		// Important delay, without it MAX won't correctly measure.
-		// Noise occurs because the thermocouple test leads run parallel to the heating leads.
-		// Even that the transistor is turned off due to the self-induction voltage (the heater has a slight inductance)
-		// It inject some noise to de thermocouple system.
-		// Need to experiment to achieve optimal time
+		HAL_Delay(10);					// wait to all transients settle down
 
-		 Set_Fan_PWM(30);
+		temp_voltage=ADC_Read_Voltage(HOTAIR_ADC_INPUT);
+		fan_voltage=ADC_Read_Voltage(FAN_ADC_INPUT);
+		temp=((temp_voltage/OPAMP_GAIN) + AMBIENT_TEMP*THERMOCOUPLE_COEFFICIENT)/THERMOCOUPLE_COEFFICIENT;
 
 		HAL_Delay(10);
-		Max31855_Read_Temp(&data,READ_HOTAIR);
-		HAL_Delay(10);
 
-		// Compensation equation calculated from excel
-		//compensaded_temp=(data.get_temperature*69+500)/100;
-		compensaded_temp=data.get_temperature;
+		compensaded_temp=(int16_t)temp;
 
-		if((data_old.get_temperature != data.get_temperature) |
-		   (data_old.get_cold_junction_temperature != data.get_cold_junction_temperature) |
-		   (data_old.get_temperature != data.get_temperature) |
-		   (data_old.error != data.error))
+		// show on LCD and send to UART only if temp change
+		if(compensaded_temp!=compensaded_temp_old)
 		{
-
-			Show_HOTAIR_data(&data,compensaded_temp);
+			Show_HOTAIR_data(compensaded_temp, temp_voltage, fan_voltage);
 		}
+		compensaded_temp_old=compensaded_temp;
 
+		// simple temp regulator
 		if(compensaded_temp<set_temp)
 		{
 			if(compensaded_temp<set_temp/4)
 			{
-				Set_HOTAIR_Time(400);
+				Set_HOTAIR_Time(500);
 
 			}else if(compensaded_temp>=set_temp/4 && compensaded_temp<set_temp/2)
 			{
 
-				Set_HOTAIR_Time(200);
+				Set_HOTAIR_Time(400);
 
 			}else if(compensaded_temp>=set_temp/2 && compensaded_temp<set_temp)
 			{
-				Set_HOTAIR_Time(100);
+				Set_HOTAIR_Time(200);
 			}
 
 		}else
 		{
 			printf("HEATED");
-			LCD_Puts(10, 1,"      ");
-			LCD_Puts(10, 1,"HEATED");
+			LCD_Puts(13, 1,"HTD");
 		}
 
 		HAL_Delay(500);
-	} //while end
+
+	} // while end
 
 }

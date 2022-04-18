@@ -72,8 +72,8 @@ void Test_WEP(void)
 	MAX_TEMP_DATA data;
 	MAX_TEMP_DATA data_old;
 	const uint16_t set_temp=320;		// target  TIP temp
-	const uint16_t frequency=1000;		// switch frequency in Hz
-	int16_t cnt;
+	const uint16_t frequency=25000;		// switch frequency in Hz
+	int16_t cnt, htd_cnt=0;
 	int16_t compensaded_temp;
 
 
@@ -136,15 +136,23 @@ void Test_WEP(void)
 				cnt=frequency;
 				while(cnt)
 				{
-					Set_WEP_PWM(50,frequency);
+					Set_WEP_PWM(60,frequency);
 					cnt--;
 				}
 
 			}else if(compensaded_temp>=set_temp)
 			{
 				Set_WEP_PWM(0,frequency);
-				LCD_Puts(10, 1,"      ");
-				LCD_Puts(10, 1,"HEATED");
+				LCD_Puts(13, 1,"HTD");
+				Buzzer(1000);
+				HAL_Delay(3000);
+				htd_cnt++;
+				if(htd_cnt>2)
+				{
+					break;
+				}
+
+
 			}
 		} //else end
 	} //while end

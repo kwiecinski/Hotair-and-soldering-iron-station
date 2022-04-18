@@ -54,10 +54,7 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, LCD_RW_Pin|LCD_RS_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, MAX31855_IRON_CS_Pin|MAX31855_HOTAIR_CS_Pin|HOTAIR_HEATER_CTRL_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(IRON_WEP_HEATER_CTRL_GPIO_Port, IRON_WEP_HEATER_CTRL_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, MAX31855_IRON_CS_Pin|MAX31855_HOTAIR_CS_Pin|IRON_WEP_HEATER_CTRL_Pin|HOTAIR_HEATER_CTRL_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LCD_D7_Pin|LCD_D6_Pin|LCD_D5_Pin|LCD_D4_Pin
@@ -71,19 +68,19 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PtPin */
-  GPIO_InitStruct.Pin = HOTAIR_FAN_DOWN_SW_Pin;
+  GPIO_InitStruct.Pin = HOTAIR_TEMP_DOWN_SW_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(HOTAIR_FAN_DOWN_SW_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(HOTAIR_TEMP_DOWN_SW_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PDPin PDPin */
-  GPIO_InitStruct.Pin = HOTAIR_ON_SW_Pin|HOTAIR_FAN_UP_SW_Pin;
+  GPIO_InitStruct.Pin = SOLDER_TEMP_UP_SW_Pin|SOLDER_TEMP_DOWN_SW_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PAPin PAPin PAPin PAPin */
-  GPIO_InitStruct.Pin = HOTAIR_DOWN_SW_Pin|MENU_UP_SW_Pin|SOLDER_ON_SW_Pin|HOTAIR_UP_SW_Pin;
+  GPIO_InitStruct.Pin = HOTAIR_ON_SW_Pin|HOTAIR_FAN_DOWN_SW_Pin|HOTAIR_FAN_UP_SW_Pin|HOTAIR_TEMP_UP_SW_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -104,8 +101,8 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PBPin PBPin PBPin PBPin
                            PBPin PBPin PBPin */
-  GPIO_InitStruct.Pin = HOTAIR_REED_SW_Pin|SOLDER_SELECT_SW_Pin|MENU_OK_SW_Pin|MENU_DOWN_SW_Pin
-                          |SOLDER_DOWN_SW_Pin|IRON_T12_MOTION_SW_Pin|SOLDER_UP_SW_Pin;
+  GPIO_InitStruct.Pin = HOTAIR_REED_SW_Pin|MENU_RIGHT_SW_Pin|MENU_OK_SW_Pin|MENU_LEFT_SW_Pin
+                          |SOLDER_SELECT_T12_SW_Pin|IRON_T12_MOTION_SW_Pin|SOLDER_SELECT_WEP_SW_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);

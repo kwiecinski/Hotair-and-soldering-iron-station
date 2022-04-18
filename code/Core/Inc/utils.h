@@ -2,7 +2,7 @@
  * utils.h
  *
  *  Created on: Mar 18, 2022
- *      Author: LPCusr
+ *      Author: kwiecinski
  */
 
 #ifndef INC_UTILS_H_
