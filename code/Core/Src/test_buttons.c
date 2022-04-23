@@ -115,12 +115,14 @@ void Test_Buttons(void)
 {
 	uint8_t i=0;
 
+	printf("Button test. Press button... /n/r");
+    LCD_Clear();
 	LCD_Puts(0,0, "BUTTON TEST");
 	LCD_Puts(0,1, "PRESS BUTTON....");
 
 	while(1)
 	{
-		if(buttons_pin[i]==IRON_T12_MOTION_SW_Pin)
+		if(buttons_pin[i]==IRON_T12_MOTION_SW_Pin || buttons_pin[i]==HOTAIR_REED_SW_Pin)
 		{
 			if (HAL_GPIO_ReadPin(buttons_port[i],buttons_pin[i]) == 1)
 			{

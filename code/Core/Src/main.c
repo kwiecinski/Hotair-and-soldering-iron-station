@@ -112,28 +112,28 @@ int main(void)
   RetargetInit(&huart2);
 
   //Init LCD display
-  printf("Hello! \r\n");
   LCD_Init();
   LCD_DisplayOn();
   LCD_Clear();
 
   Init_ADC();
 
+  printf("Hello! \r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  while (1)
+  while(1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
 
-	 //Test_WEP();
-	 //Test_T12();
-	 //Test_HOTAIR();
-	  Test_Buttons();
+	 Test_WEP();
+	 Test_T12();
+	 Test_HOTAIR();
+	 Test_Buttons();
 
   }
   /* USER CODE END 3 */

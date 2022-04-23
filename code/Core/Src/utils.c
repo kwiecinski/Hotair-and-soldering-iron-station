@@ -2,7 +2,7 @@
  * utils.c
  *
  *  Created on: Mar 18, 2022
- *      Author: LPCusr
+ *      Author: kwiecinski
  */
 
 #include "main.h"

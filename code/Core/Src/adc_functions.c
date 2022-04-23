@@ -2,7 +2,6 @@
  * fan_regulator.c
  *
  *  Created on: 6 sty 2021
- *      Author: LPCusr
  */
 
 

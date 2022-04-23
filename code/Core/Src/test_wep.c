@@ -142,7 +142,9 @@ void Test_WEP(void)
 
 			}else if(compensaded_temp>=set_temp)
 			{
+
 				Set_WEP_PWM(0,frequency);
+				printf("HEATED \n\r");
 				LCD_Puts(13, 1,"HTD");
 				Buzzer(1000);
 				HAL_Delay(3000);
@@ -154,6 +156,6 @@ void Test_WEP(void)
 
 
 			}
-		} //else end
-	} //while end
+		} // else end
+	} // while end
 }

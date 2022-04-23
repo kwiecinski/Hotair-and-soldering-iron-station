@@ -2,7 +2,6 @@
  * test_wep.h
  *
  *  Created on: 19 mar 2022
- *      Author: LPCusr
  */
 
 #ifndef INC_TEST_WEP_H_

@@ -55,7 +55,7 @@ void Test_T12(void)
 	float temp,temp_voltage;
 	uint8_t htd_cnt=0;
 
-	//PWM channel config
+	// PWM channel config
 	TIM_OC_InitTypeDef sConfigOC = {0};
 	sConfigOC.OCMode = TIM_OCMODE_PWM1;
 	sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
@@ -131,5 +131,5 @@ void Test_T12(void)
 			}
 		}
 
-	} //while end
+	} // while end
 }

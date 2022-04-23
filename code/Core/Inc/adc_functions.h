@@ -2,7 +2,6 @@
  * fan_regulator.h
  *
  *  Created on: 6 sty 2021
- *      Author: LPCusr
  */
 
 #ifndef INC_ADC_FUNCTIONS_H_

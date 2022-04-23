@@ -71,10 +71,11 @@ void Test_HOTAIR(void)
 	const uint16_t set_temp=320;		// target  TIP temp
 	int16_t compensaded_temp,compensaded_temp_old;
 	float temp, temp_voltage, fan_voltage;
+	uint8_t htd_cnt=0;
 
 	printf("Testing HOTAIR, heating to %d[C] \r\n",set_temp);
 
-	Set_Fan_PWM(50);
+	Set_Fan_PWM(100);
 
 	while(1)
 	{
@@ -83,8 +84,6 @@ void Test_HOTAIR(void)
 		temp_voltage=ADC_Read_Voltage(HOTAIR_ADC_INPUT);
 		fan_voltage=ADC_Read_Voltage(FAN_ADC_INPUT);
 		temp=((temp_voltage/OPAMP_GAIN) + AMBIENT_TEMP*THERMOCOUPLE_COEFFICIENT)/THERMOCOUPLE_COEFFICIENT;
-
-		HAL_Delay(10);
 
 		compensaded_temp=(int16_t)temp;
 
@@ -114,8 +113,18 @@ void Test_HOTAIR(void)
 
 		}else
 		{
-			printf("HEATED");
+
+
+			printf("HEATED \n\r");
 			LCD_Puts(13, 1,"HTD");
+			Buzzer(1000);
+			HAL_Delay(3000);
+			htd_cnt++;
+			if(htd_cnt>2)
+			{
+				Set_Fan_PWM(50);
+				break;
+			}
 		}
 
 		HAL_Delay(500);
