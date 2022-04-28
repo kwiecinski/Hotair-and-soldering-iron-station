@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "adc.h"
 #include "spi.h"
 #include "tim.h"
@@ -36,6 +37,8 @@
 #include "adc_functions.h"
 #include "test_t12.h"
 #include "test_buttons.h"
+
+#include "Buttons/buttons.h"
 
 /* USER CODE END Includes */
 
@@ -61,13 +64,32 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void button_short_pressed_test()
+{
+	static int i = 0;
+	LCD_Clear();
+	char buf[12];
+	snprintf(buf, 12, "BUTTON S:%d", i);
+	LCD_Puts(0,0, buf);
+	i++;
+}
 
+void button_long_pressed_test()
+{
+	static int i = 0;
+	LCD_Clear();
+	char buf[12];
+	snprintf(buf, 12, "BUTTON L:%d", i);
+	LCD_Puts(0,1, buf);
+	i++;
+}
 /* USER CODE END 0 */
 
 /**
@@ -119,8 +141,21 @@ int main(void)
   Init_ADC();
 
   printf("Hello! \r\n");
+
+  // Test buttons
+  button_pressed_short_cb(BUTTON_HOTAIR_FAN_UP, button_short_pressed_test);
+  button_pressed_long_cb(BUTTON_HOTAIR_FAN_DOWN, button_long_pressed_test);
+
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();  /* Call init function for freertos objects (in freertos.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
