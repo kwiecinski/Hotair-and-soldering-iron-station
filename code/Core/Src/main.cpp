@@ -1,3 +1,4 @@
+
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -15,9 +16,13 @@
   *
   ******************************************************************************
   */
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+#include <main.h>
 #include "cmsis_os.h"
 #include "adc.h"
 #include "spi.h"
@@ -27,18 +32,13 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdio.h>
-#include <string.h>
-#include "retarget.h"
-#include "LCD16x2/LCD.h"
-#include "MAX31855/MAX31855.h"
-#include "utils.h"
-#include "test_wep.h"
-#include "adc_functions.h"
-#include "test_t12.h"
-#include "test_buttons.h"
-
 #include "Buttons/buttons.h"
+//#include "app.h"
+#include "app_test.h"
+#include "retarget.h"
+#include "utils.h"
+#include "adc_functions.h"
+#include <stdio.h>
 
 /* USER CODE END Includes */
 
@@ -73,22 +73,22 @@ void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN 0 */
 void button_short_pressed_test()
 {
-	static int i = 0;
-	LCD_Clear();
-	char buf[12];
-	snprintf(buf, 12, "BUTTON S:%d", i);
-	LCD_Puts(0,0, buf);
-	i++;
+	// static int i = 0;
+	// LCD_Clear();
+	// char buf[12];
+	// snprintf(buf, 12, "BUTTON S:%d", i);
+	// LCD_Puts(0,0, buf);
+	// i++;
 }
 
 void button_long_pressed_test()
 {
-	static int i = 0;
-	LCD_Clear();
-	char buf[12];
-	snprintf(buf, 12, "BUTTON L:%d", i);
-	LCD_Puts(0,1, buf);
-	i++;
+	// static int i = 0;
+	// LCD_Clear();
+	// char buf[12];
+	// snprintf(buf, 12, "BUTTON L:%d", i);
+	// LCD_Puts(0,1, buf);
+	// i++;
 }
 /* USER CODE END 0 */
 
@@ -128,23 +128,21 @@ int main(void)
   MX_TIM4_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  Start_generic_timer();
 
   //Init printf retarget
   RetargetInit(&huart2);
-
-  //Init LCD display
-  LCD_Init();
-  LCD_DisplayOn();
-  LCD_Clear();
-
+  printf("Hello! \r\n");
+  // Start Timer
+  Start_generic_timer();
+  // Init ADC
   Init_ADC();
 
-  printf("Hello! \r\n");
-
+  // Run app
+  AppTest app;
+  app.run();
   // Test buttons
-  button_pressed_short_cb(BUTTON_HOTAIR_FAN_UP, button_short_pressed_test);
-  button_pressed_long_cb(BUTTON_HOTAIR_FAN_DOWN, button_long_pressed_test);
+//  button_pressed_short_cb(BUTTON_HOTAIR_FAN_UP, button_short_pressed_test);
+//  button_pressed_long_cb(BUTTON_HOTAIR_FAN_DOWN, button_long_pressed_test);
 
   /* USER CODE END 2 */
 
@@ -164,12 +162,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-	 Test_WEP();
-	 Test_T12();
-	 Test_HOTAIR();
-	 Test_Buttons();
-
   }
   /* USER CODE END 3 */
 }
@@ -254,3 +246,7 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
+#ifdef __cplusplus
+ }
+#endif

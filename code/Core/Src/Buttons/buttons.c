@@ -78,7 +78,7 @@ void buttons_task(void *argument)
 		{
 			const GPIO_PinState pin_state  = HAL_GPIO_ReadPin(buttons_cfg[i].port, buttons_cfg[i].pin);
 
-			if (pin_state == buttons_cfg[i].pressed_pin_state ^ 1)
+			if (pin_state == (buttons_cfg[i].pressed_pin_state ^ 1))
 			{
 				buttons[i].current_state = BUTTON_NOT_PRESSED;
 			}
@@ -102,7 +102,7 @@ void buttons_task(void *argument)
 					(*buttons[i].button_pressed_long)();
 				}
 			}
-			else if ((pin_state == buttons_cfg[i].pressed_pin_state ^ 1) && \
+			else if ((pin_state == (buttons_cfg[i].pressed_pin_state ^ 1)) && \
 					 (buttons[i].previous_state == BUTTON_SHORT_PRESSED || \
 					  buttons[i].previous_state == BUTTON_LONG_PRESSED))
 			{

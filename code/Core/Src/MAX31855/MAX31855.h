@@ -1,6 +1,12 @@
 #ifndef MAX31855_H_
 #define MAX31855_H_
-#include "main.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+#include <main.h>
 
 // ------------------------- Defines -------------------------
 
@@ -33,5 +39,8 @@ typedef struct
 
 void Max31855_Read_Temp(MAX_TEMP_DATA *max_data,uint8_t chip_select);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

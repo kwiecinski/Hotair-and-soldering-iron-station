@@ -5,9 +5,9 @@
  */
 
 
+#include <main.h>
 #include <stdio.h>
 #include "adc.h"
-#include "main.h"
 #include "usart.h"
 #include "gpio.h"
 #include "adc_functions.h"

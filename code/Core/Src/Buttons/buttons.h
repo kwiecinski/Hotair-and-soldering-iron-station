@@ -8,6 +8,10 @@
 #ifndef SRC_BUTTONS_BUTTONS_H_
 #define SRC_BUTTONS_BUTTONS_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "gpio.h"
 
 
@@ -83,5 +87,9 @@ void button_pressed_long_cb(ButtonType type, void(*cb)(void));
  * @brief Returns what buttons are pressed.
  */
 const ButtonState buttons_state();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* SRC_BUTTONS_BUTTONS_H_ */
