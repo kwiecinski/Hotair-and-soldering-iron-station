@@ -11,6 +11,7 @@
 
 #include "iapp.h"
 #include "Tasks/DisplayTask.h"
+#include "Tasks/ButtonTask.h"
 
 /**
  * @brief Main Soldering station application.
@@ -25,6 +26,7 @@ public:
 private:
     // Application Tasks
     DisplayTask m_dispTask;
+    ButtonTask m_buttonTask;
 };
 
 

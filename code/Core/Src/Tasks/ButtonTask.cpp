@@ -23,9 +23,5 @@ void ButtonTask::start()
 //------------------------------------------------------------------------------
 void ButtonTask::run()
 {
-	const TickType_t k_refreshTime = 100/portTICK_PERIOD_MS;
-	for (;;)
-	{
-		vTaskDelay(k_refreshTime);
-	}
+	buttons_task(nullptr);
 }
