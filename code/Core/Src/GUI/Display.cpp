@@ -7,9 +7,6 @@
 
 #include "Display.h"
 #include <main.h>
-// LU_TODO Move to the tasks
-#include "FreeRTOS.h"
-#include "task.h"
 
 //------------------------------------------------------------------------------
 Display::Display()
