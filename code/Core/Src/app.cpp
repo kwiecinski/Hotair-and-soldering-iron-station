@@ -6,16 +6,21 @@
  */
 #include "app.h"
 
+#include <main.h>
+#include <stdio.h>
+#include <string.h>
+#include "retarget.h"
+#include "utils.h"
+#include "adc_functions.h"
+#include "adc.h"
+#include "spi.h"
+#include "tim.h"
+#include "usart.h"
+#include "MAX31855/MAX31855.h"
 
 //------------------------------------------------------------------------------
 App::App()
-    : lcd(LiquidCrystal::Gpio{LCD_RS_GPIO_Port, LCD_RS_Pin},
-            LiquidCrystal::Gpio{LCD_RW_GPIO_Port, LCD_RW_Pin},
-            LiquidCrystal::Gpio{LCD_EN_GPIO_Port, LCD_EN_Pin},
-            LiquidCrystal::Gpio{LCD_D4_GPIO_Port, LCD_D4_Pin},
-            LiquidCrystal::Gpio{LCD_D5_GPIO_Port, LCD_D5_Pin},
-            LiquidCrystal::Gpio{LCD_D6_GPIO_Port, LCD_D6_Pin},
-            LiquidCrystal::Gpio{LCD_D7_GPIO_Port, LCD_D7_Pin})
+	: m_dispTask("DisplayTask", 256*4, osPriorityNormal)
 {
 
 }
@@ -23,7 +28,18 @@ App::App()
 //------------------------------------------------------------------------------
 void App::run()
 {
+    //Init printf retarget
+    RetargetInit(&huart2);
 
+    // Start Timer
+    Start_generic_timer();
+    // Init ADC
+    Init_ADC();
+
+    printf("\r\n>>> Hello from HotAir-Soldering-Station App! <<<\r\n");
+
+    // Start All the tasks
+    m_dispTask.start();
 }
 
 

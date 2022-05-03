@@ -77,17 +77,12 @@ void LiquidCrystal::init(uint8_t fourbitmode, LiquidCrystal::Gpio rs, LiquidCrys
   _pins[GpioType::D6] = d6;
   _pins[GpioType::D7] = d7;
 
-  for (int i = 0; i < 10; ++i)
-  {
-    printf("i=%d, pin=0x%x, port=0x%x\n\r", i, _pins[i].pin, _pins[i].port);
-  }
-
   if (fourbitmode)
     _displayfunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;
   else
     _displayfunction = LCD_8BITMODE | LCD_1LINE | LCD_5x8DOTS;
 
-  begin(16, 2);
+  //begin(16, 2);
 }
 
 void LiquidCrystal::begin(uint8_t cols, uint8_t lines, uint8_t dotsize) {
@@ -95,6 +90,11 @@ void LiquidCrystal::begin(uint8_t cols, uint8_t lines, uint8_t dotsize) {
     _displayfunction |= LCD_2LINE;
   }
   _numlines = lines;
+
+  for (int i = 0; i < 10; ++i)
+  {
+    printf("i=%d, pin=0x%x, port=0x%x\n\r", i, _pins[i].pin, _pins[i].port);
+  }
 
   setRowOffsets(0x00, 0x40, 0x00 + cols, 0x40 + cols);
 

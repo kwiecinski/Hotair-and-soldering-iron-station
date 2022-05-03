@@ -13,19 +13,26 @@
 #include "gpio.h"
 #include "MAX31855/MAX31855.h"
 
-#include "GUI/LCD/glyphs.h"
-#include "GUI/LCD/LiquidMenu.h"
-#include "GUI/LCD/glyphs.h"
+
+
+// TEST BUTTONS
+void button_short_pressed_test()
+{
+	 static int i = 0;
+	 printf("BUTTON SHORT:%d\r\n", i);
+	 i++;
+}
+
+void button_long_pressed_test()
+{
+	 static int i = 0;
+	 printf("BUTTON LONG:%d\r\n", i);
+	 i++;
+}
 
 
 AppTest::AppTest()
-    : lcd(LiquidCrystal::Gpio{LCD_RS_GPIO_Port, LCD_RS_Pin},
-            LiquidCrystal::Gpio{LCD_RW_GPIO_Port, LCD_RW_Pin},
-            LiquidCrystal::Gpio{LCD_EN_GPIO_Port, LCD_EN_Pin},
-            LiquidCrystal::Gpio{LCD_D4_GPIO_Port, LCD_D4_Pin},
-            LiquidCrystal::Gpio{LCD_D5_GPIO_Port, LCD_D5_Pin},
-            LiquidCrystal::Gpio{LCD_D6_GPIO_Port, LCD_D6_Pin},
-            LiquidCrystal::Gpio{LCD_D7_GPIO_Port, LCD_D7_Pin})
+    : display()
 {
 
 }
@@ -33,17 +40,24 @@ AppTest::AppTest()
 //------------------------------------------------------------------------------
 void AppTest::run()
 {
-//    //Init printf retarget
-//    RetargetInit(&huart2);
-//    printf("Hello! \r\n");
-//
-//    // Start Timer
-//    Start_generic_timer();
-//    // Init ADC
-//    Init_ADC();
+    //Init printf retarget
+    RetargetInit(&huart2);
+    printf("Hello! \r\n");
 
-    // LCD
-    testLcd();
+    // Start Timer
+    Start_generic_timer();
+    // Init ADC
+    Init_ADC();
+
+    // Init Display
+    display.init();
+
+    // BUTTONS
+	button_pressed_short_cb(BUTTON_HOTAIR_FAN_UP, button_short_pressed_test);
+	button_pressed_long_cb(BUTTON_HOTAIR_FAN_DOWN, button_long_pressed_test);
+
+//    // LCD
+//    testLcd();
 
 //    // WEP
 //    testWEP();
@@ -54,6 +68,13 @@ void AppTest::run()
 //    // HotAir
 //    testHOTAIR();
 }
+
+Display& AppTest::getDisplayHandle()
+{
+	return display;
+}
+
+
 
 //------------------------------------------------------------------------------
 void AppTest::testLcd()
@@ -96,37 +117,38 @@ void AppTest::testLcd()
 //    lcd.write(4);
 
 
-    // MENU
-    uint8_t fan_glyphIndex = 0;
-    uint8_t thermometer_glyphIndex = 2;
-    uint8_t celsiusSymbol_glyphIndex = 3;
-
-    LiquidLine welcome_line1(1, 0, "LiquidMenu ", LIQUIDMENU_VERSION);
-    LiquidLine welcome_line2(1, 1, "Glyphs example");
-    LiquidScreen welcome_screen(welcome_line1, welcome_line2);
-
-    LiquidLine line1(1, 1, fan_glyphIndex);
-    LiquidLine line2(7, 1, thermometer_glyphIndex);
-    LiquidLine line3(13, 1, celsiusSymbol_glyphIndex, "C");
-    LiquidScreen screen1(line1, line2, line3);
-
-    LiquidMenu menu(lcd, welcome_screen, screen1);
-
-    lcd.createChar(fan_glyphIndex, glyphs::fan1);
-    // This is the second glyph, indexed after the first.
-    lcd.createChar(fan_glyphIndex + 1, glyphs::fan2);
-    lcd.createChar(thermometer_glyphIndex, glyphs::thermometer);
-    lcd.createChar(celsiusSymbol_glyphIndex, glyphs::celsiusSymbol);
-
-    // This functions tells the LiquidLine objects that their first
-    // variable is not an integer value but an index to a glyph.
-    line1.set_asGlyph(1);
-    line2.set_asGlyph(1);
-    line3.set_asGlyph(1);
-
-    lcd.begin(16, 2);
-    menu.softUpdate();
-    menu.next_screen();
+//    // MENU
+//    uint8_t fan_glyphIndex = 0;
+//    uint8_t thermometer_glyphIndex = 2;
+//    uint8_t celsiusSymbol_glyphIndex = 3;
+//
+//    LiquidLine welcome_line1(1, 0, "LiquidMenu ", LIQUIDMENU_VERSION);
+//    LiquidLine welcome_line2(1, 1, "Glyphs example");
+//    LiquidScreen welcome_screen(welcome_line1, welcome_line2);
+//
+//    LiquidLine line1(1, 1, fan_glyphIndex);
+//    LiquidLine line2(7, 1, thermometer_glyphIndex);
+//    LiquidLine line3(13, 1, celsiusSymbol_glyphIndex, "C");
+//    LiquidScreen screen1(line1, line2, line3);
+//
+//    LiquidMenu menu(lcd, welcome_screen, screen1);
+//
+//    lcd.createChar(fan_glyphIndex, glyphs::fan1);
+//    // This is the second glyph, indexed after the first.
+//    lcd.createChar(fan_glyphIndex + 1, glyphs::fan2);
+//    lcd.createChar(thermometer_glyphIndex, glyphs::thermometer);
+//    lcd.createChar(celsiusSymbol_glyphIndex, glyphs::celsiusSymbol);
+//
+//    // This functions tells the LiquidLine objects that their first
+//    // variable is not an integer value but an index to a glyph.
+//    line1.set_asGlyph(1);
+//    line2.set_asGlyph(1);
+//    line3.set_asGlyph(1);
+//
+//    // Init LCD
+//    lcd.begin(16, 2);
+//    menu.softUpdate();
+    //menu.next_screen();
 }
 
 //------------------------------------------------------------------------------
@@ -226,7 +248,7 @@ void AppTest::testWEP()
 		   (data_old.error != data.error))
 		{
 
-			Show_MAX_data_LCD(lcd, &data,compensaded_temp);
+			Show_MAX_data_LCD(display.getLcdHandle(), &data,compensaded_temp);
 		}
 
 		data_old.error=data.error;
@@ -270,8 +292,8 @@ void AppTest::testWEP()
 
 				Set_WEP_PWM(0,frequency);
 				printf("HEATED \n\r");
-				lcd.setCursor(13,1);
-				lcd.print("HTD");
+				display.getLcdHandle().setCursor(13,1);
+				display.getLcdHandle().print("HTD");
 				Buzzer(1000);
 				HAL_Delay(3000);
 				htd_cnt++;
@@ -348,13 +370,13 @@ void AppTest::testT12()
             // show on LCD
             char buf[10];
             sprintf(buf,"T%-3d",compensaded_temp);			// Conversation to Char
-            lcd.clear();
-            lcd.print("TEST T12");
-            lcd.setCursor(12,0);
-            lcd.print(buf);							// show temp
+            display.getLcdHandle().clear();
+            display.getLcdHandle().print("TEST T12");
+            display.getLcdHandle().setCursor(12,0);
+            display.getLcdHandle().print(buf);							// show temp
             sprintf(buf,"V%-.1f",temp_voltage);
-            lcd.setCursor(0,1);
-            lcd.print(buf);							// show ADC temp voltage
+            display.getLcdHandle().setCursor(0,1);
+            display.getLcdHandle().print(buf);							// show ADC temp voltage
 
 
             // send via UART
@@ -389,9 +411,9 @@ void AppTest::testT12()
 		}else
 		{
 			HAL_TIM_PWM_Stop(&htim4,TIM_CHANNEL_1);
-            lcd.setCursor(10,1);
-			lcd.print("      ");
-			lcd.print("HEATED");
+			display.getLcdHandle().setCursor(10,1);
+			display.getLcdHandle().print("      ");
+			display.getLcdHandle().print("HEATED");
 			Buzzer(1000);
 			HAL_Delay(3000);
 			htd_cnt++;
@@ -405,11 +427,6 @@ void AppTest::testT12()
 
 //------------------------------------------------------------------------------
 // TEST HOTAIR
-#define OPAMP_GAIN 					123			// read from schematic - non-inverting opamp gain
-#define THERMOCOUPLE_COEFFICIENT 	0.040		// mv/C
-#define AMBIENT_TEMP				20			// TODO - need to read this from MAX31855 or uC internat temp sensor
-
-
 void Show_HOTAIR_data(LiquidCrystal& lcd, int16_t compensaded_temp, float temp_voltage, float fan_voltage)
 {
 
@@ -463,6 +480,9 @@ void Set_HOTAIR_Time(uint16_t time)
 
 void AppTest::testHOTAIR()
 {
+	#define HOTAIR_OPAMP_GAIN 					123			// read from schematic - non-inverting opamp gain
+	#define HOTAIR_THERMOCOUPLE_COEFFICIENT 	0.040		// mv/C
+	#define HOTAIR_AMBIENT_TEMP				20			// TODO - need to read this from MAX31855 or uC internat temp sensor
 	const uint16_t set_temp=320;		// target  TIP temp
 	int16_t compensaded_temp,compensaded_temp_old;
 	float temp, temp_voltage, fan_voltage;
@@ -478,14 +498,14 @@ void AppTest::testHOTAIR()
 
 		temp_voltage=ADC_Read_Voltage(HOTAIR_ADC_INPUT);
 		fan_voltage=ADC_Read_Voltage(FAN_ADC_INPUT);
-		temp=((temp_voltage/OPAMP_GAIN) + AMBIENT_TEMP*THERMOCOUPLE_COEFFICIENT)/THERMOCOUPLE_COEFFICIENT;
+		temp=((temp_voltage/HOTAIR_OPAMP_GAIN) + HOTAIR_AMBIENT_TEMP*HOTAIR_THERMOCOUPLE_COEFFICIENT)/HOTAIR_THERMOCOUPLE_COEFFICIENT;
 
 		compensaded_temp=(int16_t)temp;
 
 		// show on LCD and send to UART only if temp change
 		if(compensaded_temp!=compensaded_temp_old)
 		{
-			Show_HOTAIR_data(lcd, compensaded_temp, temp_voltage, fan_voltage);
+			Show_HOTAIR_data(display.getLcdHandle(), compensaded_temp, temp_voltage, fan_voltage);
 		}
 		compensaded_temp_old=compensaded_temp;
 
@@ -511,8 +531,8 @@ void AppTest::testHOTAIR()
 
 
 			printf("HEATED \n\r");
-			lcd.setCursor(13,1);
-			lcd.print("HTD");
+			display.getLcdHandle().setCursor(13,1);
+			display.getLcdHandle().print("HTD");
 			Buzzer(1000);
 			HAL_Delay(3000);
 			htd_cnt++;

@@ -10,7 +10,7 @@
 
 
 #include "iapp.h"
-#include "GUI/LCD/LiquidCrystal.h"
+#include "Tasks/DisplayTask.h"
 
 /**
  * @brief Main Soldering station application.
@@ -23,7 +23,8 @@ public:
     void run() override;
 
 private:
-    LiquidCrystal lcd;
+    // Application Tasks
+    DisplayTask m_dispTask;
 };
 
 

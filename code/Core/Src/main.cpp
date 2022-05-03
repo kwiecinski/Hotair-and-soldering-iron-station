@@ -16,9 +16,6 @@
   *
   ******************************************************************************
   */
-#ifdef __cplusplus
- extern "C" {
-#endif
 
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
@@ -32,14 +29,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "Buttons/buttons.h"
-//#include "app.h"
+#include "app.h"
 #include "app_test.h"
-#include "retarget.h"
-#include "utils.h"
-#include "adc_functions.h"
-#include <stdio.h>
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -59,37 +50,23 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+#ifdef __cplusplus
+ extern "C" {
+#endif
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
-
+#ifdef __cplusplus
+ }
+#endif
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void button_short_pressed_test()
-{
-	// static int i = 0;
-	// LCD_Clear();
-	// char buf[12];
-	// snprintf(buf, 12, "BUTTON S:%d", i);
-	// LCD_Puts(0,0, buf);
-	// i++;
-}
 
-void button_long_pressed_test()
-{
-	// static int i = 0;
-	// LCD_Clear();
-	// char buf[12];
-	// snprintf(buf, 12, "BUTTON L:%d", i);
-	// LCD_Puts(0,1, buf);
-	// i++;
-}
 /* USER CODE END 0 */
 
 /**
@@ -129,20 +106,9 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  //Init printf retarget
-  RetargetInit(&huart2);
-  printf("Hello! \r\n");
-  // Start Timer
-  Start_generic_timer();
-  // Init ADC
-  Init_ADC();
-
   // Run app
-  AppTest app;
+  static App app;
   app.run();
-  // Test buttons
-//  button_pressed_short_cb(BUTTON_HOTAIR_FAN_UP, button_short_pressed_test);
-//  button_pressed_long_cb(BUTTON_HOTAIR_FAN_DOWN, button_long_pressed_test);
 
   /* USER CODE END 2 */
 
@@ -247,6 +213,3 @@ void assert_failed(uint8_t *file, uint32_t line)
 }
 #endif /* USE_FULL_ASSERT */
 
-#ifdef __cplusplus
- }
-#endif

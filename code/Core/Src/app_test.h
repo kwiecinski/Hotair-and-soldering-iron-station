@@ -10,7 +10,7 @@
 
 
 #include "iapp.h"
-#include "GUI/LCD/LiquidCrystal.h"
+#include "GUI/Display.h"
 
 /**
  * @brief TestApplication, used during development only.
@@ -22,6 +22,9 @@ public:
     AppTest();
     void run() override;
 
+    // For tests
+    Display& getDisplayHandle();
+
 private:
     // Test methods
     void testLcd();
@@ -30,7 +33,8 @@ private:
     void testHOTAIR();
 
 private:
-    LiquidCrystal lcd;
+    Display display;
+
 };
 
 
