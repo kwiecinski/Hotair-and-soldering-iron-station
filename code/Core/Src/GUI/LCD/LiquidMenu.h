@@ -971,7 +971,7 @@ public:
 
   @see Position
   */
-  bool set_focusSymbol(Position position, uint8_t symbol[8]);
+  bool set_focusSymbol(Position position, const uint8_t symbol[8]);
 
   /// Check if there is an attached function at the specified number.
   /**

@@ -27,7 +27,8 @@ private:
 	LiquidLine m_aboutLine;
 	LiquidLine m_hotAirLine;
 	LiquidLine m_wepLine;
-	LiquidScreen m_screen;
+	LiquidScreen m_screen1;
+	LiquidScreen m_screen2;
 //	LiquidLine m_t12Line;
 
 	LiquidMenu m_menu;
