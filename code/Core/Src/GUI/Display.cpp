@@ -45,14 +45,3 @@ LiquidCrystal& Display::getLcdHandle()
 }
 
 //------------------------------------------------------------------------------
-void Display::displayTask(void *args)
-{
-	Display *disp = reinterpret_cast<Display*>(args);
-	for(;;)
-	{
-		vTaskDelay(10);
-		disp->update();
-	}
-}
-
-//------------------------------------------------------------------------------

@@ -27,8 +27,6 @@ public:
 	// Remove later
 	LiquidCrystal& getLcdHandle();
 
-	static void displayTask(void *args);
-
 private:
 	LiquidCrystal m_lcd;
 
