@@ -33,9 +33,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.8,
-          "height": 3.0,
-          "width": 5.0
+          "drill": 1.3,
+          "height": 2.5,
+          "width": 3.0
         },
         "silk_line_width": 0.21,
         "silk_text_italic": false,
@@ -217,12 +217,19 @@
         1.5,
         1.8,
         2.0,
-        2.2
+        2.2,
+        2.5,
+        3.0,
+        3.5
       ],
       "via_dimensions": [
         {
           "diameter": 0.0,
           "drill": 0.0
+        },
+        {
+          "diameter": 0.6,
+          "drill": 0.35
         },
         {
           "diameter": 0.7,
@@ -450,7 +457,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "warning",
+      "pin_to_pin": "error",
       "power_pin_not_driven": "error",
       "similar_labels": "warning",
       "unannotated": "error",
@@ -471,7 +478,7 @@
     "classes": [
       {
         "bus_width": 12.0,
-        "clearance": 0.2,
+        "clearance": 0.3,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -498,7 +505,8 @@
         "name": "230V",
         "nets": [
           "AC_230(L)",
-          "AC_230(N)"
+          "AC_230(N)",
+          "Net-(Q6-Pad3)"
         ],
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "schematic_color": "rgba(0, 0, 0, 0.000)",
@@ -536,12 +544,17 @@
         "microvia_drill": 0.1,
         "name": "uC",
         "nets": [
+          "BUZZER",
+          "FAN_SUPPLY",
           "HOTAIR_DOWN_SW",
+          "HOTAIR_FAN_ADC",
           "HOTAIR_FAN_DOWN_SW",
+          "HOTAIR_FAN_PWM",
           "HOTAIR_FAN_UP_SW",
           "HOTAIR_HEATER_CTRL",
           "HOTAIR_ON_SW",
           "HOTAIR_REED_SW",
+          "HOTAIR_TEMP_ADC",
           "HOTAIR_THERM",
           "HOTAIR_UP_SW",
           "IRON_T12_HEATER_CTRL",
