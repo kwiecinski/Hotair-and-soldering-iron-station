@@ -8431,22 +8431,6 @@
     (pin "2" (uuid 184760fc-b549-4976-b5ef-bb093affd384))
   )
 
-  (symbol (lib_id "power:+5V") (at 125.73 339.725 0) (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid 060f4c52-2491-4554-b2a3-cbbe53dc762a)
-    (property "Reference" "#PWR0165" (id 0) (at 125.73 343.535 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+5V" (id 1) (at 126.111 335.3308 0))
-    (property "Footprint" "" (id 2) (at 125.73 339.725 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (id 3) (at 125.73 339.725 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 9d2dd7c7-4f4c-4678-b87e-2834d39a098e))
-  )
-
   (symbol (lib_id "Amplifier_Operational:LM741") (at 252.73 353.06 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 095a5195-d600-4aeb-a0ac-e766ecced7e8)
@@ -9233,6 +9217,22 @@
     (pin "~" (uuid 456560c1-de74-4716-a8c4-12128034b3f5))
   )
 
+  (symbol (lib_id "power:+3.3V") (at 125.73 339.725 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid 77fbec0c-38d6-4731-ae1c-d577d3c1cc17)
+    (property "Reference" "#PWR0120" (id 0) (at 125.73 343.535 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3.3V" (id 1) (at 126.111 335.3308 0))
+    (property "Footprint" "" (id 2) (at 125.73 339.725 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (id 3) (at 125.73 339.725 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 44153d42-3cdf-4169-934c-e4f736c32127))
+  )
+
   (symbol (lib_id "Device:R") (at 65.405 239.395 180) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 7f01a1fd-de5e-4ce8-9f1c-de976e5de453)
@@ -9324,7 +9324,7 @@
     (uuid 8ebb3e1c-a0d2-4947-9e86-d7f8729cc0af)
     (property "Reference" "RV1" (id 0) (at 259.842 364.998 90))
     (property "Value" "10k" (id 1) (at 259.842 367.03 90))
-    (property "Footprint" "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical" (id 2) (at 260.096 369.316 0)
+    (property "Footprint" "Potentiometer_SMD:Potentiometer_Bourns_3314G_Vertical" (id 2) (at 260.096 369.316 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 260.096 369.316 0)
@@ -9481,22 +9481,6 @@
     )
     (pin "1" (uuid d1e6d099-80a5-4c41-a8e6-35a0849d0f58))
     (pin "2" (uuid 0f9ed184-431e-4564-8431-4d1182bbf8de))
-  )
-
-  (symbol (lib_id "power:+5V") (at 405.765 281.94 0) (unit 1)
-    (in_bom yes) (on_board yes)
-    (uuid 9d01e559-2b65-408d-a9ff-919c0dffcc1c)
-    (property "Reference" "#PWR0120" (id 0) (at 405.765 285.75 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+5V" (id 1) (at 406.146 277.5458 0))
-    (property "Footprint" "" (id 2) (at 405.765 281.94 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (id 3) (at 405.765 281.94 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 3b402897-10e5-4bbe-aa04-c0698fe0b69b))
   )
 
   (symbol (lib_id "Device:R") (at 352.425 250.19 90) (mirror x) (unit 1)
@@ -9942,6 +9926,22 @@
     (pin "2" (uuid 9f57e955-63bd-4ed7-9afa-aa15cd55a760))
   )
 
+  (symbol (lib_id "power:+3.3V") (at 405.13 281.94 0) (unit 1)
+    (in_bom yes) (on_board yes)
+    (uuid d150ceb9-17a4-4723-af81-fa40df62506e)
+    (property "Reference" "#PWR0110" (id 0) (at 405.13 285.75 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "+3.3V" (id 1) (at 405.511 277.5458 0))
+    (property "Footprint" "" (id 2) (at 405.13 281.94 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "" (id 3) (at 405.13 281.94 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid ed293712-8d5a-435a-961e-9b57346df3e2))
+  )
+
   (symbol (lib_id "Device:R") (at 67.945 304.8 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid d1e61f8b-6d9e-4087-b275-2e813f8e26b5)
@@ -10272,6 +10272,9 @@
     (path "/00000000-0000-0000-0000-00005f7ea8a0"
       (reference "#PWR0109") (unit 1) (value "+24V") (footprint "")
     )
+    (path "/d150ceb9-17a4-4723-af81-fa40df62506e"
+      (reference "#PWR0110") (unit 1) (value "+3.3V") (footprint "")
+    )
     (path "/00000000-0000-0000-0000-00005f80ab4c"
       (reference "#PWR0111") (unit 1) (value "GND") (footprint "")
     )
@@ -10299,8 +10302,8 @@
     (path "/00000000-0000-0000-0000-00005f8fc1e0"
       (reference "#PWR0119") (unit 1) (value "GND") (footprint "")
     )
-    (path "/9d01e559-2b65-408d-a9ff-919c0dffcc1c"
-      (reference "#PWR0120") (unit 1) (value "+5V") (footprint "")
+    (path "/77fbec0c-38d6-4731-ae1c-d577d3c1cc17"
+      (reference "#PWR0120") (unit 1) (value "+3.3V") (footprint "")
     )
     (path "/00000000-0000-0000-0000-000060efe55c"
       (reference "#PWR0121") (unit 1) (value "GND") (footprint "")
@@ -10433,9 +10436,6 @@
     )
     (path "/0a046166-929f-428f-ab6f-ad18d08e646b"
       (reference "#PWR0164") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/060f4c52-2491-4554-b2a3-cbbe53dc762a"
-      (reference "#PWR0165") (unit 1) (value "+5V") (footprint "")
     )
     (path "/937cc063-504b-42e3-9e62-4c4eebdbb4da"
       (reference "#PWR0166") (unit 1) (value "GND") (footprint "")
@@ -10873,7 +10873,7 @@
       (reference "R63") (unit 1) (value "2k2") (footprint "Capacitors:0805")
     )
     (path "/8ebb3e1c-a0d2-4947-9e86-d7f8729cc0af"
-      (reference "RV1") (unit 1) (value "10k") (footprint "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical")
+      (reference "RV1") (unit 1) (value "10k") (footprint "Potentiometer_SMD:Potentiometer_Bourns_3314G_Vertical")
     )
     (path "/00000000-0000-0000-0000-00005f7da3cf"
       (reference "U1") (unit 1) (value "MOC3041M") (footprint "Housings_DIP:DIP-6_W7.62mm_LongPads")
