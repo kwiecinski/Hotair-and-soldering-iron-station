@@ -1,316 +1,176 @@
-74330031654078
-My-Footprints
-2DIG-7SEG-DISP
-
-
+38012699553284
+Capacitors
+0402
+GENERIC 1005 (0402) PACKAGE
+GENERIC 1005 (0402) PACKAGE
 0
-18
-18
-My-Footprints
-3-digit-7-segment-display
-
-
+2
+2
+Capacitors
+0603
+GENERIC 1608 (0603) PACKAGE
+GENERIC 1608 (0603) PACKAGE
 0
-12
-12
-My-Footprints
-4-digit-7-segment-display
-4 digit 7 segment green LED, http://www.kingbright.com/attachments/file/psearch/000/00/00/CA56-12CGKWA(Ver.9A).pdf
-4 digit 7 segment green LED
+2
+2
+Capacitors
+0603-POLAR
+POLARIZED 1608 (0603) PACKAGE
+POLARIZED 1608 (0603) PACKAGE
 0
-12
-12
-My-Footprints
-433MHz-Trasmitter
-
-
+2
+2
+Capacitors
+0805
+GENERIC 2012 (0805) PACKAGE
+GENERIC 2012 (0805) PACKAGE
 0
-3
-3
-My-Footprints
-Buzzer
+2
+2
+Capacitors
+1007
+GENERIC 2518 (1007) PACKAGE
+GENERIC 2518 (1007) PACKAGE
+0
+2
+2
+Capacitors
+1206
+GENERIC 3216 (1206) PACKAGE
+GENERIC 3216 (1206) PACKAGE
+0
+2
+2
+Capacitors
+1210
+GENERIC 3225 (1210) PACKAGE
+GENERIC 3225 (1210) PACKAGE
+0
+2
+2
+Capacitors
+CAP-PTH-2.54
+2 PTH SPACED 0.1" APART
+2 PTH SPACED 0.1" APART
+0
+2
+2
+Capacitors
+CAP-PTH-5MM
+2 PTH SPACED 5MM APART
+2 PTH SPACED 5MM APART
+0
+2
+2
+Capacitors
+CAP-PTH-10MM
+2 PTH SPACED 10MM APART
+2 PTH SPACED 10MM APART
+0
+2
+2
+Capacitors
+CAP-PTH-LARGE
 
 
 0
 2
 2
-My-Footprints
-CR2032H
-
-
+Capacitors
+CAP-PTH-SMALL-KIT
+CAP-PTH-SMALL-KIT
+CAP-PTH-SMALL-KIT
 0
 2
 2
-My-Footprints
-Conn-01x04-N25-W4P
-
-
-0
-4
-4
-My-Footprints
-Conn-01x05-N25-W5P
-
-
-0
-5
-5
-My-Footprints
-Conn-01x06
-Through hole straight pin header, 1x06, 2.54mm pitch, single row
-Through hole pin header THT 1x06 2.54mm single row
-0
-6
-6
-My-Footprints
-Conn-01x06-N25-W6P
-
-
-0
-6
-6
-My-Footprints
-Conn-01x10
-
-
-0
-10
-10
-My-Footprints
-Conn-01x11
-
-
-0
-11
-11
-My-Footprints
-Conn-01x14
-
-
-0
-14
-14
-My-Footprints
-Conn-01x20
-
-
-0
-20
-20
-My-Footprints
-Conn_1x2_wire
-
-
+Capacitors
+CPOL-RADIAL-2.5MM-5MM
+2.5 MM SPACED PTHS WITH 5 MM DIAMETER OUTLINE AND STANDARD SOLDER MASK
+2.5 MM SPACED PTHS WITH 5 MM DIAMETER OUTLINE AND STANDARD SOLDER MASK
 0
 2
 2
-My-Footprints
-Conn_2x10
-
-
-0
-20
-20
-My-Footprints
-Conn_2x13
-
-
-0
-26
-26
-My-Footprints
-D_DO-35_SOD27_P7.62mm_Horizontal
-D, DO-35_SOD27 series, Axial, Horizontal, pin pitch=7.62mm, , length*diameter=4*2mm^2, , http://www.diodes.com/_files/packages/DO-35.pdf
-D DO-35_SOD27 series Axial Horizontal pin pitch 7.62mm  length 4mm diameter 2mm
+Capacitors
+CPOL-RADIAL-2.5MM-5MM-KIT
+2.5 MM SPACED PTHS WITH TOP COPPER MASKED
+2.5 MM SPACED PTHS WITH TOP COPPER MASKED
 0
 2
 2
-My-Footprints
-FSK100a-Receiver
-
-
-0
-4
-3
-My-Footprints
-Goldpin-1x17_Pitch2.54mm
-Through hole straight pin header, 1x17, 2.54mm pitch, single row
-Through hole pin header THT 1x17 2.54mm single row
-0
-17
-17
-My-Footprints
-HF3FD
-
-
-0
-5
-5
-My-Footprints
-JZC-40F_Relay
-
-
-0
-4
-4
-My-Footprints
-LED-3mm-holder
-
-
+Capacitors
+CPOL-RADIAL-2.5MM-6.5MM
+2.5 MM SPACED PTHS WITH 6.5 MM DIAMETER OUTLINE
+2.5 MM SPACED PTHS WITH 6.5 MM DIAMETER OUTLINE
 0
 2
 2
-My-Footprints
-LM2596-Step-Down-Conv
-
-
-0
-4
-4
-My-Footprints
-MP1504_Mini_3A_Step_Down_Conv
-
-
-0
-8
-4
-My-Footprints
-MP1584_Mini_3A_Step_Down_Conv
-
-
-0
-8
-4
-My-Footprints
-MTS-1-SPST-Switch
-
-
+Capacitors
+CPOL-RADIAL-5MM-10MM
+5 MM SPACED PTHS IN 10 MM DIAMETER SILK RING
+5 MM SPACED PTHS IN 10 MM DIAMETER SILK RING
 0
 2
 2
-My-Footprints
-Micro-Switch-5mm-2pin
-
-
+Capacitors
+CPOL-RADIAL-5MM-10MM-KIT
+5 MM SPACED PTHS, WITH 10 MM SILK RING AND NO EXPOSED COPPER ON TOP
+5 MM SPACED PTHS, WITH 10 MM SILK RING AND NO EXPOSED COPPER ON TOP
 0
 2
 2
-My-Footprints
-Mount-Hole-3mm
-
-
-0
-1
-1
-My-Footprints
-Pin_Header_Straight_1x06_Pitch2.54mm
-Through hole straight pin header, 1x06, 2.54mm pitch, single row
-Through hole pin header THT 1x06 2.54mm single row
-0
-6
-6
-My-Footprints
-Relay_29mm
-
-
-0
-8
-8
-My-Footprints
-SOT176-1
-SO-8 Surface Mount Small Outline 150mil 8pin Package
-
-0
-8
-8
-My-Footprints
-Screw-Terminal-5.00mm-2pin
-
-
+Capacitors
+EIA3216
+GENERIC EIA 3216 (1206) POLARIZED TANTALUM CAPACITOR
+GENERIC EIA 3216 (1206) POLARIZED TANTALUM CAPACITOR
 0
 2
 2
-My-Footprints
-Screw-Terminal-5.00mm-3pin
-
-
-0
-3
-3
-My-Footprints
-Screw-Terminal-5.00mm-4pin
-
-
-0
-0
-0
-My-Footprints
-Screw-Terminal-5.00mm-5pin
-
-
-0
-5
-5
-My-Footprints
-Screw-Terminal-5.00mm-10pin
-
-
-0
-10
-10
-My-Footprints
-ShortWire
-
-
+Capacitors
+EIA3528
+GENERIC EIA 3528 POLARIZED TANTALUM CAPACITOR
+GENERIC EIA 3528 POLARIZED TANTALUM CAPACITOR
 0
 2
 2
-My-Footprints
-TO-92_Inline_Wide
-TO-92 leads in-line, wide, drill 0.8mm (see NXP sot054_po.pdf)
-to-92 sc-43 sc-43a sot54 PA33 transistor
-0
-3
-3
-My-Footprints
-TO-220-3_V_Thick_Pads
-TO-220-3, Vertical, RM 2.54mm, see https://www.vishay.com/docs/66542/to-220-1.pdf
-TO-220-3 Vertical RM 2.54mm
-0
-3
-3
-My-Footprints
-TO-220-3_V_Wide_Legs
-TO-220-3, Vertical, RM 2.54mm, see https://www.vishay.com/docs/66542/to-220-1.pdf
-TO-220-3 Vertical RM 2.54mm
-0
-3
-3
-My-Footprints
-USB-AB-MICRO-SMD
-USB TYPE AB - SMT
-USB TYPE AB - SMT
-0
-8
-6
-My-Footprints
-WIRE_PAD_1,3mm
-
-
-0
-1
-1
-My-Footprints
-fuse-1812
-
-
+Capacitors
+EIA6032-NOM
+METRIC SIZE CODE EIA 6032-25 MEDIAN (NOMINAL) LAND PROTRUSION
+METRIC SIZE CODE EIA 6032-25 MEDIAN (NOMINAL) LAND PROTRUSION
 0
 2
 2
-My-Footprints
-push_button_12mm
-
-
+Capacitors
+EIA7343
+EIA 7343 TANTALUM CAPACITOR
+EIA 7343 TANTALUM CAPACITOR
 0
-4
-4
+2
+2
+Capacitors
+NIC_10X10.5_CAP
+SOME OLD PACKAGE IN OUR LIBRARY
+SOME OLD PACKAGE IN OUR LIBRARY
+0
+2
+2
+Capacitors
+PANASONIC_C
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE E
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE E
+0
+2
+2
+Capacitors
+PANASONIC_D
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE E
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE E
+0
+2
+2
+Capacitors
+PANASONIC_G
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE G
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE G
+0
+2
+2
