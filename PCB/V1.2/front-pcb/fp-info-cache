@@ -1,232 +1,176 @@
-49827122527966
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-A_EIA-3216-18_Hand
-Tantalum capacitor, Case A, EIA 3216-18, 3.2x1.6x1.6mm, Hand soldering footprint
-capacitor tantalum smd
+41293938912156
+Capacitors
+0402
+GENERIC 1005 (0402) PACKAGE
+GENERIC 1005 (0402) PACKAGE
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-A_EIA-3216-18_Reflow
-Tantalum capacitor, Case A, EIA 3216-18, 3.2x1.6x1.6mm, Reflow soldering footprint
-capacitor tantalum smd
+Capacitors
+0603
+GENERIC 1608 (0603) PACKAGE
+GENERIC 1608 (0603) PACKAGE
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-A_EIA-3216-18_Wave
-Tantalum capacitor, Case A, EIA 3216-18, 3.2x1.6x1.6mm, Wave soldering footprint
-capacitor tantalum smd
+Capacitors
+0603-POLAR
+POLARIZED 1608 (0603) PACKAGE
+POLARIZED 1608 (0603) PACKAGE
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-B_EIA-3528-21_Hand
-Tantalum capacitor, Case B, EIA 3528-21, 3.5x2.8x1.9mm, Hand soldering footprint
-capacitor tantalum smd
+Capacitors
+0805
+GENERIC 2012 (0805) PACKAGE
+GENERIC 2012 (0805) PACKAGE
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-B_EIA-3528-21_Reflow
-Tantalum capacitor, Case B, EIA 3528-21, 3.5x2.8x1.9mm, Reflow soldering footprint
-capacitor tantalum smd
+Capacitors
+1007
+GENERIC 2518 (1007) PACKAGE
+GENERIC 2518 (1007) PACKAGE
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-B_EIA-3528-21_Wave
-Tantalum capacitor, Case B, EIA 3528-21, 3.5x2.8x1.9mm, Wave soldering footprint
-capacitor tantalum smd
+Capacitors
+1206
+GENERIC 3216 (1206) PACKAGE
+GENERIC 3216 (1206) PACKAGE
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-C_EIA-6032-28_Hand
-Tantalum capacitor, Case C, EIA 6032-28, 6.0x3.2x2.5mm, Hand soldering footprint
-capacitor tantalum smd
+Capacitors
+1210
+GENERIC 3225 (1210) PACKAGE
+GENERIC 3225 (1210) PACKAGE
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-C_EIA-6032-28_Reflow
-Tantalum capacitor, Case C, EIA 6032-28, 6.0x3.2x2.5mm, Reflow soldering footprint
-capacitor tantalum smd
+Capacitors
+CAP-PTH-2.54
+2 PTH SPACED 0.1" APART
+2 PTH SPACED 0.1" APART
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-C_EIA-6032-28_Wave
-Tantalum capacitor, Case C, EIA 6032-28, 6.0x3.2x2.5mm, Wave soldering footprint
-capacitor tantalum smd
+Capacitors
+CAP-PTH-5MM
+2 PTH SPACED 5MM APART
+2 PTH SPACED 5MM APART
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-D_EIA-7343-31_Hand
-Tantalum capacitor, Case D, EIA 7343-31, 7.3x4.3x2.8mm, Hand soldering footprint
-capacitor tantalum smd
+Capacitors
+CAP-PTH-10MM
+2 PTH SPACED 10MM APART
+2 PTH SPACED 10MM APART
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-D_EIA-7343-31_Reflow
-Tantalum capacitor, Case D, EIA 7343-31, 7.3x4.3x2.8mm, Reflow soldering footprint
-capacitor tantalum smd
+Capacitors
+CAP-PTH-LARGE
+
+
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-D_EIA-7343-31_Wave
-Tantalum capacitor, Case D, EIA 7343-31, 7.3x4.3x2.8mm, Wave soldering footprint
-capacitor tantalum smd
+Capacitors
+CAP-PTH-SMALL-KIT
+CAP-PTH-SMALL-KIT
+CAP-PTH-SMALL-KIT
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-E_EIA-7260-38_Hand
-Tantalum capacitor, Case E, EIA 7260-38, 7.3x6.0x3.6mm, Hand soldering footprint
-capacitor tantalum smd
+Capacitors
+CPOL-RADIAL-2.5MM-5MM
+2.5 MM SPACED PTHS WITH 5 MM DIAMETER OUTLINE AND STANDARD SOLDER MASK
+2.5 MM SPACED PTHS WITH 5 MM DIAMETER OUTLINE AND STANDARD SOLDER MASK
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-E_EIA-7260-38_Reflow
-Tantalum capacitor, Case E, EIA 7260-38, 7.3x6.0x3.6mm, Reflow soldering footprint
-capacitor tantalum smd
+Capacitors
+CPOL-RADIAL-2.5MM-5MM-KIT
+2.5 MM SPACED PTHS WITH TOP COPPER MASKED
+2.5 MM SPACED PTHS WITH TOP COPPER MASKED
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-E_EIA-7260-38_Wave
-Tantalum capacitor, Case E, EIA 7260-38, 7.3x6.0x3.6mm, Wave soldering footprint
-capacitor tantalum smd
+Capacitors
+CPOL-RADIAL-2.5MM-6.5MM
+2.5 MM SPACED PTHS WITH 6.5 MM DIAMETER OUTLINE
+2.5 MM SPACED PTHS WITH 6.5 MM DIAMETER OUTLINE
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-R_EIA-2012-12_Hand
-Tantalum capacitor, Case R, EIA 2012-12, 2.0x1.3x1.2mm, Hand soldering footprint
-capacitor tantalum smd
+Capacitors
+CPOL-RADIAL-5MM-10MM
+5 MM SPACED PTHS IN 10 MM DIAMETER SILK RING
+5 MM SPACED PTHS IN 10 MM DIAMETER SILK RING
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-R_EIA-2012-12_Reflow
-Tantalum capacitor, Case R, EIA 2012-12, 2.0x1.3x1.2mm, Reflow soldering footprint
-capacitor tantalum smd
+Capacitors
+CPOL-RADIAL-5MM-10MM-KIT
+5 MM SPACED PTHS, WITH 10 MM SILK RING AND NO EXPOSED COPPER ON TOP
+5 MM SPACED PTHS, WITH 10 MM SILK RING AND NO EXPOSED COPPER ON TOP
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-R_EIA-2012-12_Wave
-Tantalum capacitor, Case R, EIA 2012-12, 2.0x1.3x1.2mm, Wave soldering footprint
-capacitor tantalum smd
+Capacitors
+EIA3216
+GENERIC EIA 3216 (1206) POLARIZED TANTALUM CAPACITOR
+GENERIC EIA 3216 (1206) POLARIZED TANTALUM CAPACITOR
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-S_EIA-3216-12_Hand
-Tantalum capacitor, Case S, EIA 3216-12, 3.2x1.6x1.2mm, Hand soldering footprint
-capacitor tantalum smd
+Capacitors
+EIA3528
+GENERIC EIA 3528 POLARIZED TANTALUM CAPACITOR
+GENERIC EIA 3528 POLARIZED TANTALUM CAPACITOR
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-S_EIA-3216-12_Reflow
-Tantalum capacitor, Case S, EIA 3216-12, 3.2x1.6x1.2mm, Reflow soldering footprint
-capacitor tantalum smd
+Capacitors
+EIA6032-NOM
+METRIC SIZE CODE EIA 6032-25 MEDIAN (NOMINAL) LAND PROTRUSION
+METRIC SIZE CODE EIA 6032-25 MEDIAN (NOMINAL) LAND PROTRUSION
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-S_EIA-3216-12_Wave
-Tantalum capacitor, Case S, EIA 3216-12, 3.2x1.6x1.2mm, Wave soldering footprint
-capacitor tantalum smd
+Capacitors
+EIA7343
+EIA 7343 TANTALUM CAPACITOR
+EIA 7343 TANTALUM CAPACITOR
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-T_EIA-3528-12_Hand
-Tantalum capacitor, Case T, EIA 3528-12, 3.5x2.8x1.2mm, Hand soldering footprint
-capacitor tantalum smd
+Capacitors
+NIC_10X10.5_CAP
+SOME OLD PACKAGE IN OUR LIBRARY
+SOME OLD PACKAGE IN OUR LIBRARY
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-T_EIA-3528-12_Reflow
-Tantalum capacitor, Case T, EIA 3528-12, 3.5x2.8x1.2mm, Reflow soldering footprint
-capacitor tantalum smd
+Capacitors
+PANASONIC_C
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE E
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE E
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-T_EIA-3528-12_Wave
-Tantalum capacitor, Case T, EIA 3528-12, 3.5x2.8x1.2mm, Wave soldering footprint
-capacitor tantalum smd
+Capacitors
+PANASONIC_D
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE E
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE E
 0
 2
 2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-U_EIA-6032-15_Hand
-Tantalum capacitor, Case U, EIA 6032-15, 6.0x3.2x1.5mm, Hand soldering footprint
-capacitor tantalum smd
-0
-2
-2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-U_EIA-6032-15_Reflow
-Tantalum capacitor, Case U, EIA 6032-15, 6.0x3.2x1.5mm, Reflow soldering footprint
-capacitor tantalum smd
-0
-2
-2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-U_EIA-6032-15_Wave
-Tantalum capacitor, Case U, EIA 6032-15, 6.0x3.2x1.5mm, Wave soldering footprint
-capacitor tantalum smd
-0
-2
-2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-V_EIA-7343-20_Hand
-Tantalum capacitor, Case V, EIA 7343-20, 7.3x4.3x2.0mm, Hand soldering footprint
-capacitor tantalum smd
-0
-2
-2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-V_EIA-7343-20_Reflow
-Tantalum capacitor, Case V, EIA 7343-20, 7.3x4.3x2.0mm, Reflow soldering footprint
-capacitor tantalum smd
-0
-2
-2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-V_EIA-7343-20_Wave
-Tantalum capacitor, Case V, EIA 7343-20, 7.3x4.3x2.0mm, Wave soldering footprint
-capacitor tantalum smd
-0
-2
-2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-X_EIA-7343-43_Hand
-Tantalum capacitor, Case X, EIA 7343-43, 7.3x4.2x4.0mm, Hand soldering footprint
-capacitor tantalum smd
-0
-2
-2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-X_EIA-7343-43_Reflow
-Tantalum capacitor, Case X, EIA 7343-43, 7.3x4.2x4.0mm, Reflow soldering footprint
-capacitor tantalum smd
-0
-2
-2
-Capacitors_Tantalum_SMD
-CP_Tantalum_Case-X_EIA-7343-43_Wave
-Tantalum capacitor, Case X, EIA 7343-43, 7.3x4.2x4.0mm, Wave soldering footprint
-capacitor tantalum smd
+Capacitors
+PANASONIC_G
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE G
+PANASONIC ALUMINIUM ELECTROLYTIC CAPACITOR VS-SERIE PACKAGE G
 0
 2
 2
