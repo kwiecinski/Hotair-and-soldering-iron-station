@@ -1,5 +1,5 @@
-#Hotair and soldering iron station
-DIY station that uses standard WEP/Yihua hotair flask with fan and WEP/Yihua 907A 50W soldering iron + T12 soldering iron. 
+# Hotair and soldering iron station
+DIY station based on STM32F103C6T8 uC that uses standard WEP/Yihua hotair flask with fan and WEP/Yihua 907A 50W soldering iron + T12 soldering iron. 
 
 # 1. TOOLS
 - PCB made in KiCAD v6.0
@@ -11,9 +11,8 @@ DIY station that uses standard WEP/Yihua hotair flask with fan and WEP/Yihua 907
 
 # 3. Hardware
 
-Main PCB schematic
+### Main PCB schematic
+![](https://raw.githubusercontent.com/kwiecinski/Hotair-and-soldering-iron-station/master/PCB/V1.2/main-pcb/main-pcb-schematic.png)
 
-![](https://github.com/kwiecinski/Hotair-and-soldering-iron-station/tree/master/PCB/V1.2/main-pcb/main-pcb-schematic.png)
-![](https://github.com/kwiecinski/Hotair-and-soldering-iron-station/tree/master/PCB/V1.2/front-pcb/front-pcb-schematic.png)
-
-
+### Front PCB schematic
+![](https://raw.githubusercontent.com/kwiecinski/Hotair-and-soldering-iron-station/master/PCB/V1.2/front-pcb/front-pcb-schematic.png)
