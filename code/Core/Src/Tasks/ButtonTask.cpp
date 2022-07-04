@@ -23,5 +23,5 @@ void ButtonTask::start()
 //------------------------------------------------------------------------------
 void ButtonTask::run()
 {
-	buttons_task(nullptr);
+	Buttons::buttons_task(nullptr);
 }

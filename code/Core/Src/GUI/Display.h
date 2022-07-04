@@ -8,7 +8,7 @@
 #ifndef SRC_GUI_DISPLAY_H_
 #define SRC_GUI_DISPLAY_H_
 
-#include "../Buttons/buttons.h"
+#include "../Buttons/Buttons.h"
 #include "Menus/MainMenu.h"
 
 /**

@@ -31,14 +31,10 @@ public:
 
 //	virtual IMenu* prevMenu() = 0;
 //	virtual IMenu* nextMenu() = 0;
+	virtual void init() = 0;
 	virtual void update() = 0;
 
-	const char* getTitle() const
-	{
-		return m_title;
-	}
-
-private:
+protected:
 	char m_title[16];
 };
 

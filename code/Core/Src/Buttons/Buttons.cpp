@@ -5,7 +5,7 @@
  *      Author: luk6xff
  */
 
-#include "buttons.h"
+#include "Buttons.h"
 
 #include "FreeRTOS.h"
 #include "task.h"
@@ -17,8 +17,8 @@ struct ButtonStatus
 	ButtonState previous_state;
 
 	void (*button_released)(void);
-	void (*button_pressed_short)(void);
-	void (*button_pressed_long)(void);
+	std::function<void(void)> button_pressed_short;
+	std::function<void(void)> button_pressed_long;
 };
 
 
@@ -54,7 +54,7 @@ const struct ButtonConfig buttons_cfg[BUTTONS_NUMBER] =
 static struct ButtonStatus buttons[BUTTONS_NUMBER];
 
 //------------------------------------------------------------------------------
-void buttons_task(void *argument)
+void Buttons::buttons_task(void *argument)
 {
 	// Last wake time
 	TickType_t last_wake_time = xTaskGetTickCount();
@@ -88,7 +88,7 @@ void buttons_task(void *argument)
 				// Run pressed_short cb if registered
 				if (buttons[i].button_pressed_short)
 				{
-					(*buttons[i].button_pressed_short)();
+					(buttons[i].button_pressed_short)();
 				}
 			}
 			else if ((pin_state == buttons_cfg[i].pressed_pin_state) && \
@@ -99,7 +99,7 @@ void buttons_task(void *argument)
 				// Run pressed_long cb if registered
 				if (buttons[i].button_pressed_long)
 				{
-					(*buttons[i].button_pressed_long)();
+					(buttons[i].button_pressed_long)();
 				}
 			}
 			else if ((pin_state == (buttons_cfg[i].pressed_pin_state ^ 1)) && \
@@ -120,28 +120,27 @@ void buttons_task(void *argument)
 }
 
 //------------------------------------------------------------------------------
-void button_released_cb(ButtonType type, void(*cb)(void))
+void Buttons::button_released_cb(ButtonType type, void(*cb)(void))
 {
 	buttons[(int)type].button_released = cb;
 }
 
 //------------------------------------------------------------------------------
-void button_pressed_short_cb(ButtonType type, void(*cb)(void))
+void Buttons::button_pressed_short_cb(ButtonType type, std::function<void(void)> cb)
 {
 	buttons[(int)type].button_pressed_short = cb;
 }
 
 //------------------------------------------------------------------------------
-void button_pressed_long_cb(ButtonType type, void(*cb)(void))
+void Buttons::button_pressed_long_cb(ButtonType type, std::function<void(void)> cb)
 {
 	buttons[(int)type].button_pressed_long = cb;
 }
 
 //------------------------------------------------------------------------------
-const ButtonState buttons_state()
+const ButtonState Buttons::buttons_state(ButtonType button)
 {
-	// LU_TODO
-	return BUTTON_NOT_PRESSED;
+	return buttons[(int)button].current_state;
 }
 //------------------------------------------------------------------------------
 

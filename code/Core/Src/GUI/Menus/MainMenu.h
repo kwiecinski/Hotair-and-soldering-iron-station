@@ -18,19 +18,18 @@ public:
 	MainMenu(const char *title, LiquidCrystal& lcd);
 	virtual ~MainMenu() = default;
 
+	void init() override;
 	void update() override;
 
 private:
 	LiquidCrystal& m_lcd;
 	// Menu structure
 	LiquidLine m_titleLine;
-	LiquidLine m_aboutLine;
 	LiquidLine m_hotAirLine;
 	LiquidLine m_wepLine;
-	LiquidScreen m_screen1;
-	LiquidScreen m_screen2;
-//	LiquidLine m_t12Line;
-
+	LiquidLine m_t12Line;
+	LiquidLine m_aboutLine;
+	LiquidScreen m_screen;
 	LiquidMenu m_menu;
 };
 

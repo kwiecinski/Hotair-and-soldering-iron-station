@@ -9,7 +9,7 @@
 #define SRC_TASKS_BUTTONTASK_H_
 
 #include "Task.h"
-#include "../Buttons/buttons.h"
+#include "../Buttons/Buttons.h"
 
 class ButtonTask : public Task
 {

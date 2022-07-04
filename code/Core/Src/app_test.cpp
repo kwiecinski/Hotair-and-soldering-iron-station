@@ -53,8 +53,8 @@ void AppTest::run()
     display.init();
 
     // BUTTONS
-	button_pressed_short_cb(BUTTON_HOTAIR_FAN_UP, button_short_pressed_test);
-	button_pressed_long_cb(BUTTON_HOTAIR_FAN_DOWN, button_long_pressed_test);
+	//button_pressed_short_cb(BUTTON_HOTAIR_FAN_UP, button_short_pressed_test);
+	//button_pressed_long_cb(BUTTON_HOTAIR_FAN_DOWN, button_long_pressed_test);
 
 //    // LCD
 //    testLcd();

@@ -5,16 +5,15 @@
  *      Author: luk6xff
  */
 
-#ifndef SRC_BUTTONS_BUTTONS_H_
-#define SRC_BUTTONS_BUTTONS_H_
+#ifndef BUTTONS_BUTTONS_H_
+#define BUTTONS_BUTTONS_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+//#ifdef __cplusplus
+//extern "C" {
+//#endif
 
 #include "gpio.h"
-
-
+#include "functional"
 
 // Last time of button pressed
 extern uint32_t last_button_time;
@@ -63,33 +62,38 @@ typedef enum
 	BUTTON_LONG_PRESSED,
 } ButtonState;
 
-/**
- * @brief Buttons polling task
- */
-void buttons_task(void *argument);
+class Buttons
+{
+public:
+	/**
+	 * @brief Buttons polling task
+	 */
+	static void buttons_task(void *argument);
 
-/**
- * @brief Set button released callback
- */
-void button_released_cb(ButtonType type, void(*cb)(void));
+	/**
+	 * @brief Set button released callback
+	 */
+	void button_released_cb(ButtonType type, void(*cb)(void));
 
-/**
- * @brief Set button pressed_short callback
- */
-void button_pressed_short_cb(ButtonType type, void(*cb)(void));
+	/**
+	 * @brief Set button pressed_short callback
+	 */
+	void button_pressed_short_cb(ButtonType type, std::function<void(void)>);
 
-/**
- * @brief Set button pressed_long callback
- */
-void button_pressed_long_cb(ButtonType type, void(*cb)(void));
+	/**
+	 * @brief Set button pressed_long callback
+	 */
+	void button_pressed_long_cb(ButtonType type, std::function<void(void)>);
 
-/**
- * @brief Returns what buttons are pressed.
- */
-const ButtonState buttons_state();
+	/**
+	 * @brief Returns what buttons are pressed.
+	 */
+	const ButtonState buttons_state(ButtonType button);
+};
 
-#ifdef __cplusplus
-}
-#endif
 
-#endif /* SRC_BUTTONS_BUTTONS_H_ */
+//#ifdef __cplusplus
+//}
+//#endif
+
+#endif /* BUTTONS_BUTTONS_H_ */

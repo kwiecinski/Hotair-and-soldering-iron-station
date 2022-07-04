@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "Buttons/buttons.h"
+#include "Buttons/Buttons.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,12 +44,12 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-osThreadId_t buttonsTaskHandle;
-const osThreadAttr_t buttonsTask_attributes = {
-  .name = "buttonsTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
-};
+//osThreadId_t buttonsTaskHandle;
+//const osThreadAttr_t buttonsTask_attributes = {
+//  .name = "buttonsTask",
+//  .stack_size = 128 * 4,
+//  .priority = (osPriority_t) osPriorityNormal,
+//};
 
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
@@ -101,7 +101,7 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-  buttonsTaskHandle = osThreadNew(buttons_task, NULL, &buttonsTask_attributes);
+  //buttonsTaskHandle = osThreadNew(buttons_task, NULL, &buttonsTask_attributes);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */

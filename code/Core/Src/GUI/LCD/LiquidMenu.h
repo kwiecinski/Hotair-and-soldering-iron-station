@@ -687,6 +687,19 @@ public:
   void hide(bool hide);
   ///@}
 
+  /// Directly select focused line.
+  /**
+  @param lineIndex - index of the focused line
+  @return true: on success, false: when the selected line doesn't exist or it isn't focusable
+  */
+  bool set_focusedLine(uint8_t lineIndex);
+
+  /// Get the index of the currently focused line.
+  /**
+  @returns the index of the currently focused line
+  */
+  uint8_t get_focusedLine() const;
+
 private:
   /// Prints the lines pointed by the screen.
   /**
@@ -709,19 +722,6 @@ private:
   @param forward - true for forward, false for backward
   */
   void switch_focus(bool forward = true);
-
-  /// Directly select focused line.
-  /**
-  @param lineIndex - index of the focused line
-  @return true: on success, false: when the selected line doesn't exist or it isn't focusable
-  */
-  bool set_focusedLine(uint8_t lineIndex);
-
-  /// Get the index of the currently focused line.
-  /**
-  @returns the index of the currently focused line
-  */
-  uint8_t get_focusedLine() const;
 
   /// Check if there is an attached function at the specified number.
   /**
