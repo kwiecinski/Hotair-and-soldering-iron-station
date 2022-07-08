@@ -13,7 +13,7 @@
 //#endif
 
 #include "gpio.h"
-#include "functional"
+#include <functional>
 
 // Last time of button pressed
 extern uint32_t last_button_time;
@@ -62,6 +62,19 @@ typedef enum
 	BUTTON_LONG_PRESSED,
 } ButtonState;
 
+/**
+ * @brief Button status structure
+ */
+struct ButtonStatus
+{
+	ButtonState current_state;
+	ButtonState previous_state;
+
+	std::function<void(void)> button_released;
+	std::function<void(void)> button_pressed_short;
+	std::function<void(void)> button_pressed_long;
+};
+
 class Buttons
 {
 public:
@@ -73,7 +86,7 @@ public:
 	/**
 	 * @brief Set button released callback
 	 */
-	void button_released_cb(ButtonType type, void(*cb)(void));
+	void button_released_cb(ButtonType type, std::function<void(void)> cb);
 
 	/**
 	 * @brief Set button pressed_short callback
@@ -89,6 +102,9 @@ public:
 	 * @brief Returns what buttons are pressed.
 	 */
 	const ButtonState buttons_state(ButtonType button);
+
+protected:
+	ButtonStatus buttons[BUTTONS_NUMBER];
 };
 
 

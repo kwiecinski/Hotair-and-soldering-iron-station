@@ -27,6 +27,9 @@ private:
     // Application Tasks
     DisplayTask m_dispTask;
     ButtonTask m_buttonTask;
+
+    // Common objects
+    Buttons m_buttons;
 };
 
 

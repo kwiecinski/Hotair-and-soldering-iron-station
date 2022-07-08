@@ -15,10 +15,14 @@ class ButtonTask : public Task
 {
 
 public:
-	ButtonTask(const char *name, size_t stackSize, osPriority_t priority);
+	ButtonTask(const char *name, size_t stackSize,
+				osPriority_t priority, Buttons& buttons);
 
 	void start() override;
 	void run() override;
+
+private:
+	Buttons& m_buttons;
 };
 
 #endif /* SRC_TASKS_BUTTONTASK_H_ */

@@ -65,11 +65,9 @@ void func() {
 	return;
 }
 
-
-Buttons buttons;
 //------------------------------------------------------------------------------
-MainMenu::MainMenu(const char *title, LiquidCrystal& lcd)
-	: IMenu("SETTINGS")
+MainMenu::MainMenu(const char *title, Buttons& buttons, LiquidCrystal& lcd)
+	: IMenu("SETTINGS", buttons)
 	, m_lcd(lcd)
 	, m_titleLine(0, 0, m_title) // LU_TODO
 	, m_hotAirLine(1, 1, "HotAir settings")
@@ -115,42 +113,33 @@ void MainMenu::init()
 	m_menu.switch_focus();
 //	m_menu.update();
 
-	buttons.button_pressed_short_cb(ButtonType::BUTTON_MENU_RIGHT, [this](){m_menu.switch_focus();});
+	m_buttons.button_pressed_short_cb(ButtonType::BUTTON_MENU_RIGHT, [this](){m_menu.switch_focus();});
+	m_buttons.button_pressed_short_cb(ButtonType::BUTTON_MENU_LEFT, [this](){m_menu.switch_focus(false);});
 }
 
 
 //------------------------------------------------------------------------------
 void MainMenu::update()
 {
-//	// LU_TODO For tests only
-//	static int i = 0;
-//	if (i++ % 100 == 0)
-//	{
-//		m_menu.next_screen();
-//		m_menu.set_focusSymbol(Position::LEFT, glyphs::leftFocus);
-//		m_menu.get_currentScreen()->set_focusPosition(Position::LEFT);
-//	}
-//  m_menu.update();
-
-	  if (buttons.buttons_state(BUTTON_MENU_RIGHT) == BUTTON_SHORT_PRESSED)
-	  {
-		  m_menu.switch_focus();
-	  }
-	  if (buttons.buttons_state(BUTTON_MENU_LEFT) == BUTTON_SHORT_PRESSED)
-	  {
-		  m_menu.switch_focus(false);
-	  }
-	  if (buttons.buttons_state(BUTTON_HOTAIR_TEMP_UP) == BUTTON_SHORT_PRESSED)
-	  {
-	    //menu_system.call_function(increase);
-	  }
-	  if (buttons.buttons_state(BUTTON_HOTAIR_TEMP_DOWN) == BUTTON_SHORT_PRESSED)
-	  {
-	    //menu_system.call_function(decrease);
-	  }
-	  	  if (buttons.buttons_state(BUTTON_MENU_OK) == BUTTON_SHORT_PRESSED)
-	  	  {
-	  }
+//	  if (buttons.buttons_state(BUTTON_MENU_RIGHT) == BUTTON_SHORT_PRESSED)
+//	  {
+//		  m_menu.switch_focus();
+//	  }
+//	  if (buttons.buttons_state(BUTTON_MENU_LEFT) == BUTTON_SHORT_PRESSED)
+//	  {
+//		  m_menu.switch_focus(false);
+//	  }
+//	  if (buttons.buttons_state(BUTTON_HOTAIR_TEMP_UP) == BUTTON_SHORT_PRESSED)
+//	  {
+//	    //menu_system.call_function(increase);
+//	  }
+//	  if (buttons.buttons_state(BUTTON_HOTAIR_TEMP_DOWN) == BUTTON_SHORT_PRESSED)
+//	  {
+//	    //menu_system.call_function(decrease);
+//	  }
+//	  	  if (buttons.buttons_state(BUTTON_MENU_OK) == BUTTON_SHORT_PRESSED)
+//	  	  {
+//	  }
 
 	  m_menu.update();
 

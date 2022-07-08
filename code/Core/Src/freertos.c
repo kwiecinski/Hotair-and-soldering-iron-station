@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "Buttons/Buttons.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,12 +44,6 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-//osThreadId_t buttonsTaskHandle;
-//const osThreadAttr_t buttonsTask_attributes = {
-//  .name = "buttonsTask",
-//  .stack_size = 128 * 4,
-//  .priority = (osPriority_t) osPriorityNormal,
-//};
 
 /* USER CODE END Variables */
 /* Definitions for defaultTask */

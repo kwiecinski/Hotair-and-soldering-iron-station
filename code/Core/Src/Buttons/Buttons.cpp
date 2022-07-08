@@ -10,16 +10,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-//------------------------------------------------------------------------------
-struct ButtonStatus
-{
-	ButtonState current_state;
-	ButtonState previous_state;
-
-	void (*button_released)(void);
-	std::function<void(void)> button_pressed_short;
-	std::function<void(void)> button_pressed_long;
-};
 
 
 //------------------------------------------------------------------------------
@@ -51,20 +41,24 @@ const struct ButtonConfig buttons_cfg[BUTTONS_NUMBER] =
 };
 
 //------------------------------------------------------------------------------
-static struct ButtonStatus buttons[BUTTONS_NUMBER];
+
 
 //------------------------------------------------------------------------------
 void Buttons::buttons_task(void *argument)
 {
+	Buttons *obj = reinterpret_cast<Buttons*>(argument);
+
 	// Last wake time
 	TickType_t last_wake_time = xTaskGetTickCount();
+
 	// Sampling interval
 	const TickType_t sample_interval = 50/portTICK_PERIOD_MS;
+
 	// Setup default state
 	for (int i = 0; i < BUTTONS_NUMBER; ++i)
 	{
-		buttons[i].current_state = BUTTON_NOT_PRESSED;
-		buttons[i].previous_state = BUTTON_NOT_PRESSED;
+		obj->buttons[i].current_state = BUTTON_NOT_PRESSED;
+		obj->buttons[i].previous_state = BUTTON_NOT_PRESSED;
 	}
 
 	for(;;)
@@ -80,47 +74,47 @@ void Buttons::buttons_task(void *argument)
 
 			if (pin_state == (buttons_cfg[i].pressed_pin_state ^ 1))
 			{
-				buttons[i].current_state = BUTTON_NOT_PRESSED;
+				obj->buttons[i].current_state = BUTTON_NOT_PRESSED;
 			}
-			else if ((pin_state == buttons_cfg[i].pressed_pin_state) && (buttons[i].previous_state == BUTTON_NOT_PRESSED))
+			else if ((pin_state == buttons_cfg[i].pressed_pin_state) && (obj->buttons[i].previous_state == BUTTON_NOT_PRESSED))
 			{
-				buttons[i].current_state = BUTTON_SHORT_PRESSED;
+				obj->buttons[i].current_state = BUTTON_SHORT_PRESSED;
 				// Run pressed_short cb if registered
-				if (buttons[i].button_pressed_short)
+				if (obj->buttons[i].button_pressed_short != nullptr)
 				{
-					(buttons[i].button_pressed_short)();
+					obj->buttons[i].button_pressed_short();
 				}
 			}
 			else if ((pin_state == buttons_cfg[i].pressed_pin_state) && \
-					 (buttons[i].previous_state == BUTTON_SHORT_PRESSED || \
-					  buttons[i].previous_state == BUTTON_LONG_PRESSED))
+					 (obj->buttons[i].previous_state == BUTTON_SHORT_PRESSED || \
+					  obj->buttons[i].previous_state == BUTTON_LONG_PRESSED))
 			{
-				buttons[i].current_state = BUTTON_LONG_PRESSED;
+				obj->buttons[i].current_state = BUTTON_LONG_PRESSED;
 				// Run pressed_long cb if registered
-				if (buttons[i].button_pressed_long)
+				if (obj->buttons[i].button_pressed_long != nullptr)
 				{
-					(buttons[i].button_pressed_long)();
+					obj->buttons[i].button_pressed_long();
 				}
 			}
 			else if ((pin_state == (buttons_cfg[i].pressed_pin_state ^ 1)) && \
-					 (buttons[i].previous_state == BUTTON_SHORT_PRESSED || \
-					  buttons[i].previous_state == BUTTON_LONG_PRESSED))
+					 (obj->buttons[i].previous_state == BUTTON_SHORT_PRESSED || \
+					  obj->buttons[i].previous_state == BUTTON_LONG_PRESSED))
 			{
-				buttons[i].current_state = BUTTON_NOT_PRESSED;
+				obj->buttons[i].current_state = BUTTON_NOT_PRESSED;
 				// Run released cb if registered
-				if (buttons[i].button_released)
+				if (obj->buttons[i].button_released != nullptr)
 				{
-					(*buttons[i].button_released)();
+					obj->buttons[i].button_released();
 				}
 			}
 
-			buttons[i].previous_state = buttons[i].current_state;
+			obj->buttons[i].previous_state = obj->buttons[i].current_state;
 		}
 	}
 }
 
 //------------------------------------------------------------------------------
-void Buttons::button_released_cb(ButtonType type, void(*cb)(void))
+void Buttons::button_released_cb(ButtonType type, std::function<void(void)> cb)
 {
 	buttons[(int)type].button_released = cb;
 }

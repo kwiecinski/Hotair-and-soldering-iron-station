@@ -15,7 +15,7 @@ class MainMenu : public IMenu
 {
 
 public:
-	MainMenu(const char *title, LiquidCrystal& lcd);
+	MainMenu(const char *title, Buttons& buttons, LiquidCrystal& lcd);
 	virtual ~MainMenu() = default;
 
 	void init() override;

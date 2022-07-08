@@ -8,8 +8,10 @@
 #include "ButtonTask.h"
 
 //------------------------------------------------------------------------------
-ButtonTask::ButtonTask(const char *name, size_t stackSize, osPriority_t priority)
+ButtonTask::ButtonTask(const char *name, size_t stackSize,
+						osPriority_t priority, Buttons& buttons)
 	: Task(name, stackSize, priority)
+	, m_buttons(buttons)
 {
 
 }
@@ -23,5 +25,7 @@ void ButtonTask::start()
 //------------------------------------------------------------------------------
 void ButtonTask::run()
 {
-	Buttons::buttons_task(nullptr);
+	Buttons::buttons_task(&m_buttons);
 }
+
+//------------------------------------------------------------------------------

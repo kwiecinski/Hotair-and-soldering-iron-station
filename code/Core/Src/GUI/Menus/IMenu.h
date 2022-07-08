@@ -9,6 +9,7 @@
 #define SRC_GUI_MENUS_IMENU_H_
 
 #include <cstring>
+#include "../../Buttons/Buttons.h"
 
 
 class IMenu
@@ -16,7 +17,8 @@ class IMenu
 
 public:
 
-	IMenu(const char *title)
+	IMenu(const char *title, Buttons& buttons)
+		: m_buttons(buttons)
 	{
 		m_title[0] = '<';
 		std::size_t s = std::strlen(title);
@@ -36,6 +38,7 @@ public:
 
 protected:
 	char m_title[16];
+	Buttons m_buttons;
 };
 
 #endif /* SRC_GUI_MENUS_IMENU_H_ */

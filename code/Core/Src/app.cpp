@@ -21,7 +21,7 @@
 //------------------------------------------------------------------------------
 App::App()
 	: m_dispTask("DisplayTask", 256*4, osPriorityNormal)
-	, m_buttonTask("ButtonTask", 128*4, osPriorityNormal)
+	, m_buttonTask("ButtonTask", 128*4, osPriorityNormal, m_buttons)
 {
 
 }
@@ -42,7 +42,6 @@ void App::run()
     // Start All the tasks
     m_dispTask.start();
     m_buttonTask.start();
-
 }
 
 
