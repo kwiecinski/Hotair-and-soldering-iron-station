@@ -8,11 +8,10 @@
 #ifndef SRC_GUI_DISPLAY_H_
 #define SRC_GUI_DISPLAY_H_
 
-#include "../Buttons/Buttons.h"
-#include "Menus/MainMenu.h"
+#include "LCD/LiquidCrystal.h"
 
 /**
- * @brief Class responsible for managing the whole app display
+ * @brief Class responsible for managing the LCD display
  */
 class Display
 {
@@ -22,15 +21,11 @@ public:
 	~Display() = default;
 
 	void init();
-	void update();
 
-	// Remove later
-	LiquidCrystal& getLcdHandle();
+	LiquidCrystal& handle();
 
 private:
 	LiquidCrystal m_lcd;
-
-	MainMenu m_mainMenu;
 };
 
 #endif /* SRC_GUI_DISPLAY_H_ */

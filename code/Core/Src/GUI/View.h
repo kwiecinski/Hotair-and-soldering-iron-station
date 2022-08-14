@@ -8,6 +8,27 @@
 #ifndef SRC_GUI_VIEW_H_
 #define SRC_GUI_VIEW_H_
 
+#include "Display.h"
+#include "LCD/LiquidMenu.h"
 
+/**
+ * @brief Class responsible for managing displaying stuff on LCD
+ */
+class View
+{
+public:
+	View(Display& display);
+
+	virtual void init() = 0;
+
+protected:
+	virtual void update();
+
+private:
+	Display& m_display;
+
+protected:
+	LiquidMenu m_widget;
+};
 
 #endif /* SRC_GUI_VIEW_H_ */

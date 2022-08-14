@@ -1,38 +1,50 @@
 /*
- * DisplayTask.cpp
+ * RtosUtils.cpp
  *
- *  Created on: May 3, 2022
+ *  Created on: Aug 14, 2022
  *      Author: luk6xff
  */
 
-#include "DisplayTask.h"
+
+#include "RtosUtils.h"
+
+using namespace rtos;
 
 
 //------------------------------------------------------------------------------
-DisplayTask::DisplayTask(const char *name, size_t stackSize, osPriority_t priority)
-	: Task(name, stackSize, priority)
+Mutex::Mutex()
+    : m_handle(nullptr)
 {
-
+    m_handle = xSemaphoreCreateMutex();
 }
 
 //------------------------------------------------------------------------------
-void DisplayTask::start()
+Mutex::~Mutex()
 {
-	m_display.init();
-	Task::start();
+    unlock();
+    reset();
 }
 
 //------------------------------------------------------------------------------
-void DisplayTask::run()
+void Mutex::lock()
 {
-	const TickType_t k_refreshTime = 100/portTICK_PERIOD_MS;
-	for (;;)
-	{
-		//m_display.update();
-		vTaskDelay(k_refreshTime);
-	}
+    if (m_handle)
+    {
+        xSemaphoreTake(m_handle, portMAX_DELAY);
+    }
 }
 
 //------------------------------------------------------------------------------
+void Mutex::unlock()
+{
+    if (m_handle)
+    {
+        xSemaphoreGive(m_handle);
+    }
+}
 
 //------------------------------------------------------------------------------
+void Mutex::reset()
+{
+    m_handle = nullptr;
+}

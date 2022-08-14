@@ -309,6 +309,7 @@ size_t LiquidCrystal::write(uint8_t value) {
 // write either command or data, with automatic 4/8-bit selection
 void LiquidCrystal::send(uint8_t value, uint8_t mode) {
 
+  rtos::LockGuard<rtos::Mutex> lg(_displayMtx);
   setGpio(GpioType::RS, (GpioState)mode);
 
   // if there is a RW pin indicated, set it low to Write
@@ -321,7 +322,7 @@ void LiquidCrystal::send(uint8_t value, uint8_t mode) {
   } else {
     write4bits(value>>4);
     write4bits(value & 0x0F);
- }
+  }
 }
 
 void LiquidCrystal::pulseEnable(void) {

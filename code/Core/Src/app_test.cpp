@@ -248,7 +248,7 @@ void AppTest::testWEP()
 		   (data_old.error != data.error))
 		{
 
-			Show_MAX_data_LCD(display.getLcdHandle(), &data,compensaded_temp);
+			Show_MAX_data_LCD(display.handle(), &data,compensaded_temp);
 		}
 
 		data_old.error=data.error;
@@ -292,8 +292,8 @@ void AppTest::testWEP()
 
 				Set_WEP_PWM(0,frequency);
 				printf("HEATED \n\r");
-				display.getLcdHandle().setCursor(13,1);
-				display.getLcdHandle().print("HTD");
+				display.handle().setCursor(13,1);
+				display.handle().print("HTD");
 				Buzzer(1000);
 				HAL_Delay(3000);
 				htd_cnt++;
@@ -370,13 +370,13 @@ void AppTest::testT12()
             // show on LCD
             char buf[10];
             sprintf(buf,"T%-3d",compensaded_temp);			// Conversation to Char
-            display.getLcdHandle().clear();
-            display.getLcdHandle().print("TEST T12");
-            display.getLcdHandle().setCursor(12,0);
-            display.getLcdHandle().print(buf);							// show temp
+            display.handle().clear();
+            display.handle().print("TEST T12");
+            display.handle().setCursor(12,0);
+            display.handle().print(buf);							// show temp
             sprintf(buf,"V%-.1f",temp_voltage);
-            display.getLcdHandle().setCursor(0,1);
-            display.getLcdHandle().print(buf);							// show ADC temp voltage
+            display.handle().setCursor(0,1);
+            display.handle().print(buf);							// show ADC temp voltage
 
 
             // send via UART
@@ -411,9 +411,9 @@ void AppTest::testT12()
 		}else
 		{
 			HAL_TIM_PWM_Stop(&htim4,TIM_CHANNEL_1);
-			display.getLcdHandle().setCursor(10,1);
-			display.getLcdHandle().print("      ");
-			display.getLcdHandle().print("HEATED");
+			display.handle().setCursor(10,1);
+			display.handle().print("      ");
+			display.handle().print("HEATED");
 			Buzzer(1000);
 			HAL_Delay(3000);
 			htd_cnt++;
@@ -505,7 +505,7 @@ void AppTest::testHOTAIR()
 		// show on LCD and send to UART only if temp change
 		if(compensaded_temp!=compensaded_temp_old)
 		{
-			Show_HOTAIR_data(display.getLcdHandle(), compensaded_temp, temp_voltage, fan_voltage);
+			Show_HOTAIR_data(display.handle(), compensaded_temp, temp_voltage, fan_voltage);
 		}
 		compensaded_temp_old=compensaded_temp;
 
@@ -531,8 +531,8 @@ void AppTest::testHOTAIR()
 
 
 			printf("HEATED \n\r");
-			display.getLcdHandle().setCursor(13,1);
-			display.getLcdHandle().print("HTD");
+			display.handle().setCursor(13,1);
+			display.handle().print("HTD");
 			Buzzer(1000);
 			HAL_Delay(3000);
 			htd_cnt++;

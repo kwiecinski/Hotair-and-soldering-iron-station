@@ -4,6 +4,8 @@
 #include <inttypes.h>
 // Platform dependent GPIO header
 #include "gpio.h"
+// Multithread Synchronization mechanism
+#include "../../Tasks/RtosUtils.h"
 
 // commands
 #define LCD_CLEARDISPLAY 0x01
@@ -143,6 +145,8 @@ private:
 
   uint8_t _numlines;
   uint8_t _row_offsets[4];
+
+  rtos::Mutex _displayMtx;
 };
 
 #endif
