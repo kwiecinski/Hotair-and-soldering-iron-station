@@ -20,8 +20,8 @@
 
 //------------------------------------------------------------------------------
 App::App()
-	: m_dispTask("DisplayTask", 256*4, osPriorityNormal)
-	, m_buttonTask("ButtonTask", 128*4, osPriorityNormal, m_buttons)
+	: m_buttonTask("ButtonTask", 128*4, osPriorityNormal)
+	, m_ctrlTask("ControlTask", 256*4, osPriorityNormal)
 {
 
 }
@@ -38,9 +38,10 @@ void App::run()
     Init_ADC();
 
     printf("\r\n>>> Hello from HotAir-Soldering-Station App! <<<\r\n");
+    printf(">>> Made by Kwiecinski & Uszko 2022 <<<\r\n\r\n");
 
     // Start All the tasks
-    m_dispTask.start();
+    m_ctrlTask.start();
     m_buttonTask.start();
 }
 

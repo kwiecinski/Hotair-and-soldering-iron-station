@@ -16,7 +16,7 @@ class ButtonTask : public Task
 
 public:
 	ButtonTask(const char *name, size_t stackSize,
-				osPriority_t priority, button::Buttons& buttons);
+				osPriority_t priority);
 
 	void start() override;
 	void run() override;
@@ -25,7 +25,7 @@ private:
 	void registerButtonQueue();
 
 private:
-	button::Buttons& m_buttons;
+	button::Buttons m_buttons;
 };
 
 #endif /* SRC_TASKS_BUTTONTASK_H_ */

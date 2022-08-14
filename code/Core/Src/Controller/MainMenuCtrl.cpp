@@ -7,9 +7,12 @@
 
 #include "MainMenuCtrl.h"
 
+namespace ctrl
+{
+
 //------------------------------------------------------------------------------
 MainMenuCtrl::MainMenuCtrl(MainMenuView& view, MainMenuModel& model)
-	: IController(view, model)
+	: IController(ControllerId::MAINMENU, view, model)
 {
 
 }
@@ -21,4 +24,11 @@ void MainMenuCtrl::onButtonChanged()
 }
 
 //------------------------------------------------------------------------------
+void MainMenuCtrl::onParameterChanged()
+{
 
+}
+
+//------------------------------------------------------------------------------
+
+}

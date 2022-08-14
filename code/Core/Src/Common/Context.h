@@ -10,6 +10,7 @@
 
 // Add all common (shared across the app) components
 #include "../Task/Queues.h"
+#include "../GUI/Display.h"
 
 class Context
 {
@@ -19,6 +20,7 @@ public:
 
 public:
 	Queues queues;
+	Display display;
 };
 
 #endif /* SRC_COMMON_CONTEXT_H_ */

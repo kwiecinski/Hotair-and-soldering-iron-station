@@ -12,11 +12,17 @@
 #include "../View/MainMenuView.h"
 #include "../Model/MainMenuModel.h"
 
+namespace ctrl
+{
+
 class MainMenuCtrl : public IController
 {
 	MainMenuCtrl(MainMenuView& view, MainMenuModel& model);
 
 	void onButtonChanged() override;
+	void onParameterChanged() override;
 };
+
+}
 
 #endif /* SRC_CONTROLLER_MAINMENUCTRL_H_ */

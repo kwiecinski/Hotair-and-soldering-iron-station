@@ -10,11 +10,18 @@
 
 #include "IController.h"
 
+namespace ctrl
+{
+
 class HotAirCtrl : public IController
 {
 	HotAirCtrl();
 
 	void onButtonChanged() override;
+	void onParameterChanged() override;
 };
+
+}
+
 
 #endif /* SRC_CONTROLLER_HOTAIRCTRL_H_ */

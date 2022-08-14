@@ -10,8 +10,9 @@
 
 
 #include "iapp.h"
-#include "Task/DisplayTask.h"
 #include "Task/ButtonTask.h"
+#include "Task/ControlTask.h"
+
 
 /**
  * @brief Main Soldering station application.
@@ -25,11 +26,8 @@ public:
 
 private:
     // Application Tasks
-    DisplayTask m_dispTask;
     ButtonTask m_buttonTask;
-
-    // Common objects
-    button::Buttons m_buttons;
+    ControlTask m_ctrlTask;
 };
 
 
