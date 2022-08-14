@@ -18,6 +18,7 @@ namespace button
 class ButtonEventQueue
 {
 
+public:
 	struct Data
 	{
 		ButtonType button;
@@ -26,6 +27,10 @@ class ButtonEventQueue
 
 public:
 	explicit ButtonEventQueue(size_t size);
+
+	void send(const Data& data);
+	bool receive(Data& data);
+
 
 private:
 	QueueHandle_t m_queue;

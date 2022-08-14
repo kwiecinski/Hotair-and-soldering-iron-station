@@ -18,12 +18,12 @@ struct ButtonConfig
 {
 	uint16_t pin;
 	GPIO_TypeDef *port;
-	GPIO_PinState pressed_pin_state;
+	GPIO_PinState pressedPinState;
 
 };
 
 //------------------------------------------------------------------------------
-const struct ButtonConfig buttons_cfg[BUTTONS_NUMBER] =
+const struct ButtonConfig buttonsCfg[BUTTONS_NUMBER] =
 {
 	{ HOTAIR_ON_SW_Pin, 		HOTAIR_ON_SW_GPIO_Port,			GPIO_PIN_RESET },
 	{ HOTAIR_TEMP_UP_SW_Pin, 	HOTAIR_TEMP_UP_SW_GPIO_Port,	GPIO_PIN_RESET },
@@ -45,7 +45,7 @@ const struct ButtonConfig buttons_cfg[BUTTONS_NUMBER] =
 
 
 //------------------------------------------------------------------------------
-void Buttons::buttons_task(void *argument)
+void Buttons::buttonsTask(void *argument)
 {
 	Buttons *obj = reinterpret_cast<Buttons*>(argument);
 
@@ -58,8 +58,8 @@ void Buttons::buttons_task(void *argument)
 	// Setup default state
 	for (int i = 0; i < BUTTONS_NUMBER; ++i)
 	{
-		obj->buttons[i].current_state = BUTTON_NOT_PRESSED;
-		obj->buttons[i].previous_state = BUTTON_NOT_PRESSED;
+		obj->buttons[i].currentState = BUTTON_NOT_PRESSED;
+		obj->buttons[i].previousState = BUTTON_NOT_PRESSED;
 	}
 
 	for(;;)
@@ -71,71 +71,71 @@ void Buttons::buttons_task(void *argument)
 		// Get the level on button pin
 		for (int i = 0; i < BUTTONS_NUMBER; ++i)
 		{
-			const GPIO_PinState pin_state  = HAL_GPIO_ReadPin(buttons_cfg[i].port, buttons_cfg[i].pin);
+			const GPIO_PinState pin_state  = HAL_GPIO_ReadPin(buttonsCfg[i].port, buttonsCfg[i].pin);
 
-			if (pin_state == (buttons_cfg[i].pressed_pin_state ^ 1))
+			if (pin_state == (buttonsCfg[i].pressedPinState ^ 1))
 			{
-				obj->buttons[i].current_state = BUTTON_NOT_PRESSED;
+				obj->buttons[i].currentState = BUTTON_NOT_PRESSED;
 			}
-			else if ((pin_state == buttons_cfg[i].pressed_pin_state) && (obj->buttons[i].previous_state == BUTTON_NOT_PRESSED))
+			else if ((pin_state == buttonsCfg[i].pressedPinState) && (obj->buttons[i].previousState == BUTTON_NOT_PRESSED))
 			{
-				obj->buttons[i].current_state = BUTTON_SHORT_PRESSED;
+				obj->buttons[i].currentState = BUTTON_SHORT_PRESSED;
 				// Run pressed_short cb if registered
-				if (obj->buttons[i].button_pressed_short != nullptr)
+				if (obj->buttons[i].buttonPressedShort != nullptr)
 				{
-					obj->buttons[i].button_pressed_short();
+					obj->buttons[i].buttonPressedShort();
 				}
 			}
-			else if ((pin_state == buttons_cfg[i].pressed_pin_state) && \
-					 (obj->buttons[i].previous_state == BUTTON_SHORT_PRESSED || \
-					  obj->buttons[i].previous_state == BUTTON_LONG_PRESSED))
+			else if ((pin_state == buttonsCfg[i].pressedPinState) && \
+					 (obj->buttons[i].previousState == BUTTON_SHORT_PRESSED || \
+					  obj->buttons[i].previousState == BUTTON_LONG_PRESSED))
 			{
-				obj->buttons[i].current_state = BUTTON_LONG_PRESSED;
+				obj->buttons[i].currentState = BUTTON_LONG_PRESSED;
 				// Run pressed_long cb if registered
-				if (obj->buttons[i].button_pressed_long != nullptr)
+				if (obj->buttons[i].buttonPressedLong != nullptr)
 				{
-					obj->buttons[i].button_pressed_long();
+					obj->buttons[i].buttonPressedLong();
 				}
 			}
-			else if ((pin_state == (buttons_cfg[i].pressed_pin_state ^ 1)) && \
-					 (obj->buttons[i].previous_state == BUTTON_SHORT_PRESSED || \
-					  obj->buttons[i].previous_state == BUTTON_LONG_PRESSED))
+			else if ((pin_state == (buttonsCfg[i].pressedPinState ^ 1)) && \
+					 (obj->buttons[i].previousState == BUTTON_SHORT_PRESSED || \
+					  obj->buttons[i].previousState == BUTTON_LONG_PRESSED))
 			{
-				obj->buttons[i].current_state = BUTTON_NOT_PRESSED;
+				obj->buttons[i].currentState = BUTTON_NOT_PRESSED;
 				// Run released cb if registered
-				if (obj->buttons[i].button_released != nullptr)
+				if (obj->buttons[i].buttonReleased != nullptr)
 				{
-					obj->buttons[i].button_released();
+					obj->buttons[i].buttonReleased();
 				}
 			}
 
-			obj->buttons[i].previous_state = obj->buttons[i].current_state;
+			obj->buttons[i].previousState = obj->buttons[i].currentState;
 		}
 	}
 }
 
 //------------------------------------------------------------------------------
-void Buttons::button_released_cb(ButtonType type, std::function<void(void)> cb)
+void Buttons::buttonReleasedCb(ButtonType type, std::function<void(void)> cb)
 {
-	buttons[(int)type].button_released = cb;
+	buttons[(int)type].buttonReleased = cb;
 }
 
 //------------------------------------------------------------------------------
-void Buttons::button_pressed_short_cb(ButtonType type, std::function<void(void)> cb)
+void Buttons::buttonPressedShortCb(ButtonType type, std::function<void(void)> cb)
 {
-	buttons[(int)type].button_pressed_short = cb;
+	buttons[(int)type].buttonPressedShort = cb;
 }
 
 //------------------------------------------------------------------------------
-void Buttons::button_pressed_long_cb(ButtonType type, std::function<void(void)> cb)
+void Buttons::buttonPressedLongCb(ButtonType type, std::function<void(void)> cb)
 {
-	buttons[(int)type].button_pressed_long = cb;
+	buttons[(int)type].buttonPressedLong = cb;
 }
 
 //------------------------------------------------------------------------------
-const ButtonState Buttons::buttons_state(ButtonType button)
+const ButtonState Buttons::buttonsState(ButtonType button)
 {
-	return buttons[(int)button].current_state;
+	return buttons[(int)button].currentState;
 }
 //------------------------------------------------------------------------------
 

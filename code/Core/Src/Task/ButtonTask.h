@@ -22,6 +22,9 @@ public:
 	void run() override;
 
 private:
+	void registerButtonQueue();
+
+private:
 	button::Buttons& m_buttons;
 };
 

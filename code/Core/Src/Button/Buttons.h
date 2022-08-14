@@ -15,20 +15,17 @@
 namespace button
 {
 
-// Last time of button pressed
-extern uint32_t last_button_time;
-
 /**
  * @brief Button status structure
  */
 struct ButtonStatus
 {
-	ButtonState current_state;
-	ButtonState previous_state;
+	ButtonState currentState;
+	ButtonState previousState;
 
-	std::function<void(void)> button_released;
-	std::function<void(void)> button_pressed_short;
-	std::function<void(void)> button_pressed_long;
+	std::function<void(void)> buttonReleased;
+	std::function<void(void)> buttonPressedShort;
+	std::function<void(void)> buttonPressedLong;
 };
 
 class Buttons
@@ -37,27 +34,27 @@ public:
 	/**
 	 * @brief Buttons polling task
 	 */
-	static void buttons_task(void *argument);
+	static void buttonsTask(void *argument);
 
 	/**
 	 * @brief Set button released callback
 	 */
-	void button_released_cb(ButtonType type, std::function<void(void)> cb);
+	void buttonReleasedCb(ButtonType type, std::function<void(void)> cb);
 
 	/**
 	 * @brief Set button pressed_short callback
 	 */
-	void button_pressed_short_cb(ButtonType type, std::function<void(void)>);
+	void buttonPressedShortCb(ButtonType type, std::function<void(void)>);
 
 	/**
 	 * @brief Set button pressed_long callback
 	 */
-	void button_pressed_long_cb(ButtonType type, std::function<void(void)>);
+	void buttonPressedLongCb(ButtonType type, std::function<void(void)>);
 
 	/**
 	 * @brief Returns what buttons are pressed.
 	 */
-	const ButtonState buttons_state(ButtonType button);
+	const ButtonState buttonsState(ButtonType button);
 
 protected:
 	ButtonStatus buttons[BUTTONS_NUMBER];
