@@ -1,0 +1,58 @@
+/*
+ * ButtonTypes.h
+ *
+ *  Created on: Aug 14, 2022
+ *      Author: luk6xff
+ */
+
+#ifndef SRC_BUTTON_BUTTONTYPES_H_
+#define SRC_BUTTON_BUTTONTYPES_H_
+
+namespace button
+{
+/**
+ * @brief Button types
+ */
+typedef enum
+{
+	// HOTAIR BUTTONS
+	BUTTON_HOTAIR_ON = 0,
+	BUTTON_HOTAIR_TEMP_UP,
+	BUTTON_HOTAIR_TEMP_DOWN,
+	BUTTON_HOTAIR_FAN_UP,
+	BUTTON_HOTAIR_FAN_DOWN,
+
+	// SOLDERING IRON BUTTONS
+	//BUTTON_SOLDER_ON, - NOT USED
+	BUTTON_SOLDER_TEMP_DOWN,
+	BUTTON_SOLDER_TEMP_UP,
+	BUTTON_SOLDER_SELECT_T12,
+	BUTTON_SOLDER_SELECT_WEP,
+
+	// MENU BUTTONS
+	BUTTON_MENU_RIGHT,
+	BUTTON_MENU_OK,
+	BUTTON_MENU_LEFT,
+
+	// SENSING SW
+	BUTTON_HOTAIR_REED,
+	BUTTON_IRON_T12_MOTION,
+
+	// Number of all supported buttons
+	// Keep it always as last
+	BUTTONS_NUMBER,
+} ButtonType;
+
+/**
+ * @brief Button state
+ */
+typedef enum
+{
+	BUTTON_NOT_PRESSED = 0,
+	BUTTON_SHORT_PRESSED,
+	BUTTON_LONG_PRESSED,
+} ButtonState;
+
+}
+
+#endif /* SRC_BUTTON_BUTTONTYPES_H_ */

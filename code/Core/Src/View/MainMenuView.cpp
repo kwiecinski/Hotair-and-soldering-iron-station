@@ -1,14 +1,14 @@
 /*
- * MainMenu.cpp
+ * MainMenuView.cpp
  *
  *  Created on: May 3, 2022
  *      Author: luk6xff
  */
 
-#include "../Views/MainMenu.h"
+#include "MainMenuView.h"
 
-#include "../../Buttons/Buttons.h"
-#include "../LCD/glyphs.h"
+#include "../Button/Buttons.h"
+#include "../GUI/LCD/glyphs.h"
 
 // LU_TODO
 // Pin definitions and variables for their state.
@@ -66,7 +66,7 @@ void func() {
 }
 
 //------------------------------------------------------------------------------
-MainMenu::MainMenu(Display& disp)
+MainMenuView::MainMenuView(Display& disp)
 	: View(disp)
 	, m_hotAirLine(1, 0, "HotAir settings")
 	, m_wepLine(1, 1, "WEP settings")
@@ -77,7 +77,7 @@ MainMenu::MainMenu(Display& disp)
 }
 
 
-void MainMenu::init()
+void MainMenuView::init()
 {
 	m_screen.add_line(m_hotAirLine);
 	m_screen.add_line(m_wepLine);

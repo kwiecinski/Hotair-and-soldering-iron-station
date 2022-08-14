@@ -9,13 +9,13 @@
 #define SRC_GUI_VIEWS_MAINMENU_H_
 
 
-#include "../View.h"
+#include "View.h"
 
-class MainMenu : public View
+class MainMenuView : public View
 {
 
 public:
-	MainMenu(Display& disp);
+	MainMenuView(Display& disp);
 
 	void init() override;
 

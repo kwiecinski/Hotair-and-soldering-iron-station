@@ -10,6 +10,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
+using namespace button;
 
 
 //------------------------------------------------------------------------------

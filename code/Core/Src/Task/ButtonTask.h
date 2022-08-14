@@ -9,20 +9,20 @@
 #define SRC_TASKS_BUTTONTASK_H_
 
 #include "Task.h"
-#include "../Buttons/Buttons.h"
+#include "../Button/Buttons.h"
 
 class ButtonTask : public Task
 {
 
 public:
 	ButtonTask(const char *name, size_t stackSize,
-				osPriority_t priority, Buttons& buttons);
+				osPriority_t priority, button::Buttons& buttons);
 
 	void start() override;
 	void run() override;
 
 private:
-	Buttons& m_buttons;
+	button::Buttons& m_buttons;
 };
 
 #endif /* SRC_TASKS_BUTTONTASK_H_ */

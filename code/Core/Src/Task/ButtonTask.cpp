@@ -9,7 +9,7 @@
 
 //------------------------------------------------------------------------------
 ButtonTask::ButtonTask(const char *name, size_t stackSize,
-						osPriority_t priority, Buttons& buttons)
+						osPriority_t priority, button::Buttons& buttons)
 	: Task(name, stackSize, priority)
 	, m_buttons(buttons)
 {
@@ -25,7 +25,7 @@ void ButtonTask::start()
 //------------------------------------------------------------------------------
 void ButtonTask::run()
 {
-	Buttons::buttons_task(&m_buttons);
+	button::Buttons::buttons_task(&m_buttons);
 }
 
 //------------------------------------------------------------------------------

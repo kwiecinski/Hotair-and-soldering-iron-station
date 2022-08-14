@@ -8,8 +8,8 @@
 #ifndef SRC_GUI_VIEW_H_
 #define SRC_GUI_VIEW_H_
 
-#include "Display.h"
-#include "LCD/LiquidMenu.h"
+#include "../GUI/Display.h"
+#include "../GUI/LCD/LiquidMenu.h"
 
 /**
  * @brief Class responsible for managing displaying stuff on LCD

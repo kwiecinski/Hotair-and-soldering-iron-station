@@ -5,7 +5,7 @@
 // Platform dependent GPIO header
 #include "gpio.h"
 // Multithread Synchronization mechanism
-#include "../../Tasks/RtosUtils.h"
+#include "../../Task/RtosUtils.h"
 
 // commands
 #define LCD_CLEARDISPLAY 0x01
