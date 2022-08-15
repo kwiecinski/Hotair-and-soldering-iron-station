@@ -13,6 +13,11 @@
 #include "Task/ButtonTask.h"
 #include "Task/ControlTask.h"
 
+#include "View/ViewsFactory.h"
+#include "Task/Queues.h"
+#include "GUI/Display.h"
+#include "Model/MainMenuModel.h"
+
 
 /**
  * @brief Main Soldering station application.
@@ -25,6 +30,11 @@ public:
     void run() override;
 
 private:
+    // Common Objects
+	Display m_display;
+    view::ViewsFactory m_viewsFactory;
+	Queues m_queues;
+
     // Application Tasks
     ButtonTask m_buttonTask;
     ControlTask m_ctrlTask;

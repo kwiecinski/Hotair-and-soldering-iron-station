@@ -10,6 +10,10 @@
 #include "../Button/Buttons.h"
 #include "../GUI/LCD/glyphs.h"
 
+//------------------------------------------------------------------------------
+namespace view
+{
+
 // LU_TODO
 // Pin definitions and variables for their state.
 const uint8_t pin6 = 6;
@@ -112,9 +116,14 @@ void MainMenuView::init()
 //	m_buttons.button_pressed_short_cb(ButtonType::BUTTON_MENU_LEFT, [this](){m_menu.switch_focus(false);});
 }
 
+//------------------------------------------------------------------------------
+void MainMenuView::changeMenu(bool forward)
+{
+	m_widget.switch_focus(forward);
+}
 
 //------------------------------------------------------------------------------
-
+}
 
 //------------------------------------------------------------------------------
 

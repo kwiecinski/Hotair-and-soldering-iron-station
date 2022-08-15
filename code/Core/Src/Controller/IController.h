@@ -11,6 +11,8 @@
 #include "ControllerId.h"
 #include "../View/View.h"
 #include "../Model/IModel.h"
+#include "../Button/ButtonEventQueue.h"
+#include <memory>
 
 namespace ctrl
 {
@@ -18,21 +20,22 @@ namespace ctrl
 class IController
 {
 public:
-	IController(ControllerId id, View& view, IModel& model)
+	IController(ControllerId id, std::unique_ptr<view::View> view, IModel& model)
 		: m_id(id)
-		, m_view(view)
+		, m_view(std::move(view))
 		, m_model(model)
 	{
 
 	}
 
-protected:
-	virtual void onButtonChanged() = 0;
+	virtual void onButtonChanged(const button::ButtonEventQueue::Data& data) = 0;
 	virtual void onParameterChanged() = 0;
 
 private:
 	ControllerId m_id;
-	View& m_view;
+
+protected:
+	std::unique_ptr<view::View> m_view;
 	IModel& m_model;
 };
 

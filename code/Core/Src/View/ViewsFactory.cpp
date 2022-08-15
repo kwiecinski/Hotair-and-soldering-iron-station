@@ -1,31 +1,36 @@
 /*
- * View.cpp
+ * ViewsFactory.h
  *
- *  Created on: Jul 8, 2022
+ *  Created on: Aug 15, 2022
  *      Author: luk6xff
  */
 
-#include "View.h"
+#include "ViewsFactory.h"
 
 //------------------------------------------------------------------------------
 namespace view
 {
 
 //------------------------------------------------------------------------------
-View::View(Display& display)
-	: m_display(display)
-	, m_widget(m_display.handle())
+ViewsFactory::ViewsFactory(Display& display)
+: m_display(display)
 {
 
 }
 
 //------------------------------------------------------------------------------
-void View::update()
+std::unique_ptr<view::View> ViewsFactory::createMainMenu()
 {
-	m_widget.update();
+	return  std::make_unique<MainMenuView>(m_display);
 }
 
 //------------------------------------------------------------------------------
+std::unique_ptr<view::View> ViewsFactory::createHotAir()
+{
+	// TODO HotAir
+	return std::make_unique<MainMenuView>(m_display);
 }
 
 //------------------------------------------------------------------------------
+
+}

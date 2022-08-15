@@ -15,9 +15,11 @@ namespace ctrl
 
 class HotAirCtrl : public IController
 {
+
+public:
 	HotAirCtrl();
 
-	void onButtonChanged() override;
+	void onButtonChanged(const button::ButtonEventQueue::Data& data) override;
 	void onParameterChanged() override;
 };
 

@@ -11,6 +11,9 @@
 #include "../GUI/Display.h"
 #include "../GUI/LCD/LiquidMenu.h"
 
+namespace view
+{
+
 /**
  * @brief Class responsible for managing displaying stuff on LCD
  */
@@ -30,5 +33,7 @@ private:
 protected:
 	LiquidMenu m_widget;
 };
+
+}
 
 #endif /* SRC_GUI_VIEW_H_ */

@@ -8,8 +8,11 @@
 #ifndef SRC_GUI_VIEWS_MAINMENU_H_
 #define SRC_GUI_VIEWS_MAINMENU_H_
 
-
 #include "View.h"
+
+namespace view
+{
+
 
 class MainMenuView : public View
 {
@@ -18,6 +21,8 @@ public:
 	MainMenuView(Display& disp);
 
 	void init() override;
+
+	void changeMenu(bool forward=true);
 
 private:
 	// Menu structure
@@ -28,4 +33,5 @@ private:
 	LiquidScreen m_screen;
 };
 
+}
 #endif /* SRC_GUI_VIEWS_MAINMENU_H_ */

@@ -10,13 +10,16 @@
 
 #include "Task.h"
 #include "../Button/Buttons.h"
+#include "../Button/ButtonEventQueue.h"
 
 class ButtonTask : public Task
 {
 
 public:
-	ButtonTask(const char *name, size_t stackSize,
-				osPriority_t priority);
+	ButtonTask(const char *name,
+				size_t stackSize,
+				osPriority_t priority,
+				button::ButtonEventQueue& queue);
 
 	void start() override;
 	void run() override;
@@ -26,6 +29,7 @@ private:
 
 private:
 	button::Buttons m_buttons;
+	button::ButtonEventQueue& m_queue;
 };
 
 #endif /* SRC_TASKS_BUTTONTASK_H_ */

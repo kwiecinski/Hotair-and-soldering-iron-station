@@ -6,13 +6,14 @@
  */
 
 #include "ButtonTask.h"
-#include "../Common/Context.h"
+#include "Queues.h"
 
 //------------------------------------------------------------------------------
 ButtonTask::ButtonTask(const char *name, size_t stackSize,
-						osPriority_t priority)
+						osPriority_t priority, button::ButtonEventQueue& queue)
 	: Task(name, stackSize, priority)
 	, m_buttons()
+	, m_queue(queue)
 {
 
 }
@@ -39,19 +40,19 @@ void ButtonTask::registerButtonQueue()
 		// Short pressed
 		m_buttons.buttonPressedShortCb(
 					static_cast<button::ButtonType>(i),
-					[i]()
+					[this, i]()
 					{
 						button::ButtonEventQueue::Data data = {static_cast<button::ButtonType>(i), button::ButtonState::BUTTON_SHORT_PRESSED};
-						Context::ctx().queues.buttonQueue.send(data);
+						m_queue.send(data);
 					});
 
 		// Long pressed
 		m_buttons.buttonPressedLongCb(
 					static_cast<button::ButtonType>(i),
-					[i]()
+					[this, i]()
 					{
 						button::ButtonEventQueue::Data data = {static_cast<button::ButtonType>(i), button::ButtonState::BUTTON_SHORT_PRESSED};
-						Context::ctx().queues.buttonQueue.send(data);
+						m_queue.send(data);
 					});
 	}
 

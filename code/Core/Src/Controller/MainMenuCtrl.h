@@ -17,9 +17,11 @@ namespace ctrl
 
 class MainMenuCtrl : public IController
 {
-	MainMenuCtrl(MainMenuView& view, MainMenuModel& model);
 
-	void onButtonChanged() override;
+public:
+	MainMenuCtrl(std::unique_ptr<view::View> view, MainMenuModel& model);
+
+	void onButtonChanged(const button::ButtonEventQueue::Data& data) override;
 	void onParameterChanged() override;
 };
 
